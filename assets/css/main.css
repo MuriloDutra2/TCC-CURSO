@@ -67,3 +67,21 @@ nav {
     font-size: var(--fs-sm);
     font-weight: var(--fw-5);
 }
+
+.navbar-link:hover { color: var(--light-azure); }
+
+.indicator {position: relative;}
+
+.indicator::after {
+    content: '';
+    background: var(--live-indicator);
+    position: absolute;
+    top: calc(50% -1px);
+    right: -15px;
+    width: -4px;
+    height: 4px;
+    box-shadow: 0 0 0 2 var(--live-indicator-shadow);
+    border-radius: 5px;
+
+
+}
