@@ -59,3 +59,11 @@ nav {
     display: flex;
 }
 
+.navbar-nav li:not(:last-child) {
+    margin-right: 60px;
+}
+
+.navbar-link {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-5);
+}
