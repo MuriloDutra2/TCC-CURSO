@@ -13,3 +13,49 @@
 /*RESET*/
 
 @import url(reset.css);
+
+/* 
+    resued style
+*/
+header, nav {
+    background: var(--rich-black-fogra-29);
+}
+
+.navbar {
+    padding: 0 var(--px);
+}
+
+
+
+/* MAIN */
+
+.container {
+    max-width: 1440px;
+    margin: auto;
+}
+
+
+
+/*NAVBAR*/
+
+.navbar {
+    height: 100px;
+    display:         flex;
+    justify-content: center;
+    align-items:     center;
+}
+
+/* small creen menu button style */
+
+.navbar-menu-btn { display: none;}
+
+/*estilod do navbar navigation*/
+
+nav {
+    margin-right: 200px;
+}
+
+.navbar-nav {
+    display: flex;
+}
+
