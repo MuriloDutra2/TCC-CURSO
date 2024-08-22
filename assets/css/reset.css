@@ -1,0 +1,79 @@
+/*RESET CSS*/
+
+
+/* REMOVER MARGEM E PADDING CRIADA*/
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+}
+
+/*boxsizing interativo*/
+
+*, *::before, *::after {box-sizing: border-box;}
+
+/*FONTE FAMILIA DEFAULT*/
+
+html {font-family: var(--ff-inter);}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--white);
+}
+
+/*backgorund*/
+
+body {
+    background: var(--rich-black-fogra-29);
+    color: var(--off-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+/*charge image default*/
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+/*remover forma normal*/
+
+input, button, select {
+    font: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/*butao default*/
+
+button {
+    color: var(--off-white);
+    cursor: pointer;
+}
+/*remover botao da lista*/
+li {
+    list-style: none;
+}
+
+/*link defalt */
+a {
+    text-decoration: none;
+    display: block;
+    color: var(--off-white);
+}
+
+/*scrollbar */
+::-webkit-scrollbar {
+    background: transparent;
+    border-left: 1px solid var(--oxford-blue);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--light-azure);
+    border-radius: 5em;
+    border: 3px solid var(--rich-black-fogra-29);
+}
