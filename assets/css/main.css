@@ -21,7 +21,8 @@ header, nav {
     background: var(--rich-black-fogra-29);
 }
 
-.navbar {
+.navbar,
+.banner {
     padding: 0 var(--px);
 }
 
@@ -149,4 +150,67 @@ forma da navbar e estilo do botao
 
 .navbar-sign:hover span {
     color: var(--light-azure);
+}
+
+/*MAIN CSS-----------------------------------------------------*/
+
+/*BANNER----------------------------------------------------*/ 
+
+.banner{margin-bottom: 60px;}
+
+.banner-card {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.banner-img {
+    object-position: top;
+}
+.banner-card:hover .banner-img {
+transform: scale(1.1);
+}
+
+.banner-card .card-content {
+    position: absolute;
+    right: 80px;
+    bottom: 60px;
+    left: 80px;
+}
+
+.banner-card .card-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.banner .card-info div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.banner-card .card-info ion-icon {
+    font-size: 20px;
+    color: var(--azure);
+    margin-right: 5px;
+}
+
+.banner-card .card-info span {
+    font-weight: var(--fw-6);
+}
+
+.banner-card .card-info .quality {
+    background: var(--azure);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-weight: var(--fw-7);
+}
+
+.banner-card .card-title {
+    font-size: 3em;
+    color: var(--white);
+    text-shadow: 2px 0 2px #0007;
 }
