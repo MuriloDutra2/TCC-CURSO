@@ -14,7 +14,7 @@ VARIAVEIS GLOBAIS
 
     :root {
         --live-indicator-shadow: rgba(227, 65, 65, 0.5); /* Original: hsla(0, 79%, 63%, 0.5) */
-        --rich-black-fogra-30: rgb(18, 26, 33);          /* Original: hsl(219, 32%, 10%) */
+        --rich-black-fogra-30: #121a21;          /* Original: hsl(219, 32%, 10%) */
         --rich-black-fogra-29: rgb(19, 23, 28);          /* Original: hsl(222, 25%, 10%) */
         --live-indicator: rgb(227, 65, 65);       /* Original: hsl(0, 79%, 63%) */
         --oxford-blue-50: rgba(22, 36, 48, 0.8);  /* Original: hsla(218, 39%, 14%, 0.8) */
