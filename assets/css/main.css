@@ -273,3 +273,30 @@ transform: scale(1.1);
 
 .filter-radios input:checked + label,
 .filter-radios label:hover {color: var(--light-azure);}
+
+input ~ .checked-radio-bg {
+    /*
+        VAVRIAVEL PARA MUDAR A POSIÇÃO E O TEMANHO 
+        BASEADO NO CHECKED RADIO
+    */
+
+    --width: 85px;
+    --left: 5px;
+    background: var(--oxford-blue);
+    position: absolute;
+    top: 5px;
+    left: var(--left);
+    bottom: 5px;
+    width: var(--width);
+    border-radius: 10px;
+}
+
+#popular:checked ~ .checked-radio-bg {
+    --width: 73px;
+    --left: 90px;
+}
+
+#newest:checked ~ .checked-radio-bg {
+    --width: 81px;
+    --left: 163px;
+}
