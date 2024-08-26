@@ -300,3 +300,89 @@ input ~ .checked-radio-bg {
     --width: 81px;
     --left: 163px;
 }
+
+/* 
+
+MOVIES GRID
+
+*/
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.movie-card {
+    /*
+    variavel para escalar com o elemento overlay no card
+    */
+
+    --scale: 0.0;
+
+    cursor: pointer;
+}
+
+.movie-card .card-head {
+    position: relative;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.movie-card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.movie-card .card-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    backdrop-filter: blur(5px);
+}
+
+.movie-card .card-overlay {opacity: 1;}
+
+.movie-card .bookmark,
+.movie-card .rating {
+position: absolute;
+top: 15px;
+padding: 6px;
+border-radius: 10px;
+color: var(--light-azure);
+transform: scale(var(--scale));
+}
+
+.movie-card .bookmark {
+    background: var(--oxford-blue);
+    left: 15px;
+}
+
+.movie-card .rating {
+    display: flex;
+    align-items: center;
+    right: 15px;
+    background: var(--oxford-blue-50);
+}
+
+.movie-card .rating span {
+    color:  var(--white);
+    font-size: 13px;
+    font-weight: var(--fw-5);
+    margin-left: 5px;
+}
+
+.movie-card ion-icon {
+    font-size: 16px;
+    display: block;
+    --ioicon-stroke-width:  50px;
+}
+
+.movie-card .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(var(--scale));
+}
