@@ -319,7 +319,7 @@ MOVIES GRID
     variavel para escalar com o elemento overlay no card
     */
 
-    --scale: 0.0;
+    --scale: 0.8;
 
     cursor: pointer;
 }
@@ -360,6 +360,10 @@ transform: scale(var(--scale));
     left: 15px;
 }
 
+.movie-card .bookmark:hover {
+    color: var(--yellow);
+}
+
 .movie-card .rating {
     display: flex;
     align-items: center;
@@ -385,4 +389,49 @@ transform: scale(var(--scale));
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(var(--scale));
+}
+
+.movie-card .play ion-icon  {
+    font-size: 60px;
+    --ioicon-stroke-width:  20px;
+}
+
+.movie-card:hover :is(.bookmark, .rating, .play) {
+    --scale: 1;
+}
+
+.movie-card .card-title {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-5);
+    margin-bottom: 5px;
+}
+
+.movie-card:hover .card-info {color: var(--light-azure);}
+
+.movie-card .card-info {
+    display: flex;
+    font-size: var(--fs-x-sm);
+    font-weight: var(--fw-5);
+}
+
+.movie-card .genre { margin-right: 8px;}
+
+
+/*
+MAIS FILMES BOTTON
+*/
+
+.load-more {
+    background: var(--oxford-blue);
+    display: block;
+    padding: 20px 50px;
+    margin: auto;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-5);
+    border-radius: 15px;
+    color: var(--white);
+}
+
+.load-more:hover {
+    background: var(--light-azure);
 }
