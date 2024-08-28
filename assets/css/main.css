@@ -343,7 +343,7 @@ MOVIES GRID
     backdrop-filter: blur(5px);
 }
 
-.movie-card .card-overlay {opacity: 1;}
+.movie-card:hover .card-overlay {opacity: 1;}
 
 .movie-card .bookmark,
 .movie-card .rating {
