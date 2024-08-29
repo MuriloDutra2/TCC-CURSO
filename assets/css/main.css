@@ -540,9 +540,9 @@ footer {
 }
 
 .footer-content {
-    display: flex;
+    display:         flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items:     flex-start;
     border-bottom: 1px solid var(--oxford-blue-50);
     padding-bottom: 80px;
 }
