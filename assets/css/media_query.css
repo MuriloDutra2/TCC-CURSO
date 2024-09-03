@@ -71,7 +71,7 @@ MEDIA QUERY.CSS
 
     nav {
         position: fixed;
-        top: 0;
+        top: -250px;
         left: 0;
         width: 100%;
         z-index: 100;
@@ -82,7 +82,7 @@ MEDIA QUERY.CSS
     .navbar-nav {
         height: 250px;
         flex-direction: column;
-        justify-content: content;
+        justify-content: center;
         align-items: flex-start;
         padding-left: var(--px);
         border-bottom:  1px solid var(--oxford-blue);
