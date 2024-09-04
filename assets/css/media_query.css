@@ -134,4 +134,45 @@ MEDIA QUERY.CSS
         padding-top: 5px;
     }
 
+    /*
+    BANNER SECTION RESPONSIVE
+    */
+
+    .banner {
+        margin-top: 100px;
+    }
+
+    .banner-card .card-title {
+        font-size: 2.5em;
+    }
+
+    /*
+    category section responsive
+    */
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+        /*
+            FOOTER SECTION RESPONSIVO
+        */
+
+        .footer-content {flex-direction: column;}
+    
+        .footer-brand {
+            margin-right: 0;
+            margin-bottom: 60px;
+        }
+
+        .footer-links { grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));}
+
 }
+
+
+/*
+RESPONSIVO PRO 1024PX
+*/
+
+@media screen and (max-width: 1024px) { 
+    
+}
+
