@@ -173,6 +173,92 @@ RESPONSIVO PRO 1024PX
 */
 
 @media screen and (max-width: 1024px) { 
+    :root {
+        /* spacing
+        */
+        --px: 60px /*paddinf left e padding right*/
+    }
+
+    .banner-card .card-content {
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+    }
+
+}
+
+/*RESPOSIVE  FOR  768PX*/
+@media screen and (max-width: 768px) {
+    :root {
+        /* spacing
+        */
+        --px: 40px /*paddinf left e padding right*/
+    }
+
+    /*
+    banner section
+    */
+
+    .banner {display: none;}
+
+    /*
+    MOVIE SECTION
+    */
+
+    .movies { margin-top:  120px;}
+
+    /*
+    filter bar responsive
+    */
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-bar select { margin-bottom: 20px;}
+
+    .filter-radios {width: 100%;}
+
     
 }
+
+
+
+/*
+RESPONSIVE PARA 575px
+*/
+
+@media screen and (max-width: 575px) {
+    :root {
+        /* spacing
+        */
+        --px: 20px /*paddinf left e padding right*/
+    
+
+    /*
+    TYPOGRAFY
+    */
+    --section-heading: 32px;
+    --fs-lg: 20px;
+    }
+
+    .navbar-search-btn {margin-right: 20px;}
+
+    .navbar-form-search {margin-right: 20px;}
+
+    .navbar-form-btn {right: 55px;}
+
+    /*
+    FOTTER SECTION
+    */
+
+    .footer-copyright {
+        flex-direction: column-reverse;
+    }
+
+    .wrapper { margin-bottom: 20px}
+
+} 
+
 
