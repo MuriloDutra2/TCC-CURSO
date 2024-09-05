@@ -51,7 +51,7 @@ input, button, select {
 /*butao default*/
 
 button {
-    color: var(--off-white);
+    color: var(--vermelho);
     cursor: pointer;
 }
 /*remover botao da lista*/

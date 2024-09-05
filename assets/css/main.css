@@ -64,6 +64,11 @@ header, nav {
 
 .navbar-menu-btn { display: none;}
 
+.logo-img {
+    height: 100px;
+    width: 100px;
+}
+
 /*estilod do navbar navigation*/
 
 nav {
@@ -118,17 +123,17 @@ forma da navbar e estilo do botao
 }
 
 .navbar-form-search {
-    background: var(--oxford-blue);
+    background: var();
     width: 100%;
     padding: 12px 20px;
     border-radius: 15px;
-    color: var(--off-white);
+    color: var(--branco);
     font-size: var(--fs-sm);
     font-weight: var(--fw-5);
 }
 
 .navbar-form-btn {
-    background: var(--oxford-blue);
+    background: var();
     position: absolute;
     top: calc(50% - 10px);
     right: 10px;
@@ -137,13 +142,13 @@ forma da navbar e estilo do botao
 .navbar-form-btn ico-icon,
 .navbar-search-btn ion-icon {
     font-size: 20px;
-    color: var(--light-azure);
+    color: var(--preto);
     --ioicon-stroke-width: 50px;
 }
 
 .navbar-form-btn:hover ion-icon,
 .navbar-form-seach::placeholder {
-    color: var(--off-white);
+    color: var();
 }
 
 .navbar-form-close,
@@ -157,7 +162,7 @@ forma da navbar e estilo do botao
 
 .navbar-sign ion-icon {
     font-size: 22px;
-    color: var(--light-azure);
+    color: var(--vermelho);
     margin-left: 5px;
     --iconicon-stroke-width: 30px;
 }
