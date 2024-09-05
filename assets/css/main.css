@@ -252,7 +252,7 @@ transform: scale(1.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--oxford-blue);
+    background: var(--laranja1);
     padding: 20px 30px;
     border-radius: 20px;
     margin-bottom: 30px;
@@ -266,12 +266,12 @@ transform: scale(1.1);
 }
 
 .filter-bar option {
-    background: var(--oxford-blue);
+    background: var(--vinho);
 }
 
 .filter-radios{
     position: relative;
-    background: var(--rich-black-fogra-29);
+    background: var(--preto);
     padding: 10px;
     border-radius: 15px;
 }
@@ -290,7 +290,7 @@ transform: scale(1.1);
 }
 
 .filter-radios input:checked + label,
-.filter-radios label:hover {color: var(--light-azure);}
+.filter-radios label:hover {color: var(--preto);}
 
 input ~ .checked-radio-bg {
     /*
@@ -300,7 +300,7 @@ input ~ .checked-radio-bg {
 
     --width: 85px;
     --left: 5px;
-    background: var(--oxford-blue);
+    background: var(--vinho);
     position: absolute;
     top: 5px;
     left: var(--left);

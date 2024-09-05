@@ -69,11 +69,11 @@ a {
 /*scrollbar */
 ::-webkit-scrollbar {
     background: transparent;
-    border-left: 1px solid var(--oxford-blue);
+    border-left: 1px solid var(--preto);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--light-azure);
+    background: var(--vermelho);
     border-radius: 5em;
     border: 3px solid var(--rich-black-fogra-29);
 }
