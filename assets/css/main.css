@@ -213,7 +213,7 @@ transform: scale(1.1);
 
 .banner-card .card-info ion-icon {
     font-size: 20px;
-    color: var(--azure);
+    color: var(--vermelho);
     margin-right: 5px;
 }
 
@@ -222,7 +222,7 @@ transform: scale(1.1);
 }
 
 .banner-card .card-info .quality {
-    background: var(--azure);
+    background: var(--vermelho);
     padding: 2px 5px;
     border-radius: 5px;
     font-weight: var(--fw-7);
