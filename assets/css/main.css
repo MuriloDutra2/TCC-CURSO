@@ -369,7 +369,7 @@ position: absolute;
 top: 15px;
 padding: 6px;
 border-radius: 10px;
-color: var(--light-azure);
+color: var(--vermelho);
 transform: scale(var(--scale));
 }
 
@@ -424,7 +424,7 @@ transform: scale(var(--scale));
     margin-bottom: 5px;
 }
 
-.movie-card:hover .card-info {color: var(--light-azure);}
+.movie-card:hover .card-info {color: var(--laranja1);}
 
 .movie-card .card-info {
     display: flex;
@@ -451,7 +451,7 @@ MAIS FILMES BOTTON
 }
 
 .load-more:hover {
-    background: var(--light-azure);
+    background: var(--laranja1);
 }
 
 /*
