@@ -459,31 +459,50 @@ MAIS FILMES BOTTON
     SEÇÃO CATEGORIAS
 */
 
-.category {margin-bottom: 60px;}
+/* SEÇÃO CATEGORIAS */
+.category {
+    margin-bottom: 60px;
+}
+
+.smaller-card {
+    grid-column: span 2; /* Ocupa duas colunas ao invés de quatro */
+    height: 150px; /* Altura padrão, ou menor se quiser */
+    width: 100%; /* Largura vai ajustar conforme o grid */
+}
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas, mas o Documentário ocupa 2 */
     gap: 30px;
-
+    justify-items: center; /* Centraliza o item no grid */
 }
 
 .category-card {
     position: relative;
-    height: 150px;
+    height: 150px; /* Altura padrão */
+    width: 100%; /* Largura padrão conforme a grid */
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
 }
 
-category-card::after {
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantém o ajuste proporcional */
+}
+
+
+.category-card::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 20%, #000a);
 }
 
-.category-card:hover .card-img{transform: scale(1.1);}
+.category-card:hover .card-img {
+    transform: scale(1.1);
+}
 
 .category-card .name,
 .category-card .total {
@@ -508,6 +527,12 @@ category-card::after {
 
 .category-card:hover .name {
     color: var(--light-azure);
+}
+
+.center {
+    grid-column: span 4; /* Garante que o item ocupe toda a linha */
+    display: flex;
+    justify-content: center; /* Alinha o card ao centro */
 }
 
 /*
