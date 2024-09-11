@@ -526,7 +526,7 @@ MAIS FILMES BOTTON
 }
 
 .category-card:hover .name {
-    color: var(--light-azure);
+    color: var(--vermelho );
 }
 
 .center {
