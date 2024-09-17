@@ -88,7 +88,7 @@ nav {
     font-weight: var(--fw-5);
 }
 
-.navbar-link:hover { color: var(--light-azure); }
+.navbar-link:hover { color: var(--laranja1); }
 
 /*LIVE INDICADOR*/
 
@@ -571,7 +571,7 @@ SEÇÃO VIDEO
 */
 
 footer {
-    background-color: var(--rich-black-fogra-30);
+    
     padding: 80px var(--px) 40px;
 }
 
@@ -579,7 +579,7 @@ footer {
     display:         flex;
     justify-content: space-between;
     align-items:     flex-start;
-    border-bottom: 1px solid var(--oxford-blue-50);
+    border-bottom: 1px solid var(--laranja1);
     padding-bottom: 80px;
 }
 
@@ -620,7 +620,7 @@ footer {
 
 ul .link-item:not(:last-child) {margin-bottom: 10px;} 
 
-.link-item:hover a {color: var(--light-azure);}
+.link-item:hover a {color: var(--vinho);}
 
 .footer-copyright {
     display: flex;
@@ -634,7 +634,7 @@ ul .link-item:not(:last-child) {margin-bottom: 10px;}
     font-size: var(--fs-sm);
 }
 
-.wrapper a:hover { color: var(--light-azure);} 
+.wrapper a:hover { color: var(--laranja1);} 
 
 .wrapper {display: flex;}
 
