@@ -1,0 +1,23 @@
+/* Estilo para os cards de filmes */
+.movie-card {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+.movie-card img {
+    width: 200px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.search-results h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#no-results-message {
+    text-align: center;
+    font-size: 24px;
+    color: var(--white);
+}

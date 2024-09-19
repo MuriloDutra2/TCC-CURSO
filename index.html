@@ -54,25 +54,27 @@
             <ul class="navbar-nav">
                 <li> <a href="#" class="navbar-link">Nossos filmes</a> </li>
                 <li> <a href="#" class="navbar-link">Categorias</a> </li>
-                <li> <a href="#" class="navbar-link ">Alimentos</a> </li>
+                <li> <a href="#" class="navbar-link ">Contato</a> </li>
 
             </ul>
         </nav>
 
         <div class="navbar-actions">
 
+<!-- BARRA DE PESQUISA-->
+<form id="searchForm" class="navbar-form">
+    <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
 
-            <form action="#" class="navbar-form ">
-                <input type="text" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
+    <button type="submit" class="navbar-form-btn">
+        <ion-icon name="search-outline"></ion-icon>
+    </button>
 
-                <button class="navbar-form-btn">
-                    <ion-icon name="search-outline"></ion-icon>
-                </button>
+    <button type="button" class="navbar-form-close">
+        <ion-icon name="close-circle-outline"></ion-icon>
+    </button>
+</form>
 
-                <button class="navbar-form-close">
-                    <ion-icon name="close-circle-outline"></ion-icon>
-                </button>
-            </form>
+
 
             <!--botao de pesquisa pra tela menor-->
             <button class="navbar-search-btn">
@@ -796,7 +798,7 @@ CATEGORIA SECTION
         <!--Comedia-->
         <div class="category-card">
             <img src="assets/imagem-real/categoryAventura.jpg" alt="" class="card-img">
-            <div class="name">aventura</div>
+            <div class="name">Aventura</div>
             <div class="total">100</div>
         </div>
 
