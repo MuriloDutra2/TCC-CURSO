@@ -62,15 +62,17 @@
         <div class="navbar-actions">
 
 <!-- BARRA DE PESQUISA-->
-<form id="searchForm" class="navbar-form">
+<form id="searchForm" action="resultado.php" method="GET" class="navbar-form">
     <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
 
+    <!-- Botão de pesquisa com ícone -->
     <button type="submit" class="navbar-form-btn">
-        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon name="search-outline"></ion-icon> <!-- Ícone de pesquisa -->
     </button>
 
+    <!-- Botão de fechar (opcional, se necessário) -->
     <button type="button" class="navbar-form-close">
-        <ion-icon name="close-circle-outline"></ion-icon>
+        <ion-icon name="close-circle-outline"></ion-icon> <!-- Ícone de fechar -->
     </button>
 </form>
 
