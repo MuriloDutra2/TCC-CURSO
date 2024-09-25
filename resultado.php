@@ -1,13 +1,19 @@
 <?php
-// Conectar ao banco de dados
 include 'conexao.php';
 
-// Captura o termo pesquisado
+// Captura o termo pesquisado (ID do filme)
 $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+$searchQuery = $conn->real_escape_string($searchQuery); // Sanitizar entrada
 
-// Prepara a consulta SQL para buscar filmes com base no termo de pesquisa
-$sql = "SELECT * FROM `tabela_filme` WHERE `nome_filme` LIKE '%$searchQuery%'";
+// Exibe a pesquisa feita para depuração
+echo "Você pesquisou pelo ID: " . htmlspecialchars($searchQuery);
+
+// Prepara a consulta SQL para buscar pelo ID do filme
+$sql = "SELECT * FROM `tabela_filme` WHERE `id_filme` = '$searchQuery'";
+
+// Executa a consulta
 $result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +27,7 @@ $result = $conn->query($sql);
 <body>
 
 <div class="container">
-    <h1>Resultados para: <?php echo htmlspecialchars($searchQuery); ?></h1>
+    <h1>Resultados para o ID: <?php echo htmlspecialchars($searchQuery); ?></h1>
 
     <div id="searchResults">
         <?php
@@ -36,7 +42,7 @@ $result = $conn->query($sql);
             }
         } else {
             // Exibe mensagem se nenhum filme for encontrado
-            echo "<p>Não encontramos nada.</p>";
+            echo "<p>Não encontramos nenhum filme com esse ID.</p>";
         }
         ?>
     </div>
