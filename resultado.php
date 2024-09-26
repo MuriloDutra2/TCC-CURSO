@@ -1,57 +1,38 @@
 <?php
-include 'conexao.php';
+include 'conexao.php'; // Inclua sua conexão ao banco
 
-// Captura o termo pesquisado (ID do filme)
-$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
-$searchQuery = $conn->real_escape_string($searchQuery); // Sanitizar entrada
+// Verifica se há uma pesquisa
+if (isset($_GET['search'])) {
+    $searchQuery = $_GET['search'];
 
-// Exibe a pesquisa feita para depuração
-echo "Você pesquisou pelo ID: " . htmlspecialchars($searchQuery);
+    // Verifica a conexão com o banco de dados
+    if (!$conn) {
+        die("Conexão falhou: " . mysqli_connect_error());
+    }
 
-// Prepara a consulta SQL para buscar pelo ID do filme
-$sql = "SELECT * FROM `tabela_filme` WHERE `id_filme` = '$searchQuery'";
+    // Modifique a query para buscar o ID do filme
+    $sql = "SELECT * FROM tabela_filme WHERE id_filme = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $searchQuery); // Usa "s" para strings
 
-// Executa a consulta
-$result = $conn->query($sql);
+    // Executa a consulta
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados da Pesquisa</title>
-    <link rel="stylesheet" href="assets/css/main.css"> <!-- Link para seu CSS -->
-</head>
-<body>
-
-<div class="container">
-    <h1>Resultados para o ID: <?php echo htmlspecialchars($searchQuery); ?></h1>
-
-    <div id="searchResults">
-        <?php
-        if ($result->num_rows > 0) {
-            // Exibe os filmes encontrados
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='movie-card'>";
-                echo "<h3>" . htmlspecialchars($row['nome_filme']) . "</h3>";
-                echo "<p>Ano: " . htmlspecialchars($row['ano_filme']) . "</p>";
-                echo "<p>Tópicos: " . htmlspecialchars($row['topicos_destaque']) . "</p>";
-                echo "</div>";
-            }
-        } else {
-            // Exibe mensagem se nenhum filme for encontrado
-            echo "<p>Não encontramos nenhum filme com esse ID.</p>";
+    // Verifica se há resultados
+    if ($result->num_rows > 0) {
+        // Exibe os resultados
+        while ($row = $result->fetch_assoc()) {
+            echo "<p>Filme: " . $row['nome_filme'] . " (" . $row['ano_filme'] . ")</p>";
         }
-        ?>
-    </div>
-</div>
+    } else {
+        echo "Nenhum filme encontrado.";
+    }
 
-</body>
-</html>
-
-<?php
-// Fecha a conexão
-$conn->close();
+    // Fecha a conexão
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Nenhum termo de pesquisa foi fornecido.";
+}
 ?>

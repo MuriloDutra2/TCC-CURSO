@@ -28,14 +28,4 @@ const searchBarIsActive = () => navbarForm.classList.toggle('active');
 navbarSearchBtn.addEventListener('click', searchBarIsActive);
 navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
-document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o comportamento padrão do formulário
 
-    // Pega o valor pesquisado
-    const query = document.getElementById('searchInput').value.trim().toLowerCase();
-
-    // Se houver algo digitado, redireciona para a página resultado.html
-    if (query) {
-        window.location.href = `resultados.html?search=${encodeURIComponent(query)}`;
-    }
-});
