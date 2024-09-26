@@ -1,38 +1,25 @@
 <?php
-include 'conexao.php'; // Inclua sua conexão ao banco
+include 'conexao.php'; // Certifique-se de que a conexão com o banco está incluída
 
-// Verifica se há uma pesquisa
 if (isset($_GET['search'])) {
-    $searchQuery = $_GET['search'];
+    $search = $_GET['search'];
 
-    // Verifica a conexão com o banco de dados
-    if (!$conn) {
-        die("Conexão falhou: " . mysqli_connect_error());
-    }
+    // Faz a busca no banco de dados pelo nome do filme ou pelo ID
+    $query = $conn->prepare("SELECT * FROM tabela_filme WHERE nome_filme LIKE ? OR id_filme = ?");
+    $like_search = "%" . $search . "%";
+    $query->bind_param("si", $like_search, $search);
+    $query->execute();
+    $result = $query->get_result();
 
-    // Modifique a query para buscar o ID do filme
-    $sql = "SELECT * FROM tabela_filme WHERE id_filme = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $searchQuery); // Usa "s" para strings
+    echo "<h2>Resultados para: " . htmlspecialchars($search) . "</h2>";
 
-    // Executa a consulta
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Verifica se há resultados
     if ($result->num_rows > 0) {
-        // Exibe os resultados
+        // Exibe os resultados encontrados
         while ($row = $result->fetch_assoc()) {
-            echo "<p>Filme: " . $row['nome_filme'] . " (" . $row['ano_filme'] . ")</p>";
+            echo "<p>" . $row['nome_filme'] . " (" . $row['ano_filme'] . ") - " . $row['topicos_destaque'] . "</p>";
         }
     } else {
-        echo "Nenhum filme encontrado.";
+        echo "<p>Nenhum filme encontrado</p>";
     }
-
-    // Fecha a conexão
-    $stmt->close();
-    $conn->close();
-} else {
-    echo "Nenhum termo de pesquisa foi fornecido.";
 }
 ?>
