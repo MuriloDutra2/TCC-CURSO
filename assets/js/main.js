@@ -1,3 +1,6 @@
+console.log("JS carregado"); // Certifique-se de que o arquivo está sendo executado
+
+
 'use strict';
 
 //variaveis para o nabar toggler
@@ -28,4 +31,70 @@ const searchBarIsActive = () => navbarForm.classList.toggle('active');
 navbarSearchBtn.addEventListener('click', searchBarIsActive);
 navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
+
+/*CODIGO PARA A BARRA DE PESQUISA DO C-STREET */
+
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita o comportamento padrão do formulário
+
+    console.log('Formulário enviado'); // Verifica se o envio do formulário é interceptado
+
+    // Obtém o valor da barra de pesquisa
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    
+    console.log('Pesquisa por:', query); // Verifica o valor da pesquisa
+
+    // Faz a requisição AJAX para buscar os filmes
+    if (query) {
+        fetch(`resultado.php?search=${encodeURIComponent(query)}`)
+            .then(response => response.json()) // Converte a resposta para JSON
+            .then(data => {
+                console.log('Dados recebidos:', data); // Verifica se os dados estão sendo retornados
+                // Função que irá renderizar os filmes na página
+                displaySearchResults(data);
+            })
+            .catch(error => console.error('Erro ao buscar os filmes:', error));
+    }
+});
+
+
+// Função para exibir os resultados da pesquisa
+function displaySearchResults(data) {
+    const resultsContainer = document.querySelector('.movies-grid');
+    resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+    if (data.length > 0) {
+        data.forEach(filme => {
+            const movieCard = `
+                <div class="movie-card">
+                    <div class="card-head">
+                        <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
+                        <div class="card-overlay">
+                            <div class="bookmark">
+                                <ion-icon name="bookmark-outline"></ion-icon>
+                            </div>
+                            <div class="rating">
+                                <ion-icon name="star-outline"></ion-icon>
+                                <span>${filme.nota_filme}</span>
+                            </div>
+                            <div class="play">
+                                <ion-icon name="play-circle-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${filme.nome_filme}</h3>
+                        <div class="card-info">
+                            <span class="genre">${filme.topicos_destaque}</span>
+                            <span class="year">${filme.ano_filme}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            resultsContainer.innerHTML += movieCard;
+        });
+    } else {
+        resultsContainer.innerHTML = '<p>Nenhum filme encontrado</p>';
+    }
+}
 

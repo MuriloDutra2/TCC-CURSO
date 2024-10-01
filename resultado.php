@@ -1,25 +1,30 @@
 <?php
-include 'conexao.php'; // Certifique-se de que a conexão com o banco está incluída
+include 'conexao.php'; // Inclua seu arquivo de conexão com o banco
 
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
 
-    // Faz a busca no banco de dados pelo nome do filme ou pelo ID
-    $query = $conn->prepare("SELECT * FROM tabela_filme WHERE nome_filme LIKE ? OR id_filme = ?");
+    // Faz a busca no banco de dados
+    $query = $conn->prepare("SELECT * FROM tabela_filme WHERE nome_filme LIKE ? OR topicos_destaque LIKE ?");
     $like_search = "%" . $search . "%";
-    $query->bind_param("si", $like_search, $search);
+    $query->bind_param("ss", $like_search, $like_search);
     $query->execute();
     $result = $query->get_result();
 
-    echo "<h2>Resultados para: " . htmlspecialchars($search) . "</h2>";
+    $filmes = array();
 
-    if ($result->num_rows > 0) {
-        // Exibe os resultados encontrados
-        while ($row = $result->fetch_assoc()) {
-            echo "<p>" . $row['nome_filme'] . " (" . $row['ano_filme'] . ") - " . $row['topicos_destaque'] . "</p>";
-        }
-    } else {
-        echo "<p>Nenhum filme encontrado</p>";
+    while ($row = $result->fetch_assoc()) {
+        $filmes[] = array(
+            'nome_filme' => $row['nome_filme'],
+            'ano_filme' => $row['ano_filme'],
+            'topicos_destaque' => $row['topicos_destaque'],
+            'image_path' => $row['image_path'],
+            'nota_filme' => $row['nota_filme']
+        );
     }
+
+    // Retorna os resultados como JSON
+    header('Content-Type: application/json');
+    echo json_encode($filmes);
 }
 ?>
