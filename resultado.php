@@ -1,4 +1,7 @@
 <?php
+
+echo $query; // Exibe a consulta SQL
+
 include 'conexao.php'; // Inclua seu arquivo de conexão com o banco
 
 if (isset($_GET['search'])) {
@@ -27,4 +30,6 @@ if (isset($_GET['search'])) {
     header('Content-Type: application/json');
     echo json_encode($filmes);
 }
+
+
 ?>

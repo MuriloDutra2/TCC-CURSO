@@ -1,6 +1,5 @@
 console.log("JS carregado"); // Certifique-se de que o arquivo está sendo executado
 
-
 'use strict';
 
 //variaveis para o nabar toggler
