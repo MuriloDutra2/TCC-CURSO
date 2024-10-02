@@ -1,35 +1,37 @@
 <?php
 
-echo $query; // Exibe a consulta SQL
-
-include 'conexao.php'; // Inclua seu arquivo de conexão com o banco
-
-if (isset($_GET['search'])) {
-    $search = $_GET['search'];
-
-    // Faz a busca no banco de dados
-    $query = $conn->prepare("SELECT * FROM tabela_filme WHERE nome_filme LIKE ? OR topicos_destaque LIKE ?");
-    $like_search = "%" . $search . "%";
-    $query->bind_param("ss", $like_search, $like_search);
-    $query->execute();
-    $result = $query->get_result();
-
-    $filmes = array();
-
-    while ($row = $result->fetch_assoc()) {
-        $filmes[] = array(
-            'nome_filme' => $row['nome_filme'],
-            'ano_filme' => $row['ano_filme'],
-            'topicos_destaque' => $row['topicos_destaque'],
-            'image_path' => $row['image_path'],
-            'nota_filme' => $row['nota_filme']
-        );
-    }
-
-    // Retorna os resultados como JSON
-    header('Content-Type: application/json');
-    echo json_encode($filmes);
+include "conexao.php";
+// Conexão com o banco de dados
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=seu_banco_de_dados', 'seu_usuario', 'sua_senha');
+} catch (PDOException $e) {
+    echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
+    exit;
 }
 
+// Obtenha o termo de busca da URL
+$search = isset($_GET['search']) ? '%' . $_GET['search'] . '%' : '';
 
-?>
+// Preparar e executar a consulta SQL
+// Supondo que você já tenha colunas como ano_filme, topicos_destaque, image_path, etc.
+$sql = "SELECT nome_filme, ano_filme, topicos_destaque, image_path, nota_filme 
+        FROM filmes 
+        WHERE nome_filme LIKE :search";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':search', $search);
+$stmt->execute();
+
+// Buscar os resultados
+$resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Verificar se há resultados
+if ($resultados) {
+    // Definir o cabeçalho como JSON
+    header('Content-Type: application/json');
+    
+    // Enviar os resultados como JSON
+    echo json_encode($resultados);
+} else {
+    // Se nenhum resultado for encontrado, retornar uma resposta vazia
+    echo json_encode([]);
+}
