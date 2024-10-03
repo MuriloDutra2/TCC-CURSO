@@ -1,0 +1,117 @@
+@import url('main.css');
+
+@import url('variavel.css');
+
+/* Espaçamento maior entre o header, main e footer */
+header, footer {
+    margin-bottom: 50px; /* Aumenta o espaçamento entre header, main e footer */
+}
+
+main {
+    margin-top: 50px; /* Aumenta o espaçamento entre o main e o header */
+}
+
+/* Estilos para o layout dos detalhes do filme */
+.movie-details {
+    display: flex;
+    align-items: flex-start; /* Mantém o topo dos elementos alinhados */
+    gap: 20px; /* Espaçamento entre a imagem e as informações */
+    margin-bottom: 100px; /* Espaço inferior para separação */
+}
+
+/* Definir o tamanho da imagem */
+.movie-image img {
+    width: 300px; /* Tamanho adequado para a imagem */
+    height: auto;
+    border-radius: 10px; /* Cantos arredondados */
+}
+
+/* Estilos para as informações */
+.movie-info {
+    flex: 1; /* Ocupar o espaço restante */
+}
+
+.movie-info h2 {
+    font-size: 2.5em; /* Aumenta o tamanho do título do filme */
+    margin-bottom: 20px; /* Espaçamento maior entre o título e as informações */
+}
+
+/* Sinopse com fonte maior e espaçamento */
+.movie-info .sinopse {
+    margin-bottom: 40px; /* Espaçamento maior entre a sinopse e o restante */
+    font-size: 1.3em; /* Aumenta o tamanho da fonte da sinopse */
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas para melhor legibilidade */
+    text-align: justify;
+}
+
+/* Estilos para as demais informações */
+.movie-info .duration,
+.movie-info .release-date,
+.movie-info .genre,
+.movie-info .rating {
+    font-size: 1.2em; /* Aumenta o tamanho da fonte das informações */
+    margin-bottom: 20px; /* Espaçamento maior entre cada uma das informações */
+    color: #D93223; /* Torna a cor um pouco mais escura para destacar */
+}
+
+/* Centralizar o botão "Comprar Ingresso" */
+.buy-ticket {
+    display: block;
+    text-align: center;
+    margin: 20px auto; /* centraliza horizontalmente com espaçamento superior */
+    padding: 10px 20px;
+    background-color: #D93223;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.buy-ticket:hover {
+    background-color: #ff6a75;
+}
+
+/* Estilos para o elenco */
+.movie-cast {
+    margin-top: 50px;
+}
+
+.movie-cast h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+/* Container para o elenco */
+.cast-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens fiquem em várias linhas */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 20px; /* Espaçamento entre os atores */
+}
+
+/* Estilos para cada ator */
+.cast-item {
+    display: flex;
+    flex-direction: column; /* Coloca o texto abaixo da imagem */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+}
+
+.cast-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Torna a imagem circular */
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o nome */
+}
+
+.cast-item .actor-name {
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+}
+
