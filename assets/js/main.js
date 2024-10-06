@@ -60,19 +60,21 @@ function displaySearchResults(data) {
             const movieCard = `
                 <div class="movie-card">
                     <div class="card-head">
-                        <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
-                        <div class="card-overlay">
-                            <div class="bookmark">
-                                <ion-icon name="bookmark-outline"></ion-icon>
+                        <a href="${filme.link}"> <!-- Link dinâmico para a página do filme -->
+                            <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
+                            <div class="card-overlay">
+                                <div class="bookmark">
+                                    <ion-icon name="bookmark-outline"></ion-icon>
+                                </div>
+                                <div class="rating">
+                                    <ion-icon name="star-outline"></ion-icon>
+                                    <span>${filme.nota_filme}</span>
+                                </div>
+                                <div class="play">
+                                    <ion-icon name="play-circle-outline"></ion-icon>
+                                </div>
                             </div>
-                            <div class="rating">
-                                <ion-icon name="star-outline"></ion-icon>
-                                <span>${filme.nota_filme}</span>
-                            </div>
-                            <div class="play">
-                                <ion-icon name="play-circle-outline"></ion-icon>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">${filme.nome_filme}</h3>
@@ -89,3 +91,4 @@ function displaySearchResults(data) {
         resultsContainer.innerHTML = '<p>Nenhum filme encontrado</p>';
     }
 }
+

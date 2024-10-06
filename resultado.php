@@ -34,7 +34,23 @@ try {
         }
 
         // Buscar os resultados
-        $resultados = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $resultados = [];
+        $res = $stmt->get_result();
+
+        while ($row = $res->fetch_assoc()) {
+            // Geração dinâmica do link para a página do filme (converte o nome do filme em um link)
+            $link = strtolower(str_replace(' ', '', $row['nome_filme'])) . '.html';
+
+            // Adicionar o resultado ao array de filmes
+            $resultados[] = [
+                'nome_filme' => $row['nome_filme'],
+                'ano_filme' => $row['ano_filme'],
+                'topicos_destaque' => $row['topicos_destaque'],
+                'image_path' => $row['image_path'],
+                'nota_filme' => $row['nota_filme'],
+                'link' => $link // Adiciona o link dinâmico ao resultado
+            ];
+        }
 
         // Verificar se há resultados e enviar como JSON
         echo json_encode($resultados);
