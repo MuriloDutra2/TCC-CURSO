@@ -375,6 +375,7 @@ movies grid
 
 <!--FILME 5-->
 <div class="movie-card">
+    <a href="timeDosSonhos.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme5.jpg" alt="" class="card-img">
@@ -400,6 +401,7 @@ movies grid
     </div>
 
     <div class="card-body">
+        
         <h3 class="card-title">
             O Time Dos Sonhos
         </h3>
@@ -409,11 +411,12 @@ movies grid
             <span class="year">2015</span>
         </div>
     </div>
-
+</a>
 
 </div>
 <!--FILME 6-->
 <div class="movie-card">
+    <a href="olhosFelinos.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme6.jpg" class="card-img">
@@ -449,13 +452,14 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 <!--FILME 7-->
 <div class="movie-card">
 
     <div class="card-head">
+        <a href="tempoDeMorte.html">
         <img src="assets/image_movie/filme7.jpg" alt="" class="card-img">
 
         <div class="card-overlay">
@@ -489,11 +493,12 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 <!--FILME 8-->
 <div class="movie-card">
+    <a href="mdp.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme8.jpg" class="card-img">
@@ -529,11 +534,12 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 <!--FILME 9-->
 <div class="movie-card">
+    <a href="desconhecido.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme9.jpg" alt="" class="card-img">
@@ -569,13 +575,13 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 
 <!--FILME 10-->
 <div class="movie-card">
-
+<a href="punhosDeAco.html">
     <div class="card-head">
         <img src="assets/image_movie/filme10.jpg" alt="" class="card-img">
 
@@ -609,13 +615,15 @@ movies grid
             <span class="year">2010</span>
         </div>
     </div>
-
+</a>
 
 </div>
 
 
 <!--FILME 11-->
 <div class="movie-card">
+    
+    <a href="atirandoAlto.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme11.jpg" alt="" class="card-img">
@@ -651,12 +659,13 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 
 <!--FILME 12-->
 <div class="movie-card">
+    <a href="olhinhosDoCeu.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme12.jpg" alt="" class="card-img">
@@ -692,11 +701,12 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 <!--FILME 13-->
 <div class="movie-card">
+    <a href="buscaPelaVerdade.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme13.jpg" alt="" class="card-img">
@@ -732,11 +742,12 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 <!--FILME 14-->
 <div class="movie-card">
+    <a href="historiaDeMung.html">
 
     <div class="card-head">
         <img src="assets/image_movie/filme15.jpg" alt="" class="card-img">
@@ -772,7 +783,7 @@ movies grid
         </div>
     </div>
 
-
+</a>
 </div>
 
 
@@ -946,11 +957,11 @@ CATEGORIA SECTION
                 </li>
 
                 <li class="link-item">
-                    <a href="olhosFelinos">  Olhos Felinos </a>
+                    <a href="olhosFelinos.html">  Olhos Felinos </a>
                 </li>
 
                 <li class="link-item">
-                    <a href="tempoDeMorte">  Tempo de Morte</a>
+                    <a href="tempoDeMorte.html">  Tempo de Morte</a>
                 </li>
 
                 <li class="link-item">
@@ -971,9 +982,11 @@ CATEGORIA SECTION
                 <li class="link-item">
                     <a href="atirandoAlto.html">  Atirando Alto</a>
                 </li>
+
                 <li class="link-item">
                     <a href="historiaDeMung.html">  Historia de Mung </a>
                 </li>
+              
             </ul>
 
         </div>
@@ -1021,4 +1034,26 @@ CATEGORIA SECTION
 </body>
 
 <script src="assets/js/main.js"></script>
+
+<script>
+    // Função para obter os parâmetros da URL
+    function getQueryParameter(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Pega o termo de pesquisa da URL
+    const searchQuery = getQueryParameter('search');
+
+    if (searchQuery) {
+        // Se houver um termo de pesquisa, faz a requisição AJAX para buscar os filmes
+        fetch(`resultado.php?search=${encodeURIComponent(searchQuery)}`)
+            .then(response => response.json())
+            .then(data => {
+                displaySearchResults(data); // Chama a função que renderiza os resultados
+            })
+            .catch(error => console.error('Erro ao buscar os filmes:', error));
+    }
+</script>
+
 </html>

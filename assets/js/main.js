@@ -4,7 +4,7 @@ console.log("JS carregado"); // Certifique-se de que o arquivo está sendo execu
 
 //variaveis para o nabar toggler
 
-const header = document.querySelector('HEader');
+const header = document.querySelector('header');
 const nav = document.querySelector('nav');
 const navbarMenuBtn = document.querySelector('.navbar-menu-btn');
 
@@ -22,8 +22,7 @@ function navIsActive() {
 
 navbarMenuBtn.addEventListener('click', navIsActive);
 
-
-//navbar search toggle fucntion
+//navbar search toggle function
 
 const searchBarIsActive = () => navbarForm.classList.toggle('active');
 
@@ -31,8 +30,9 @@ navbarSearchBtn.addEventListener('click', searchBarIsActive);
 navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
 
-/*CODIGO PARA A BARRA DE PESQUISA DO C-STREET */
+/* CODIGO PARA A BARRA DE PESQUISA DO C-STREET */
 
+// Este código redireciona para o index.html com a pesquisa, quando a página atual é uma página de filme
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita o comportamento padrão do formulário
 
@@ -43,21 +43,14 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     
     console.log('Pesquisa por:', query); // Verifica o valor da pesquisa
 
-    // Faz a requisição AJAX para buscar os filmes
+    // Redireciona para a página principal com a query na URL
     if (query) {
-        fetch(`resultado.php?search=${encodeURIComponent(query)}`)
-            .then(response => response.json()) // Converte a resposta para JSON
-            .then(data => {
-                console.log('Dados recebidos:', data); // Verifica se os dados estão sendo retornados
-                // Função que irá renderizar os filmes na página
-                displaySearchResults(data);
-            })
-            .catch(error => console.error('Erro ao buscar os filmes:', error));
+        window.location.href = `index.html?search=${encodeURIComponent(query)}`;
     }
 });
 
 
-// Função para exibir os resultados da pesquisa
+/* Função para exibir resultados de pesquisa via AJAX (usada na página principal index.html) */
 function displaySearchResults(data) {
     const resultsContainer = document.querySelector('.movies-grid');
     resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
@@ -96,4 +89,3 @@ function displaySearchResults(data) {
         resultsContainer.innerHTML = '<p>Nenhum filme encontrado</p>';
     }
 }
-

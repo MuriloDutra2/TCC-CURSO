@@ -249,11 +249,11 @@
                 </li>
 
                 <li class="link-item">
-                    <a href="olhosFelinos">  Olhos Felinos </a>
+                    <a href="olhosFelinos.html">  Olhos Felinos </a>
                 </li>
 
                 <li class="link-item">
-                    <a href="tempoDeMorte">  Tempo de Morte</a>
+                    <a href="tempoDeMorte.html">  Tempo de Morte</a>
                 </li>
 
                 <li class="link-item">
@@ -324,4 +324,18 @@
 </body>
 
 <script src="assets/js/main.js"></script>
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o comportamento padrão do formulário
+
+        // Obtém o valor pesquisado
+        const query = document.getElementById('searchInput').value.trim();
+
+        // Redireciona para a página principal com a pesquisa na URL
+        if (query) {
+            window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+        }
+    });
+</script>
+
 </html>
