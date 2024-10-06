@@ -2,18 +2,17 @@ console.log("JS carregado"); // Certifique-se de que o arquivo está sendo execu
 
 'use strict';
 
-//variaveis para o nabar toggler
-
+// Variáveis para o navbar toggler
 const header = document.querySelector('header');
 const nav = document.querySelector('nav');
 const navbarMenuBtn = document.querySelector('.navbar-menu-btn');
 
-//variaveis para o toggle do navbar
+// Variáveis para o toggle do navbar
 const navbarForm = document.querySelector('.navbar-form');
 const navbarFormCloseBtn = document.querySelector('.navbar-form-close');
 const navbarSearchBtn = document.querySelector('.navbar-search-btn');
 
-//navbar menu toggle function
+// Navbar menu toggle function
 function navIsActive() {
     header.classList.toggle('active');
     nav.classList.toggle('active');
@@ -22,15 +21,13 @@ function navIsActive() {
 
 navbarMenuBtn.addEventListener('click', navIsActive);
 
-//navbar search toggle function
-
+// Navbar search toggle function
 const searchBarIsActive = () => navbarForm.classList.toggle('active');
 
 navbarSearchBtn.addEventListener('click', searchBarIsActive);
 navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
-
-/* CODIGO PARA A BARRA DE PESQUISA DO C-STREET */
+/* CÓDIGO PARA A BARRA DE PESQUISA DO C-STREET */
 
 // Este código redireciona para o index.html com a pesquisa, quando a página atual é uma página de filme
 document.getElementById('searchForm').addEventListener('submit', function(event) {
@@ -49,7 +46,6 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     }
 });
 
-
 /* Função para exibir resultados de pesquisa via AJAX (usada na página principal index.html) */
 function displaySearchResults(data) {
     const resultsContainer = document.querySelector('.movies-grid');
@@ -60,7 +56,7 @@ function displaySearchResults(data) {
             const movieCard = `
                 <div class="movie-card">
                     <div class="card-head">
-                        <a href="${filme.link}"> <!-- Link dinâmico para a página do filme -->
+                        <a href="${filme.url_filmes}"> <!-- Link dinâmico para a página do filme -->
                             <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
                             <div class="card-overlay">
                                 <div class="bookmark">
@@ -74,7 +70,7 @@ function displaySearchResults(data) {
                                     <ion-icon name="play-circle-outline"></ion-icon>
                                 </div>
                             </div>
-                        </a>
+                        
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">${filme.nome_filme}</h3>
@@ -83,6 +79,7 @@ function displaySearchResults(data) {
                             <span class="year">${filme.ano_filme}</span>
                         </div>
                     </div>
+                    </a>
                 </div>
             `;
             resultsContainer.innerHTML += movieCard;
@@ -92,3 +89,23 @@ function displaySearchResults(data) {
     }
 }
 
+// Função para buscar resultados de pesquisa quando a página carrega
+function getSearchResults() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+
+    if (searchQuery) {
+        // Aqui você deve fazer uma requisição AJAX para buscar os filmes com a query
+        fetch('path/to/your/api/endpoint?search=' + encodeURIComponent(searchQuery))
+            .then(response => response.json())
+            .then(data => {
+                displaySearchResults(data); // Passa os dados para a função que exibe os resultados
+            })
+            .catch(error => {
+                console.error('Erro ao buscar os filmes:', error);
+            });
+    }
+}
+
+// Chama a função para buscar os resultados de pesquisa quando a página é carregada
+document.addEventListener('DOMContentLoaded', getSearchResults);

@@ -16,7 +16,7 @@ try {
         $search = '%' . strtolower($_GET['search']) . '%'; // Tornar o termo de busca minúsculo
 
         // Preparar a consulta SQL para buscar filmes pelo nome, ignorando maiúsculas/minúsculas
-        $sql = "SELECT nome_filme, ano_filme, topicos_destaque, image_path, nota_filme 
+        $sql = "SELECT nome_filme, ano_filme, topicos_destaque, image_path, nota_filme, url_filme 
                 FROM tabela_filme
                 WHERE LOWER(nome_filme) LIKE ?";
         $stmt = $conn->prepare($sql);
@@ -38,9 +38,6 @@ try {
         $res = $stmt->get_result();
 
         while ($row = $res->fetch_assoc()) {
-            // Geração dinâmica do link para a página do filme (converte o nome do filme em um link)
-            $link = strtolower(str_replace(' ', '', $row['nome_filme'])) . '.html';
-
             // Adicionar o resultado ao array de filmes
             $resultados[] = [
                 'nome_filme' => $row['nome_filme'],
@@ -48,7 +45,7 @@ try {
                 'topicos_destaque' => $row['topicos_destaque'],
                 'image_path' => $row['image_path'],
                 'nota_filme' => $row['nota_filme'],
-                'link' => $link // Adiciona o link dinâmico ao resultado
+                'url_filme' => $row['url_filme'] // Corrigido para usar o campo correto
             ];
         }
 

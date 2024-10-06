@@ -1056,4 +1056,25 @@ CATEGORIA SECTION
     }
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const searchQuery = params.get('search');
+    
+        if (searchQuery) {
+            // Chama a API para buscar filmes com base na pesquisa
+            fetch(`seu_script_php.php?search=${encodeURIComponent(searchQuery)}`)
+                .then(response => response.json())
+                .then(data => {
+                    displaySearchResults(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar filmes:', error);
+                });
+        }
+    });
+    </script>
+    
+
+
 </html>
