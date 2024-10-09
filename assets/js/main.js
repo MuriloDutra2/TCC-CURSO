@@ -29,7 +29,7 @@ navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
 /* CÓDIGO PARA A BARRA DE PESQUISA DO C-STREET */
 
-// Este código redireciona para o index.html com a pesquisa, quando a página atual é uma página de filme
+// Este código redireciona para o index.html com a pesquisa
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita o comportamento padrão do formulário
 
@@ -46,50 +46,43 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     }
 });
 
-/* Função para exibir resultados de pesquisa via AJAX (usada na página principal index.html) */
-/* Função para exibir resultados de pesquisa via AJAX */
+// Função para exibir resultados de pesquisa via AJAX
 function displaySearchResults(data) {
     const resultsContainer = document.querySelector('.movies-grid');
     resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
 
     if (data.length > 0) {
         data.forEach(filme => {
-            // Verificar se o 'url_filme' está sendo retornado corretamente
+            // Verificar se 'url_filme' está sendo retornado corretamente
             console.log(filme); // Exibir o conteúdo do filme no console
 
             // Certifique-se de que o 'url_filme' está presente
             if (filme.url_filme) {
                 const movieCard = `
                     <div class="movie-card">
-                        <a href="${filme.url_filme}"> <!-- Usando url_filme diretamente do banco de dados -->
-
+                        <a href="${filme.url_filme}">
                             <div class="card-head">
-                                <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img"> <!-- Imagem do filme -->
-
+                                <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
                                 <div class="card-overlay">
                                     <div class="bookmark">
                                         <ion-icon name="bookmark-outline"></ion-icon>
                                     </div>
-
                                     <div class="rating">
                                         <ion-icon name="star-outline"></ion-icon>
                                         <span>${filme.nota_filme}</span>
                                     </div>
-
                                     <div class="play">
                                         <ion-icon name="play-circle-outline"></ion-icon>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-body">
-                                <h3 class="card-title">${filme.nome_filme}</h3> <!-- Nome do filme dinâmico -->
+                                <h3 class="card-title">${filme.nome_filme}</h3>
                                 <div class="card-info">
-                                    <span class="genre">${filme.topicos_destaque}</span> <!-- Gênero dinâmico -->
-                                    <span class="year">${filme.ano_filme}</span> <!-- Ano do filme dinâmico -->
+                                    <span class="genre">${filme.topicos_destaque}</span>
+                                    <span class="year">${filme.ano_filme}</span>
                                 </div>
                             </div>
-
                         </a>
                     </div>
                 `;
@@ -103,5 +96,13 @@ function displaySearchResults(data) {
     }
 }
 
-
-
+// Verifica o parâmetro de pesquisa da URL e faz a requisição AJAX
+const searchQuery = new URLSearchParams(window.location.search).get('search');
+if (searchQuery) {
+    fetch(`resultado.php?search=${encodeURIComponent(searchQuery)}`)
+        .then(response => response.json())
+        .then(data => {
+            displaySearchResults(data);
+        })
+        .catch(error => console.error('Erro ao buscar os filmes:', error));
+}

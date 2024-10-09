@@ -1033,8 +1033,6 @@ CATEGORIA SECTION
     
 </body>
 
-<script src="assets/js/main.js"></script>
-
 <script>
     // Função para obter os parâmetros da URL
     function getQueryParameter(param) {
@@ -1062,8 +1060,8 @@ CATEGORIA SECTION
         const searchQuery = params.get('search');
     
         if (searchQuery) {
-            // Chama a API para buscar filmes com base na pesquisa
-            fetch(`seu_script_php.php?search=${encodeURIComponent(searchQuery)}`)
+            // Chama o script PHP para buscar filmes com base na pesquisa
+            fetch(`resultado.php?search=${encodeURIComponent(searchQuery)}`)
                 .then(response => response.json())
                 .then(data => {
                     displaySearchResults(data);
@@ -1073,8 +1071,12 @@ CATEGORIA SECTION
                 });
         }
     });
-    </script>
-    
+</script>
 
+
+<script src="assets/js/main.js"></script>
+
+
+    
 
 </html>

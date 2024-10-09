@@ -5,12 +5,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Incluir o arquivo de conexão
-include 'conexao.php'; // Certifique-se de que o caminho está correto
+include 'conexao.php';
 
 // Definir o cabeçalho como JSON
 header('Content-Type: application/json');
 
 try {
+    // Verifica se o parâmetro 'search' foi enviado
     if (isset($_GET['search'])) {
         $search = '%' . strtolower($_GET['search']) . '%'; // Tornar o termo de busca minúsculo
 
@@ -30,7 +31,6 @@ try {
             throw new Exception("Erro ao executar a consulta SQL: " . $stmt->error);
         }
 
-        // Buscar os resultados
         $resultados = [];
         $res = $stmt->get_result();
 
@@ -41,11 +41,11 @@ try {
                 'topicos_destaque' => $row['topicos_destaque'],
                 'image_path' => $row['image_path'],
                 'nota_filme' => $row['nota_filme'],
-                'url_filme' => $row['url_filme'] // Certifique-se de que 'url_filme' está corretamente sendo retornado
+                'url_filme' => $row['url_filme']
             ];
         }
 
-        echo json_encode($resultados); // Retorna os resultados como JSON
+        echo json_encode($resultados);
         $stmt->close();
         $conn->close();
     } else {
@@ -54,4 +54,3 @@ try {
 } catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
-?>
