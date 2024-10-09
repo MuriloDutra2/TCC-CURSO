@@ -1,38 +1,73 @@
 <?php
-// Conexão com o banco de dados
-include 'conexao.php';
+// Exibir erros para desenvolvimento (remova para produção)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$genre = $_GET['genre'] ?? 'all genres';
-$year = $_GET['year'] ?? 'all years';
-$grade = $_GET['grade'] ?? 'featured';
-
-// Construir a query SQL
-$sql = "SELECT * FROM filmes WHERE 1=1"; // Base da query
-
-if ($genre != 'all genres') {
-    $sql .= " AND categoria = '$genre'";
-}
-
-if ($year != 'all years') {
-    // Ajustar o intervalo de anos com base na seleção
-    if ($year == '2020-2023') {
-        $sql .= " AND ano BETWEEN 2020 AND 2023";
-    } elseif ($year == '2010-2019') {
-        $sql .= " AND ano BETWEEN 2010 AND 2019";
-    } // E assim por diante...
-}
-
-if ($grade == 'popular') {
-    $sql .= " AND classificacao = 'popular'";
-} elseif ($grade == 'newest') {
-    $sql .= " AND classificacao = 'novo'";
-}
-
-// Executar a query
-$result = $conn->query($sql);
-$filmes = $result->fetch_all(MYSQLI_ASSOC);
-
-// Retornar os filmes em formato JSON
 header('Content-Type: application/json');
-echo json_encode($filmes);
+
+// Conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "c-street";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+// Inicializa a consulta SQL
+$query = "SELECT * FROM tabela_filme WHERE 1=1";
+
+// Filtros
+$genre = isset($_GET['genre']) ? $_GET['genre'] : 'all genres';
+$year = isset($_GET['year']) ? $_GET['year'] : 'all years';
+$grade = isset($_GET['grade']) ? $_GET['grade'] : 'featured';
+
+// Filtro de gênero
+if ($genre !== 'all genres') {
+    $query .= " AND topicos_destaque LIKE '%$genre%'";
+}
+
+// Filtro de ano
+if ($year !== 'all years') {
+    if ($year == '2024') {
+        $query .= " AND ano_filme = '2024'";
+    } elseif ($year == '2020-2023') {
+        $query .= " AND ano_filme BETWEEN '2020' AND '2023'";
+    } elseif ($year == '2010-2019') {
+        $query .= " AND ano_filme BETWEEN '2010' AND '2019'";
+    } elseif ($year == '2000-2009') {
+        $query .= " AND ano_filme BETWEEN '2000' AND '2009'";
+    } elseif ($year == '1980-1999') {
+        $query .= " AND ano_filme BETWEEN '1980' AND '1999'";
+    }
+}
+
+// Filtro de classificação (Principais, Popular, Novos)
+if ($grade === 'featured') {
+    $query .= " AND classificacao = 'principal'";
+} elseif ($grade === 'popular') {
+    $query .= " AND classificacao = 'popular'";
+} elseif ($grade === 'newest') {
+    $query .= " AND classificacao = 'novo'";
+}
+
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    $filmes = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $filmes[] = $row;
+    }
+
+    echo json_encode($filmes);
+} else {
+    echo json_encode([]);
+}
+
+$conn->close();
 ?>

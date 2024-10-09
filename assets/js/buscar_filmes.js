@@ -1,4 +1,4 @@
-/*SISTEMA PARA FILTER BAR */
+/* SISTEMA PARA FILTER BAR */
 
 // Função para capturar as seleções da filter bar e buscar filmes filtrados
 function filterMovies() {
@@ -23,15 +23,20 @@ function displayFilteredMovies(filmes) {
     const movieGrid = document.querySelector('.movies-grid');
     movieGrid.innerHTML = ''; // Limpar o grid atual
 
+    if (filmes.length === 0) {
+        movieGrid.innerHTML = '<p>Nenhum filme encontrado.</p>';
+        return;
+    }
+
     // Criar e adicionar os filmes filtrados
     filmes.forEach(filme => {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
         movieCard.innerHTML = `
-            <img src="${filme.image_path}" alt="${filme.titulo}">
-            <h3>${filme.titulo}</h3>
-            <p>${filme.categoria}</p>
-            <p>${filme.ano}</p>
+            <img src="${filme.image_path}" alt="${filme.nome_filme}">
+            <h3>${filme.nome_filme}</h3>
+            <p>${filme.topicos_destaque}</p>
+            <p>${filme.ano_filme}</p>
         `;
         movieGrid.appendChild(movieCard);
     });
