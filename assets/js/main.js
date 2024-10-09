@@ -106,3 +106,4 @@ if (searchQuery) {
         })
         .catch(error => console.error('Erro ao buscar os filmes:', error));
 }
+
