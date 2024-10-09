@@ -60,9 +60,9 @@ function displaySearchResults(data) {
             if (filme.url_filme) {
                 const movieCard = `
                     <div class="movie-card">
-                        <a href="${filme.url_filme}">
+                        <a href="${filme.url_filme}"> <!-- Usando url_filme diretamente do banco de dados -->
                             <div class="card-head">
-                                <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img">
+                                <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img"> <!-- Imagem do filme -->
                                 <div class="card-overlay">
                                     <div class="bookmark">
                                         <ion-icon name="bookmark-outline"></ion-icon>
@@ -77,10 +77,10 @@ function displaySearchResults(data) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title">${filme.nome_filme}</h3>
+                                <h3 class="card-title">${filme.nome_filme}</h3> <!-- Nome do filme dinâmico -->
                                 <div class="card-info">
-                                    <span class="genre">${filme.topicos_destaque}</span>
-                                    <span class="year">${filme.ano_filme}</span>
+                                    <span class="genre">${filme.topicos_destaque}</span> <!-- Gênero dinâmico -->
+                                    <span class="year">${filme.ano_filme}</span> <!-- Ano do filme dinâmico -->
                                 </div>
                             </div>
                         </a>
@@ -96,14 +96,26 @@ function displaySearchResults(data) {
     }
 }
 
-// Verifica o parâmetro de pesquisa da URL e faz a requisição AJAX
-const searchQuery = new URLSearchParams(window.location.search).get('search');
-if (searchQuery) {
-    fetch(`resultado.php?search=${encodeURIComponent(searchQuery)}`)
+// Função para aplicar filtros de gênero, ano e classificação
+function applyFilters() {
+    const genre = document.querySelector('.genre').value.toLowerCase();
+    const year = document.querySelector('.year').value.toLowerCase();
+    const grade = document.querySelector('input[name="grade"]:checked') ? document.querySelector('input[name="grade"]:checked').id.toLowerCase() : 'principal';
+
+    // Monta a URL com os filtros selecionados
+    let filterURL = `buscar_filmes.php?genre=${encodeURIComponent(genre)}&year=${encodeURIComponent(year)}&classificacao=${encodeURIComponent(grade)}`;
+
+    fetch(filterURL)
         .then(response => response.json())
         .then(data => {
-            displaySearchResults(data);
+            displaySearchResults(data); // Função para exibir os filmes filtrados
         })
-        .catch(error => console.error('Erro ao buscar os filmes:', error));
+        .catch(error => console.error('Erro ao buscar os filmes filtrados:', error));
 }
 
+// Event listeners para filtros automáticos
+document.querySelector('.genre').addEventListener('change', applyFilters); // Filtro por gênero
+document.querySelector('.year').addEventListener('change', applyFilters); // Filtro por ano
+document.querySelectorAll('input[name="grade"]').forEach(radio => {
+    radio.addEventListener('change', applyFilters); // Filtro por classificação
+});
