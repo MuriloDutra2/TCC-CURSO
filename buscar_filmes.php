@@ -1,5 +1,4 @@
 <?php
-// Exibir erros para desenvolvimento (remova para produção)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -21,32 +20,10 @@ if ($conn->connect_error) {
 // Inicializa a consulta SQL
 $query = "SELECT * FROM tabela_filme WHERE 1=1";
 
-// Filtros
-$genre = isset($_GET['genre']) ? $_GET['genre'] : 'all genres';
-$year = isset($_GET['year']) ? $_GET['year'] : 'all years';
-$grade = isset($_GET['grade']) ? $_GET['grade'] : 'featured';
-
-// Filtro de gênero
-if ($genre !== 'all genres') {
-    $query .= " AND topicos_destaque LIKE '%$genre%'";
-}
-
-// Filtro de ano
-if ($year !== 'all years') {
-    if ($year == '2024') {
-        $query .= " AND ano_filme = '2024'";
-    } elseif ($year == '2020-2023') {
-        $query .= " AND ano_filme BETWEEN '2020' AND '2023'";
-    } elseif ($year == '2010-2019') {
-        $query .= " AND ano_filme BETWEEN '2010' AND '2019'";
-    } elseif ($year == '2000-2009') {
-        $query .= " AND ano_filme BETWEEN '2000' AND '2009'";
-    } elseif ($year == '1980-1999') {
-        $query .= " AND ano_filme BETWEEN '1980' AND '1999'";
-    }
-}
-
 // Filtro de classificação (Principais, Popular, Novos)
+$grade = isset($_GET['grade']) ? $_GET['grade'] : 'principal';
+
+// Aplicar o filtro de classificação
 if ($grade === 'featured') {
     $query .= " AND classificacao = 'principal'";
 } elseif ($grade === 'popular') {
@@ -55,6 +32,7 @@ if ($grade === 'featured') {
     $query .= " AND classificacao = 'novo'";
 }
 
+// Executa a query
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
@@ -66,8 +44,7 @@ if ($result->num_rows > 0) {
 
     echo json_encode($filmes);
 } else {
-    echo json_encode([]);
+    echo json_encode([]); // Nenhum filme encontrado
 }
 
 $conn->close();
-?>

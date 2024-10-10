@@ -96,26 +96,4 @@ function displaySearchResults(data) {
     }
 }
 
-// Função para aplicar filtros de gênero, ano e classificação
-function applyFilters() {
-    const genre = document.querySelector('.genre').value.toLowerCase();
-    const year = document.querySelector('.year').value.toLowerCase();
-    const grade = document.querySelector('input[name="grade"]:checked') ? document.querySelector('input[name="grade"]:checked').id.toLowerCase() : 'principal';
 
-    // Monta a URL com os filtros selecionados
-    let filterURL = `buscar_filmes.php?genre=${encodeURIComponent(genre)}&year=${encodeURIComponent(year)}&classificacao=${encodeURIComponent(grade)}`;
-
-    fetch(filterURL)
-        .then(response => response.json())
-        .then(data => {
-            displaySearchResults(data); // Função para exibir os filmes filtrados
-        })
-        .catch(error => console.error('Erro ao buscar os filmes filtrados:', error));
-}
-
-// Event listeners para filtros automáticos
-document.querySelector('.genre').addEventListener('change', applyFilters); // Filtro por gênero
-document.querySelector('.year').addEventListener('change', applyFilters); // Filtro por ano
-document.querySelectorAll('input[name="grade"]').forEach(radio => {
-    radio.addEventListener('change', applyFilters); // Filtro por classificação
-});
