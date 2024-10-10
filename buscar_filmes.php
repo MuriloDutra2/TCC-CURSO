@@ -20,19 +20,36 @@ if ($conn->connect_error) {
 // Inicializa a consulta SQL
 $query = "SELECT * FROM tabela_filme WHERE 1=1";
 
-// Filtro de classificação (Principais, Popular, Novos)
-$grade = isset($_GET['grade']) ? $_GET['grade'] : 'principal';
+// Filtros
+$grade = isset($_GET['grade']) ? $_GET['grade'] : '';
+$year = isset($_GET['year']) ? $_GET['year'] : 'all years';
 
-// Aplicar o filtro de classificação
-if ($grade === 'featured') {
-    $query .= " AND classificacao = 'principal'";
-} elseif ($grade === 'popular') {
-    $query .= " AND classificacao = 'popular'";
-} elseif ($grade === 'newest') {
-    $query .= " AND classificacao = 'novo'";
+// Filtro de classificação (aplicado apenas se existir)
+if (!empty($grade)) {
+    if ($grade === 'featured') {
+        $query .= " AND classificacao = 'principal'";
+    } elseif ($grade === 'popular') {
+        $query .= " AND classificacao = 'popular'";
+    } elseif ($grade === 'newest') {
+        $query .= " AND classificacao = 'novo'";
+    }
 }
 
-// Executa a query
+// Filtro de ano (aplicado sempre que um ano é selecionado)
+if ($year !== 'all years') {
+    if ($year == '2024') {
+        $query .= " AND ano_filme = '2024'";
+    } elseif ($year == '2020-2023') {
+        $query .= " AND ano_filme BETWEEN 2020 AND 2023";
+    } elseif ($year == '2010-2019') {
+        $query .= " AND ano_filme BETWEEN 2010 AND 2019";
+    } elseif ($year == '2000-2009') {
+        $query .= " AND ano_filme BETWEEN 2000 AND 2009";
+    } elseif ($year == '1980-1999') {
+        $query .= " AND ano_filme BETWEEN 1980 AND 1999";
+    }
+}
+
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
@@ -44,7 +61,8 @@ if ($result->num_rows > 0) {
 
     echo json_encode($filmes);
 } else {
-    echo json_encode([]); // Nenhum filme encontrado
+    echo json_encode([]);
 }
 
 $conn->close();
+?>
