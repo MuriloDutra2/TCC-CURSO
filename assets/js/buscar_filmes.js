@@ -1,5 +1,3 @@
-/* SISTEMA PARA FILTER BAR */
-
 // Função para capturar os valores e buscar filmes filtrados
 function filterMovies() {
     const genreElement = document.querySelector('#genre');
@@ -30,8 +28,7 @@ function filterMovies() {
         })
         .catch(error => console.error('Erro ao buscar filmes filtrados:', error));
 }
-
-// Função para exibir os filmes filtrados
+// Função para exibir os filmes filtrados com o CSS aplicado
 function displayFilteredMovies(filmes) {
     const movieGrid = document.querySelector('.movies-grid');
     movieGrid.innerHTML = ''; // Limpar o grid atual
@@ -43,18 +40,39 @@ function displayFilteredMovies(filmes) {
 
     filmes.forEach(filme => {
         const movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card');
+        movieCard.classList.add('movie-card'); // Adicionar a classe movie-card ao elemento
+
         movieCard.innerHTML = `
             <a href="${filme.url_filme}">
-                <img src="${filme.image_path}" alt="${filme.nome_filme}">
-                <h3>${filme.nome_filme}</h3>
-                <p>${filme.topicos_destaque}</p>
-                <p>${filme.ano_filme}</p>
+                <div class="card-head">
+                    <img src="${filme.image_path}" alt="${filme.nome_filme}" class="card-img"> <!-- Imagem do filme -->
+                    <div class="card-overlay">
+                        <div class="bookmark">
+                            <ion-icon name="bookmark-outline"></ion-icon>
+                        </div>
+                        <div class="rating">
+                            <ion-icon name="star-outline"></ion-icon>
+                            <span>${filme.nota_filme}</span> <!-- Nota do filme -->
+                        </div>
+                        <div class="play">
+                            <ion-icon name="play-circle-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${filme.nome_filme}</h3> <!-- Nome do filme -->
+                    <div class="card-info">
+                        <span class="genre">${filme.topicos_destaque}</span> <!-- Gênero -->
+                        <span class="year">${filme.ano_filme}</span> <!-- Ano -->
+                    </div>
+                </div>
             </a>
         `;
-        movieGrid.appendChild(movieCard);
+
+        movieGrid.appendChild(movieCard); // Adiciona o card ao grid
     });
 }
+
 
 // Adicionar event listeners para gênero, ano e classificação
 document.querySelector('#genre').addEventListener('change', filterMovies);

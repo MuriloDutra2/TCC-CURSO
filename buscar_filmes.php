@@ -23,19 +23,20 @@ $query = "SELECT * FROM tabela_filme WHERE 1=1";
 // Filtros
 $grade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $year = isset($_GET['year']) ? $_GET['year'] : 'all years';
+$genre = isset($_GET['genre']) ? $_GET['genre'] : 'all genres';
 
-// Filtro de classificação (aplicado apenas se existir)
+// Filtro de classificação
 if (!empty($grade)) {
-    if ($grade === 'featured') {
+    if ($grade === 'principal') {
         $query .= " AND classificacao = 'principal'";
     } elseif ($grade === 'popular') {
         $query .= " AND classificacao = 'popular'";
-    } elseif ($grade === 'newest') {
+    } elseif ($grade === 'novo') {
         $query .= " AND classificacao = 'novo'";
     }
 }
 
-// Filtro de ano (aplicado sempre que um ano é selecionado)
+// Filtro de ano
 if ($year !== 'all years') {
     if ($year == '2024') {
         $query .= " AND ano_filme = '2024'";
@@ -48,6 +49,11 @@ if ($year !== 'all years') {
     } elseif ($year == '1980-1999') {
         $query .= " AND ano_filme BETWEEN 1980 AND 1999";
     }
+}
+
+// Filtro de gênero
+if ($genre !== 'all genres') {
+    $query .= " AND LOWER(topicos_destaque) LIKE '%" . strtolower($conn->real_escape_string($genre)) . "%'";
 }
 
 $result = $conn->query($query);
@@ -64,7 +70,5 @@ if ($result->num_rows > 0) {
     echo json_encode([]);
 }
 
-
 $conn->close();
-
 ?>
