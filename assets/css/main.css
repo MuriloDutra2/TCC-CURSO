@@ -476,81 +476,34 @@ MAIS FILMES BOTTON
     SEÇÃO CATEGORIAS
 */
 
-/* SEÇÃO CATEGORIAS */
+/* SEÇÃO PROPRAGNGAS */
 .category {
     margin-bottom: 60px;
 }
 
-.smaller-card {
-    grid-column: span 2; /* Ocupa duas colunas ao invés de quatro */
-    height: 150px; /* Altura padrão, ou menor se quiser */
-    width: 100%; /* Largura vai ajustar conforme o grid */
+
+.ad-section {
+    padding: 20px;
+    background-color: #111; /* Cor de fundo opcional */
 }
 
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas, mas o Documentário ocupa 2 */
-    gap: 30px;
-    justify-items: center; /* Centraliza o item no grid */
-}
-
-.category-card {
-    position: relative;
-    height: 150px; /* Altura padrão */
-    width: 100%; /* Largura padrão conforme a grid */
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.category-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Mantém o ajuste proporcional */
-}
-
-
-.category-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 20%, #000a);
-}
-
-.category-card:hover .card-img {
-    transform: scale(1.1);
-}
-
-.category-card .name,
-.category-card .total {
-    position: absolute;
-    bottom: 20px;
-    color: var(--white);
-    z-index: 20;
-}
-
-.category-card .name {
-    left: 20px;
-    font-size: 20px;
-}
-
-.category-card .total {
-    right: 20px;
-    font-size: 10px;
-    background: var(--oxford-blue-50);
-    padding: 5px 8px;
-    border-radius: 8px;
-}
-
-.category-card:hover .name {
-    color: var(--vermelho );
-}
-
-.center {
-    grid-column: span 4; /* Garante que o item ocupe toda a linha */
+.ad-container {
     display: flex;
-    justify-content: center; /* Alinha o card ao centro */
+    justify-content: space-between; /* Distribui o espaço igualmente entre as imagens */
+    align-items: center;
+    gap: 20px; /* Espaço entre as imagens */
 }
+
+.ad-container img {
+    width: 30%; /* Ajusta a largura das imagens para que fiquem lado a lado */
+    border-radius: 10px; /* Bordas arredondadas, opcional */
+    transition: transform 0.3s ease; /* Efeito de zoom ao passar o mouse */
+}
+
+.ad-container img:hover {
+    transform: scale(1.05); /* Zoom ao passar o mouse */
+}
+
 
 /*
 SEÇÃO VIDEO
