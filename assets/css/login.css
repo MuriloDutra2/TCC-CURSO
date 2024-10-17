@@ -1,0 +1,107 @@
+/* Paleta de cores personalizada */
+:root {
+    --background-color: #0D0D0D; /* Azul escuro de fundo */
+    --box-color: black; /* Cor da caixa de login */
+    --button-color: #73242A; /* Cor do botão de login */
+    --text-color: white; /* Cor do texto */
+    --input-bg-color: #A62F24; /* Fundo dos inputs */
+    --input-text-color: #A62F24; /* Cor do texto nos inputs */
+}
+
+/* Estilos gerais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container da página de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Caixa de login */
+.login-box {
+    background-color: var(--box-color);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Logo do C-Street */
+.logo-placeholder img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+/* Estilos de texto */
+h2 {
+    color: var(--text-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+/* Estilos dos inputs */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+/* Opções extras (lembrar-me e esqueceu senha) */
+.extra-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.remember-me {
+    color: var(--text-color);
+}
+
+.forgot-password {
+    color: var(--button-color);
+    text-decoration: none;
+}
+
+/* Botão de login */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+
