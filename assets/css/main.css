@@ -672,3 +672,102 @@ ul .link-item:not(:last-child) {margin-bottom: 10px;}
     height: auto;
     border-radius: 8px;
 }
+
+/* CONTATO HTML*/
+
+.main-contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f0f0f0;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    padding-right: 20px;
+}
+
+.contact-form h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-form p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group label {
+    display: block;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.contact-form .form-group textarea {
+    resize: none;
+    height: 150px;
+}
+
+.submit-btn {
+    padding: 12px 24px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}
+.contact-info {
+    background-color: #111; /* mesma paleta do site */
+    padding: 30px;
+    border-radius: 8px;
+    color: white;
+    max-width: 400px;
+    margin: auto;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.contact-info ion-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: var(--laranja1); /* cor laranja para ícones */
+}
