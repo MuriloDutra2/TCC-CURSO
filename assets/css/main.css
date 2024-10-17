@@ -611,3 +611,64 @@ ul .link-item:not(:last-child) {margin-bottom: 10px;}
 .wrapper a:not(:last-child) {
     margin-right: 30px;
 }
+
+/*SOBRRE NOS.HTML*/
+
+/* Estilos da página Sobre Nós */
+.sobre-nos {
+    background-color: #1b1b1b; /* Mantendo a paleta escura */
+    color: white;
+    padding: 60px 20px;
+}
+
+.sobre-nos .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.sobre-nos-texto {
+    flex: 1;
+}
+
+
+
+.sobre-nos-texto p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.sobre-nos-texto h2 {
+    font-size: 28px;
+    margin-top: 40px; /* Adiciona espaçamento acima do título "Nossas Metas" */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do título */
+    color: var(--vinho); /* Laranja da paleta */
+}
+
+.sobre-nos-texto ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Adiciona espaçamento extra acima das metas */
+}
+
+.sobre-nos-texto ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.sobre-nos-imagem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.sobre-nos-imagem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
