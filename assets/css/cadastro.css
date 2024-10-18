@@ -5,7 +5,7 @@
     --button-color: #73242A; /* Cor do botão de cadastro */
     --text-color: white; /* Cor do texto */
     --input-bg-color: #A62F24; /* Fundo dos inputs */
-    --input-text-color: var(--text-color); /* Cor do texto nos inputs */
+    --input-text-color: #A62F24; /* Cor do texto nos inputs */
 }
 
 /* Estilos gerais */
@@ -25,7 +25,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Certifique-se de que o container também permite a expansão */
+    width: 100%;
 }
 
 /* Caixa de cadastro */
@@ -34,9 +34,8 @@ body, html {
     padding: 40px;
     border-radius: 10px;
     text-align: center;
-    width: 100%; /* Garante que a caixa ocupe toda a largura disponível */
-    max-width: 500px; /* Ajuste aqui o tamanho desejado */
-    box-sizing: border-box; /* Certifica que o padding não expanda a caixa além do max-width */
+    width: 100%;
+    max-width: 400px;
 }
 
 /* Logo do C-Street */
@@ -70,17 +69,16 @@ p {
 }
 
 .input-group input {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: none;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
-    box-sizing: border-box;
+    color: var(--text-color);
 }
 
 /* Botão de cadastro */
-.cadastro-button {
+.signup-button {
     width: 100%;
     padding: 10px;
     background-color: var(--button-color);
@@ -91,13 +89,13 @@ p {
     cursor: pointer;
 }
 
-/* Seção de login */
+/* Estilo para o link "Entre aqui" */
 .login-section a {
-    color: var(--text-color); /* Branco inicialmente */
-    text-decoration: none; /* Remove o sublinhado */
-    transition: color 0.3s ease; /* Transição suave da cor */
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .login-section a:hover {
-    color: var(--input-bg-color); /* Muda gradualmente para a cor dos inputs */
+    color: var(--button-color);
 }

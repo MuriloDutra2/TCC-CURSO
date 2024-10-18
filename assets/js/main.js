@@ -29,20 +29,20 @@ navbarFormCloseBtn.addEventListener('click', searchBarIsActive);
 
 /* CÓDIGO PARA A BARRA DE PESQUISA DO C-STREET */
 
-// Este código redireciona para o index.html com a pesquisa
-document.getElementById('searchForm').addEventListener('submit', function(event) {
+// Este código redireciona para o index.php com a pesquisa
+document.getElementById('searchForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Evita o comportamento padrão do formulário
 
     console.log('Formulário enviado'); // Verifica se o envio do formulário é interceptado
 
     // Obtém o valor da barra de pesquisa
     const query = document.getElementById('searchInput').value.trim().toLowerCase();
-    
+
     console.log('Pesquisa por:', query); // Verifica o valor da pesquisa
 
     // Redireciona para a página principal com a query na URL
     if (query) {
-        window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+        window.location.href = `index.php?search=${encodeURIComponent(query)}`;
     }
 });
 

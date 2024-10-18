@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
+
+    <?php if (isset($_GET['erro'])): ?>
+    <p style="color: red; text-align: center;"><?php echo htmlspecialchars($_GET['erro']); ?></p>
+<?php endif; ?>
+
     <div class="login-container">
         <div class="login-box">
             <div class="logo-placeholder">
@@ -31,5 +36,10 @@
             </div>
         </div>
     </div>
+
+    
 </body>
+
+
+
 </html>
