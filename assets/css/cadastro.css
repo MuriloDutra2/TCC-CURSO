@@ -1,11 +1,11 @@
 /* Paleta de cores personalizada */
 :root {
     --background-color: #0D0D0D; /* Azul escuro de fundo */
-    --box-color: black; /* Cor da caixa de login */
-    --button-color: #73242A; /* Cor do botão de login */
+    --box-color: black; /* Cor da caixa de cadastro */
+    --button-color: #73242A; /* Cor do botão de cadastro */
     --text-color: white; /* Cor do texto */
     --input-bg-color: #A62F24; /* Fundo dos inputs */
-    --input-text-color: #A62F24; /* Cor do texto nos inputs */
+    --input-text-color: var(--text-color); /* Cor do texto nos inputs */
 }
 
 /* Estilos gerais */
@@ -20,22 +20,23 @@ body, html {
     align-items: center;
 }
 
-/* Container da página de login */
-.login-container {
+/* Container da página de cadastro */
+.cadastro-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100%; /* Certifique-se de que o container também permite a expansão */
 }
 
-/* Caixa de login */
-.login-box {
+/* Caixa de cadastro */
+.cadastro-box {
     background-color: var(--box-color);
     padding: 40px;
     border-radius: 10px;
     text-align: center;
-    width: 100%;
-    max-width: 400px;
+    width: 100%; /* Garante que a caixa ocupe toda a largura disponível */
+    max-width: 500px; /* Ajuste aqui o tamanho desejado */
+    box-sizing: border-box; /* Certifica que o padding não expanda a caixa além do max-width */
 }
 
 /* Logo do C-Street */
@@ -69,17 +70,17 @@ p {
 }
 
 .input-group input {
-    width: calc(100% - 20px); /* Corrige o alinhamento para inputs */
+    width: calc(100% - 20px);
     padding: 10px;
     border-radius: 5px;
     border: none;
     background-color: var(--input-bg-color);
-    color: var(--text-color);
+    color: var(--input-text-color);
     box-sizing: border-box;
 }
 
-/* Botão de login */
-.login-button {
+/* Botão de cadastro */
+.cadastro-button {
     width: 100%;
     padding: 10px;
     background-color: var(--button-color);
@@ -88,32 +89,15 @@ p {
     color: var(--text-color);
     font-size: 16px;
     cursor: pointer;
-    margin-bottom: 0;
 }
 
-/* Opções extras (lembrar-me e esqueceu senha) */
-.extra-options {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.remember-me {
-    color: var(--text-color);
-}
-
-.forgot-password {
-    color: var(--button-color);
-    text-decoration: none;
-}
-
-/* Estilos para o link de cadastro */
-.signup-section a {
+/* Seção de login */
+.login-section a {
     color: var(--text-color); /* Branco inicialmente */
     text-decoration: none; /* Remove o sublinhado */
     transition: color 0.3s ease; /* Transição suave da cor */
 }
 
-.signup-section a:hover {
-    color: var(--input-text-color); /* Muda gradualmente para a cor dos inputs */
+.login-section a:hover {
+    color: var(--input-bg-color); /* Muda gradualmente para a cor dos inputs */
 }
