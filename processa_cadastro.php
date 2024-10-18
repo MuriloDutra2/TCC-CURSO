@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $senha = $_POST['senha']; // Não precisa sanitizar a senha, será hashada
-        
+
         // Verificar se a sanitização do email falhou
         if (!$email) {
             echo "O formato do email é inválido!";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($query->execute()) {
             echo "Cadastro realizado com sucesso!";
-            header("Location: login.html");
+            header("Location: login.php");
             exit;
         } else {
             echo "Erro ao cadastrar usuário: " . $conn->error;
@@ -49,4 +49,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Método de requisição inválido.";
 }
-?>

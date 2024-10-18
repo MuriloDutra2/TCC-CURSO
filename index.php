@@ -84,13 +84,17 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
 
-                    <a href="login.php" class="navbar-sign">
-                        <span>Entrar</span>
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </a>
 
-
-
+                    <?php
+session_start();
+if (isset($_SESSION['usuario'])) {
+    // Se o usuário estiver logado, exibir o nome e o ícone de perfil
+    echo '<li class="nav-item"><a href="#"><i class="fas fa-user-circle"></i> ' . $_SESSION['usuario'] . '</a></li>';
+} else {
+    // Se o usuário não estiver logado, exibir o botão de login
+    echo '<li class="nav-item"><a href="login.php">Entrar</a></li>';
+}
+?>
 
                 </div>
 

@@ -23,6 +23,6 @@ if ($user) {
 } else {
     // Se as credenciais estiverem incorretas, exibir uma mensagem de erro
     $erro = "Usuário ou senha incorretos!";
-    header("Location: login.html?erro=" . urlencode($erro)); // Redirecionar para a página de login com mensagem de erro
+    header("Location: login.php?erro=" . urlencode($erro)); // Redirecionar para a página de login com mensagem de erro
     exit();
 }
