@@ -678,7 +678,7 @@ movies grid
 
                     <!--FILME 12-->
                     <div class="movie-card">
-                        <a href="olhinhos_de_ceu.html">
+                        <a href="olhinhos_de_ceu.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme12.jpg" alt="" class="card-img">
