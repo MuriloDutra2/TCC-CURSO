@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempo de Morte</title>
+    <title>Tempos de Morte</title>
     <!--
     CSS link    
 -->
@@ -137,7 +137,7 @@
 
                     <!-- Informações do Filme -->
                     <div class="movie-info">
-                        <h2>Tempo de Morte</h2>
+                        <h2>Tempos de Morte</h2>
 
                         <!-- Sinopse -->
                         <p class="sinopse">
@@ -169,7 +169,7 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="#" class="buy-ticket">Comprar Ingresso</a>
+                        <a href="ingresso_filme/ingresso_tempos.html" class="buy-ticket">Comprar Ingresso</a>
                     </div>
                 </div>
 

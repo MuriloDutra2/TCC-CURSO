@@ -169,7 +169,7 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="#" class="buy-ticket">Comprar Ingresso</a>
+                        <a href="ingresso_filme/ingresso_mdp.html" class="buy-ticket">Comprar Ingresso</a>
                     </div>
                 </div>
 
