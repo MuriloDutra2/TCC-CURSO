@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>História de Mung</title>
+    <title>A História de Mung</title>
     <!--
     CSS link    
 -->
@@ -136,7 +136,7 @@
 
                     <!-- Informações do Filme -->
                     <div class="movie-info">
-                        <h2>História de Mung</h2>
+                        <h2>A História de Mung</h2>
 
                         <!-- Sinopse -->
                         <p class="sinopse">
@@ -168,7 +168,7 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="#" class="buy-ticket">Comprar Ingresso</a>
+                        <a href="ingresso_filme/ingresso_mung.html" class="buy-ticket">Comprar Ingresso</a>
                     </div>
                 </div>
 
