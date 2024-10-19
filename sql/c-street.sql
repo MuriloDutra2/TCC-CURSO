@@ -64,7 +64,7 @@ INSERT INTO `tabela_filme` (`id_filme`, `nome_filme`, `ano_filme`, `topicos_dest
 ('10', 'Punhos de aco', 2010, 'Acao\r\nDrama', 'assets\\image_movie\\filme10.jpg', 9.5, 'punhos_de_aco.html', 'popular'),
 ('11', 'Atirando Alto', 2024, 'Drama\r\nComedia', 'assets\\image_movie\\filme11.jpg', 8.0, 'atirando_alto.php', 'novo'),
 ('12', 'Olhinhos do Ceu', 2020, 'Comedia\r\nMisterio', 'assets\\image_movie\\filme12.jpg', 9.0, 'olhinhos_de_ceu.html', 'principal'),
-('13', 'Busca pela Verdade', 2014, 'Suspense\r\nTerror', 'assets\\image_movie\\filme13.jpg', 10.0, 'busca_pela_verdade.html', 'principal'),
+('13', 'Busca pela Verdade', 2014, 'Suspense\r\nTerror', 'assets\\image_movie\\filme13.jpg', 10.0, 'busca_pela_verdade.php', 'principal'),
 ('14', 'A Historia de Mung', 2006, 'Acao\r\nAventura', 'assets\\image_movie\\filme15.jpg', 10.0, 'historia_de_mung.html', 'popular'),
 ('2', 'A Maldicao do Parque', 2022, 'Suspense', 'assets\\image_movie\\filme2.jpg', 9.5, 'maldicao_do_parque.html', 'principal'),
 ('3', 'Noite Eterna Azul', 2021, 'Terror\r\nSuspense', 'assets\\image_movie\\filme3.jpg', 9.5, 'noite_eterna_azul.html', 'principal'),

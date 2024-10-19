@@ -719,7 +719,7 @@ movies grid
 
                     <!--FILME 13-->
                     <div class="movie-card">
-                        <a href="busca_pela_verdade.html">
+                        <a href="busca_pela_verdade.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme13.jpg" alt="" class="card-img">
