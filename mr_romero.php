@@ -171,7 +171,7 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="#" class="buy-ticket">Comprar Ingresso</a>
+                        <a href="ingresso_filme/ingresso_romero.html" class="buy-ticket">Comprar Ingresso</a>
                     </div>
                 </div>
 
@@ -192,7 +192,7 @@
                         <!-- Ator 3 -->
                         <div class="cast-item">
                             <img src="assets/atores/deric.jfif">
-                            <p class="actor-name">Derc Labiuc</p>
+                            <p class="actor-name">Deric Labiuc</p>
                         </div>
 
                     </div>
