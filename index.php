@@ -594,7 +594,7 @@ movies grid
 
                     <!--FILME 10-->
                     <div class="movie-card">
-                        <a href="punhos_de_aco.html">
+                        <a href="punhos_de_aco.php">
                             <div class="card-head">
                                 <img src="assets/image_movie/filme10.jpg" alt="" class="card-img">
 
@@ -939,7 +939,7 @@ CATEGORIA SECTION
                             <a href="desconhecido.php"> O Desconhecido </a>
                         </li>
                         <li class="link-item">
-                            <a href="punhos_de_aco.html"> Punhos de Aço </a>
+                            <a href="punhos_de_aco.php"> Punhos de Aço </a>
                         </li>
                         <li class="link-item">
                             <a href="atirando_alto.php"> Atirando Alto</a>

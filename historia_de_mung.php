@@ -327,7 +327,7 @@
                             <a href="desconhecido.php"> O Desconhecido </a>
                         </li>
                         <li class="link-item">
-                            <a href="punhos_de_aco.html"> Punhos de Aço </a>
+                            <a href="punhos_de_aco.php"> Punhos de Aço </a>
                         </li>
                         <li class="link-item">
                             <a href="atirando_alto.php"> Atirando Alto</a>
