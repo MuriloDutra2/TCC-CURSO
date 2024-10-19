@@ -171,6 +171,44 @@ forma da navbar e estilo do botao
     color: var(--laranja1);
 }
 
+/*DROPDOWN CSS*/
+/* Estilo da caixa de logout (dropdown) */
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-box {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 20px;
+    padding: 10px;
+    right: 0; /* Alinha a caixa à direita */
+}
+
+.dropdown-box a {
+    color: var(--laranja1);
+    border-radius: 20px;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+}
+
+.dropdown-box a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostra a caixa de logout quando a classe "show" é adicionada */
+.dropdown-box.show {
+    display: block;
+}
+
+
 
 
 /*MAIN CSS-----------------------------------------------------*/
