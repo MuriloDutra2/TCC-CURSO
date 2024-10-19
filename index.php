@@ -511,7 +511,7 @@ movies grid
 
                     <!--FILME 8-->
                     <div class="movie-card">
-                        <a href="mdp.html">
+                        <a href="mdp.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme8.jpg" class="card-img">
@@ -927,7 +927,7 @@ CATEGORIA SECTION
                         </li>
 
                         <li class="link-item">
-                            <a href="mdp.html"> M.D.P. </a>
+                            <a href="mdp.php"> M.D.P. </a>
                         </li>
                     </ul>
 

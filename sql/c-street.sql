@@ -72,7 +72,7 @@ INSERT INTO `tabela_filme` (`id_filme`, `nome_filme`, `ano_filme`, `topicos_dest
 ('5', 'O Time dos Sonhos', 2024, 'Aventura\r\nComedia', 'assets\\image_movie\\filme5.jpg', 8.0, 'time_dos_sonhos.html', 'novo'),
 ('6', 'Olhos Felinos', 2024, 'Terror\r\nSuspense', 'assets\\image_movie\\filme6.jpg', 10.0, 'olhos_felinos.html', 'novo'),
 ('7', 'Tempos de Morte', 2017, 'Suspense\r\nCrime', 'assets\\image_movie\\filme7.jpg', 8.6, 'tempo_de_morte.html', 'principal'),
-('8', 'M.D.P. (Meninos de preto)', 2007, 'Comedia\r\nMisterio', 'assets\\image_movie\\filme8.jpg', 8.5, 'mdp.html', 'popular'),
+('8', 'M.D.P. (Meninos de preto)', 2007, 'Comedia\r\nMisterio', 'assets\\image_movie\\filme8.jpg', 8.5, 'mdp.php', 'popular'),
 ('9', 'O Desconhecido', 2018, 'Documentario', 'assets\\image_movie\\filme9.jpg', 7.0, 'desconhecido.php', 'principal');
 
 -- --------------------------------------------------------
