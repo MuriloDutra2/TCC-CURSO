@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `tabela_filme` (
 INSERT INTO `tabela_filme` (`id_filme`, `nome_filme`, `ano_filme`, `topicos_destaque`, `image_path`, `nota_filme`, `url_filme`, `classificacao`) VALUES
 ('1', 'O Filho do Homem', 2024, 'Aventura', 'assets\\image_movie\\filme1.jpg', 7.5, 'filho_do_homem.html', 'novo'),
 ('10', 'Punhos de aco', 2010, 'Acao\r\nDrama', 'assets\\image_movie\\filme10.jpg', 9.5, 'punhos_de_aco.html', 'popular'),
-('11', 'Atirando Alto', 2024, 'Drama\r\nComedia', 'assets\\image_movie\\filme11.jpg', 8.0, 'atirando_alto.html', 'novo'),
+('11', 'Atirando Alto', 2024, 'Drama\r\nComedia', 'assets\\image_movie\\filme11.jpg', 8.0, 'atirando_alto.php', 'novo'),
 ('12', 'Olhinhos do Ceu', 2020, 'Comedia\r\nMisterio', 'assets\\image_movie\\filme12.jpg', 9.0, 'olhinhos_de_ceu.html', 'principal'),
 ('13', 'Busca pela Verdade', 2014, 'Suspense\r\nTerror', 'assets\\image_movie\\filme13.jpg', 10.0, 'busca_pela_verdade.html', 'principal'),
 ('14', 'A Historia de Mung', 2006, 'Acao\r\nAventura', 'assets\\image_movie\\filme15.jpg', 10.0, 'historia_de_mung.html', 'popular'),

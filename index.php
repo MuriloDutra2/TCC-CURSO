@@ -33,87 +33,87 @@
     HEADER SECTION
     -->
 
-    <HEader>
-    <div class="navbar">
-        <!-- meny button small screen -->
-        <button class="navbar-menu-btn">
-            <span class="one"></span>
-            <span class="two"></span>
-            <span class="three"></span>
-        </button>
-
-        <a href="index.php" class="navbar-brand">
-            <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
-        </a>
-
-        <!-- navbar navigation -->
-        <nav class="">
-            <ul class="navbar-nav">
-                <li><a href="#movies" class="navbar-link">Nossos filmes</a></li>
-                <li><a href="#category" class="navbar-link">Alimentos</a></li>
-                <li><a href="contato.html" class="navbar-link">Contato</a></li>
-            </ul>
-        </nav>
-
-        <div class="navbar-actions">
-
-            <!-- BARRA DE PESQUISA-->
-            <form id="searchForm" class="navbar-form" method="GET">
-                <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
-                <button type="submit" class="navbar-form-btn">
-                    <ion-icon name="search-outline"></ion-icon>
+        <HEader>
+            <div class="navbar">
+                <!-- meny button small screen -->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
                 </button>
 
-                <button type="button" class="navbar-form-close">
-                    <ion-icon name="close-circle-outline"></ion-icon>
-                </button>
-            </form>
+                <a href="index.php" class="navbar-brand">
+                    <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
+                </a>
 
-            <!--botao de pesquisa pra tela menor-->
-            <button class="navbar-search-btn">
-                <ion-icon name="search-outline"></ion-icon>
-            </button>
+                <!-- navbar navigation -->
+                <nav class="">
+                    <ul class="navbar-nav">
+                        <li><a href="#movies" class="navbar-link">Nossos filmes</a></li>
+                        <li><a href="#category" class="navbar-link">Alimentos</a></li>
+                        <li><a href="contato.html" class="navbar-link">Contato</a></li>
+                    </ul>
+                </nav>
 
-            <?php
-            session_start();
-            if (isset($_SESSION['usuario'])) {
-                // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
-                echo '
+                <div class="navbar-actions">
+
+                    <!-- BARRA DE PESQUISA-->
+                    <form id="searchForm" class="navbar-form" method="GET">
+                        <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
+                        <button type="submit" class="navbar-form-btn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+
+                        <button type="button" class="navbar-form-close">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </form>
+
+                    <!--botao de pesquisa pra tela menor-->
+                    <button class="navbar-search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['usuario'])) {
+                        // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
+                        echo '
                 <div class="nav-item user-dropdown">
                     <a href="#" class="user-toggle" id="userDropdown"><ion-icon name="person-outline"></ion-icon> ' . $_SESSION['usuario'] . '</a>
                     <div class="dropdown-box" id="dropdownMenu">
                         <a href="logout.php"><ion-icon name="exit-outline"></ion-icon> Sair</a>
                     </div>
                 </div>';
-            } else {
-                // Se o usuário não estiver logado, exibir o botão de login com o ícone de login
-                echo '
+                    } else {
+                        // Se o usuário não estiver logado, exibir o botão de login com o ícone de login
+                        echo '
                 <li class="nav-item">
                     <a href="login.php"><ion-icon name="enter-outline"></ion-icon> Entrar</a>
                 </li>';
-            }
-            ?>
-        </div>
-    </div>
-</HEader>
+                    }
+                    ?>
+                </div>
+            </div>
+        </HEader>
 
-<script>
-    // JavaScript para abrir e fechar o dropdown ao clicar
-    const userToggle = document.getElementById('userDropdown');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+        <script>
+            // JavaScript para abrir e fechar o dropdown ao clicar
+            const userToggle = document.getElementById('userDropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
 
-    userToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        dropdownMenu.classList.toggle('show');
-    });
+            userToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
 
-    // Fecha o dropdown se o usuário clicar fora dele
-    window.addEventListener('click', function (e) {
-        if (!userToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove('show');
-        }
-    });
-</script>
+            // Fecha o dropdown se o usuário clicar fora dele
+            window.addEventListener('click', function(e) {
+                if (!userToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        </script>
 
 
 
@@ -636,7 +636,7 @@ movies grid
                     <!--FILME 11-->
                     <div class="movie-card">
 
-                        <a href="atirando_alto.html">
+                        <a href="atirando_alto.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme11.jpg" alt="" class="card-img">
@@ -942,7 +942,7 @@ CATEGORIA SECTION
                             <a href="punhos_de_aco.html"> Punhos de Aço </a>
                         </li>
                         <li class="link-item">
-                            <a href="atirando_alto.html"> Atirando Alto</a>
+                            <a href="atirando_alto.php"> Atirando Alto</a>
                         </li>
 
                         <li class="link-item">
