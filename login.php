@@ -9,8 +9,8 @@
 <body>
 
     <?php if (isset($_GET['erro'])): ?>
-    <p style="color: red; text-align: center;"><?php echo htmlspecialchars($_GET['erro']); ?></p>
-<?php endif; ?>
+        <p style="color: red; text-align: center;"><?php echo htmlspecialchars($_GET['erro']); ?></p>
+    <?php endif; ?>
 
     <div class="login-container">
         <div class="login-box">
@@ -19,7 +19,8 @@
             </div>
             <h2>Entrar</h2>
             <p>Faça login para continuar</p>
-            <form>
+            <!-- Alterado para usar POST -->
+            <form action="processa_login.php" method="POST">
                 <div class="input-group">
                     <label for="login">Login</label>
                     <input type="text" id="login" name="login" required>
@@ -36,10 +37,6 @@
             </div>
         </div>
     </div>
-
     
 </body>
-
-
-
 </html>

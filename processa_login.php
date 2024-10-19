@@ -1,28 +1,54 @@
 <?php
+// Iniciar sessão para armazenar dados do usuário após login
+session_start();
+
 // Conexão com o banco de dados
-include 'conexao.php';
+include 'conexao.php'; // Certifique-se de que conexao.php cria a variável $conn corretamente
 
-// Coletar dados do formulário
-$login = $_POST['login'];
-$senha = $_POST['senha'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Coletar dados do formulário de maneira segura
+    $email = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_EMAIL); // Alterado para coletar o email
+    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-// Consultar no banco de dados
-$query = $db->prepare("SELECT * FROM usuarios WHERE login = :login AND senha = :senha");
-$query->bindParam(':login', $login);
-$query->bindParam(':senha', $senha);
-$query->execute();
+    // Verificar se a conexão foi estabelecida corretamente
+    if ($conn) {
+        // Preparar a consulta para evitar SQL injection
+        $stmt = $conn->prepare("SELECT * FROM tabela_usuario WHERE Email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-$user = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result->num_rows > 0) {
+            // Se encontrar o usuário, buscar os dados
+            $user = $result->fetch_assoc();
+            
+            // Verificar se a senha inserida corresponde ao hash armazenado
+            if (password_verify($senha, $user['Senha'])) {
+                // Se o login for bem-sucedido, iniciar a sessão
+                $_SESSION['usuario'] = $user['Nome']; // Armazenar o nome do usuário na sessão
+                header("Location: index.php"); // Redirecionar para a página inicial
+                exit();
+            } else {
+                // Se a senha estiver incorreta, exibir uma mensagem de erro
+                $erro = "Email ou senha incorretos!";
+                header("Location: login.php?erro=" . urlencode($erro)); // Redirecionar para a página de login com mensagem de erro
+                exit();
+            }
+        } else {
+            // Se o email não for encontrado, exibir uma mensagem de erro
+            $erro = "Email ou senha incorretos!";
+            header("Location: login.php?erro=" . urlencode($erro)); // Redirecionar para a página de login com mensagem de erro
+            exit();
+        }
 
-if ($user) {
-    // Se o login for bem-sucedido, iniciar a sessão
-    session_start();
-    $_SESSION['usuario'] = $user['nome_usuario']; // Armazenar o nome do usuário na sessão
-    header("Location: index.php"); // Redirecionar para a página inicial
-    exit();
+        // Fechar a declaração e a conexão
+        $stmt->close();
+        $conn->close();
+    } else {
+        echo "Erro na conexão com o banco de dados!";
+    }
 } else {
-    // Se as credenciais estiverem incorretas, exibir uma mensagem de erro
-    $erro = "Usuário ou senha incorretos!";
-    header("Location: login.php?erro=" . urlencode($erro)); // Redirecionar para a página de login com mensagem de erro
+    // Caso o acesso ao arquivo não seja via POST, redirecionar para o login
+    header("Location: login.php");
     exit();
 }
