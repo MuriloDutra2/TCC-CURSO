@@ -293,7 +293,7 @@
                             <a href="maldicao_do_parque.php"> Maldição do Parque </a>
                         </li>
                         <li class="link-item">
-                            <a href="noite_eterna_azul.html"> Noite Eterna Azul </a>
+                            <a href="noite_eterna_azul.php"> Noite Eterna Azul </a>
                         </li>
                         <li class="link-item">
                             <a href="mr_romero.php"> Mr.Romero </a>
