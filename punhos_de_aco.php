@@ -53,7 +53,7 @@
                     <ul class="navbar-nav">
                         <li><a href="index.php#movies" class="navbar-link">Nossos filmes</a></li>
                         <li><a href="index.php#category" class="navbar-link">Alimentos</a></li>
-                        <li><a href="contato.html" class="navbar-link">Contato</a></li>
+                        <li><a href="contato.php" class="navbar-link">Contato</a></li>
                     </ul>
                 </nav>
 
@@ -250,7 +250,7 @@
                             <a href="sobrenos.html"> Planos</a>
                         </li>
                         <li class="link-item">
-                            <a href="contato.html"> Contato</a>
+                            <a href="contato.php"> Contato</a>
                         </li>
                     </ul>
 
