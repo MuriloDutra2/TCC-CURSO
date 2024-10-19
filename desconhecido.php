@@ -292,7 +292,7 @@
                         </li>
 
                         <li class="link-item">
-                            <a href="historia_de_mung.html"> Historia de Mung </a>
+                            <a href="historia_de_mung.php"> Historia de Mung </a>
                         </li>
 
                     </ul>

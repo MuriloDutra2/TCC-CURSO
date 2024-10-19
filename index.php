@@ -760,7 +760,7 @@ movies grid
 
                     <!--FILME 14-->
                     <div class="movie-card">
-                        <a href="historia_de_mung.html">
+                        <a href="historia_de_mung.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme15.jpg" alt="" class="card-img">
@@ -946,7 +946,7 @@ CATEGORIA SECTION
                         </li>
 
                         <li class="link-item">
-                            <a href="historia_de_mung.html"> Historia de Mung </a>
+                            <a href="historia_de_mung.php"> Historia de Mung </a>
                         </li>
 
                     </ul>
