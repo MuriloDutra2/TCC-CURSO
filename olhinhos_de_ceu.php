@@ -238,13 +238,13 @@
                         </h4>
 
                         <li class="link-item">
-                            <a href="sobrenos.html">Sobre-nós</a>
+                            <a href="sobrenos.php">Sobre-nós</a>
                         </li>
                         <li class="link-item">
-                            <a href="sobrenos.html"> Nossa missão</a>
+                            <a href="sobrenos.php"> Nossa missão</a>
                         </li>
                         <li class="link-item">
-                            <a href="sobrenos.html"> Planos</a>
+                            <a href="sobrenos.php"> Planos</a>
                         </li>
                         <li class="link-item">
                             <a href="contato.php"> Contato</a>

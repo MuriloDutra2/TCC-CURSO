@@ -35,70 +35,86 @@
     HEADER SECTION
     -->
 
-        <HEader>
-            <div class="navbar">
-                <!--
-        meny button smaill screen-->
+    <HEader>
+    <div class="navbar">
+        <!-- meny button small screen -->
+        <button class="navbar-menu-btn">
+            <span class="one"></span>
+            <span class="two"></span>
+            <span class="three"></span>
+        </button>
 
-                <button class="navbar-menu-btn">
-                    <span class="one"></span>
-                    <span class="two"></span>
-                    <span class="three"></span>
+        <a href="index.php" class="navbar-brand">
+            <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
+        </a>
+
+        <!-- navbar navigation -->
+        <nav class="">
+            <ul class="navbar-nav">
+                <li><a href="index.php#movies" class="navbar-link">Nossos filmes</a></li>
+                <li><a href="index.php#category" class="navbar-link">Alimentos</a></li>
+                <li><a href="contato.html" class="navbar-link">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="navbar-actions">
+            <!-- BARRA DE PESQUISA -->
+            <form id="searchForm" class="navbar-form" method="GET">
+                <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
+                <button type="submit" class="navbar-form-btn">
+                    <ion-icon name="search-outline"></ion-icon>
                 </button>
 
-                <a href="index.php" class="navbar-brand ">
-                    <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
-                </a>
+                <button type="button" class="navbar-form-close">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                </button>
+            </form>
 
-                <!--
-        navbar navigantion
-        -->
+            <!-- Botão de pesquisa para tela menor -->
+            <button class="navbar-search-btn">
+                <ion-icon name="search-outline"></ion-icon>
+            </button>
 
-                <nav class="">
-                    <ul class="navbar-nav">
-                        <li> <a href="index.php#movies" class="navbar-link">Nossos filmes</a> </li>
-                        <li> <a href="index.php#category" class="navbar-link">Alimentos</a> </li>
-                        <li> <a href="contato.php" class="navbar-link ">Contato</a> </li>
+            <?php
+            session_start();
+            if (isset($_SESSION['usuario'])) {
+                // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
+                echo '
+                <div class="nav-item user-dropdown">
+                    <a href="#" class="user-toggle" id="userDropdown"><ion-icon name="person-outline"></ion-icon> ' . $_SESSION['usuario'] . '</a>
+                    <div class="dropdown-box" id="dropdownMenu">
+                        <a href="logout.php"><ion-icon name="exit-outline"></ion-icon> Sair</a>
+                    </div>
+                </div>';
+            } else {
+                // Se o usuário não estiver logado, exibir o botão de login com o ícone de login
+                echo '
+                <li class="nav-item">
+                    <a href="login.php"><ion-icon name="enter-outline"></ion-icon> Entrar</a>
+                </li>';
+            }
+            ?>
+        </div>
+    </div>
+</HEader>
 
-                    </ul>
-                </nav>
+<script>
+    // JavaScript para abrir e fechar o dropdown ao clicar
+    const userToggle = document.getElementById('userDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
 
-                <div class="navbar-actions">
+    userToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('show');
+    });
 
-                    <!-- BARRA DE PESQUISA-->
-                    <form id="searchForm" class="navbar-form" method="GET">
-                        <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..."
-                            class="navbar-form-search">
-                        <button type="submit" class="navbar-form-btn">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </button>
-
-                        <button type="button" class="navbar-form-close">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </button>
-                    </form>
-
-
-
-
-
-                    <!--botao de pesquisa pra tela menor-->
-                    <button class="navbar-search-btn">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-
-                    <a href="" class="navbar-sign">
-                        <span>Entrar</span>
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </a>
-
-
-
-
-                </div>
-
-            </div>
-        </HEader>
+    // Fecha o dropdown se o usuário clicar fora dele
+    window.addEventListener('click', function (e) {
+        if (!userToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+</script>
 
 
         <!--
@@ -165,13 +181,13 @@
                         </h4>
 
                         <li class="link-item">
-                            <a href="sobrenos.html">Sobre-nós</a>
+                            <a href="sobrenos.php">Sobre-nós</a>
                         </li>
                         <li class="link-item">
-                            <a href="sobrenos.html"> Nossa missão</a>
+                            <a href="sobrenos.php"> Nossa missão</a>
                         </li>
                         <li class="link-item">
-                            <a href="sobrenos.html"> Planos</a>
+                            <a href="sobrenos.php"> Planos</a>
                         </li>
                         <li class="link-item">
                             <a href="contato.php"> Contato</a>
