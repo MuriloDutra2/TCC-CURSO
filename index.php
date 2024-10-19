@@ -388,7 +388,7 @@ movies grid
 
                     <!--FILME 5-->
                     <div class="movie-card">
-                        <a href="time_dos_sonhos.html">
+                        <a href="time_dos_sonhos.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme5.jpg" alt="" class="card-img">
@@ -915,7 +915,7 @@ CATEGORIA SECTION
                     <ul>
 
                         <li class="link-item">
-                            <a href="time_dos_sonhos.html"> O Time dos Sonhos </a>
+                            <a href="time_dos_sonhos.php"> O Time dos Sonhos </a>
                         </li>
 
                         <li class="link-item">

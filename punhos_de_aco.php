@@ -277,7 +277,7 @@
                     <ul>
 
                         <li class="link-item">
-                            <a href="time_dos_sonhos.html"> O Time dos Sonhos </a>
+                            <a href="time_dos_sonhos.php"> O Time dos Sonhos </a>
                         </li>
 
                         <li class="link-item">
