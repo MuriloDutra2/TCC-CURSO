@@ -266,7 +266,7 @@
                             <a href="noite_eterna_azul.html"> Noite Eterna Azul </a>
                         </li>
                         <li class="link-item">
-                            <a href="mr_romero.html"> Mr.Romero </a>
+                            <a href="mr_romero.php"> Mr.Romero </a>
                         </li>
                     </ul>
 

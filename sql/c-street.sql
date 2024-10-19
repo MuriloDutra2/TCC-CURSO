@@ -68,7 +68,7 @@ INSERT INTO `tabela_filme` (`id_filme`, `nome_filme`, `ano_filme`, `topicos_dest
 ('14', 'A Historia de Mung', 2006, 'Acao\r\nAventura', 'assets\\image_movie\\filme15.jpg', 10.0, 'historia_de_mung.php', 'popular'),
 ('2', 'A Maldicao do Parque', 2022, 'Suspense', 'assets\\image_movie\\filme2.jpg', 9.5, 'maldicao_do_parque.php', 'principal'),
 ('3', 'Noite Eterna Azul', 2021, 'Terror\r\nSuspense', 'assets\\image_movie\\filme3.jpg', 9.5, 'noite_eterna_azul.html', 'principal'),
-('4', 'Mr. Romero', 2000, 'Comedia\r\nAventura', 'assets\\image_movie\\filme4.jpg', 10.0, 'mr_romero.html', 'popular'),
+('4', 'Mr. Romero', 2000, 'Comedia\r\nAventura', 'assets\\image_movie\\filme4.jpg', 10.0, 'mr_romero.php', 'popular'),
 ('5', 'O Time dos Sonhos', 2024, 'Aventura\r\nComedia', 'assets\\image_movie\\filme5.jpg', 8.0, 'time_dos_sonhos.html', 'novo'),
 ('6', 'Olhos Felinos', 2024, 'Terror\r\nSuspense', 'assets\\image_movie\\filme6.jpg', 10.0, 'olhos_felinos.html', 'novo'),
 ('7', 'Tempos de Morte', 2017, 'Suspense\r\nCrime', 'assets\\image_movie\\filme7.jpg', 8.6, 'tempo_de_morte.html', 'principal'),
