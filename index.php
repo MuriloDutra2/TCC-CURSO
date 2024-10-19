@@ -429,7 +429,7 @@ movies grid
                     </div>
                     <!--FILME 6-->
                     <div class="movie-card">
-                        <a href="olhos_felinos.html">
+                        <a href="olhos_felinos.php">
 
                             <div class="card-head">
                                 <img src="assets/image_movie/filme6.jpg" class="card-img">
@@ -919,7 +919,7 @@ CATEGORIA SECTION
                         </li>
 
                         <li class="link-item">
-                            <a href="olhos_felinos.html"> Olhos Felinos </a>
+                            <a href="olhos_felinos.php"> Olhos Felinos </a>
                         </li>
 
                         <li class="link-item">

@@ -37,38 +37,30 @@
 
         <HEader>
             <div class="navbar">
-                <!--
-        meny button smaill screen-->
-
+                <!-- meny button small screen -->
                 <button class="navbar-menu-btn">
                     <span class="one"></span>
                     <span class="two"></span>
                     <span class="three"></span>
                 </button>
 
-                <a href="index.php" class="navbar-brand ">
+                <a href="index.php" class="navbar-brand">
                     <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
                 </a>
 
-                <!--
-        navbar navigantion
-        -->
-
+                <!-- navbar navigation -->
                 <nav class="">
                     <ul class="navbar-nav">
-                        <li> <a href="index.php#movies" class="navbar-link">Nossos filmes</a> </li>
-                        <li> <a href="index.php#category" class="navbar-link">Alimentos</a> </li>
-                        <li> <a href="contato.html" class="navbar-link ">Contato</a> </li>
-
+                        <li><a href="index.php#movies" class="navbar-link">Nossos filmes</a></li>
+                        <li><a href="index.php#category" class="navbar-link">Alimentos</a></li>
+                        <li><a href="contato.html" class="navbar-link">Contato</a></li>
                     </ul>
                 </nav>
 
                 <div class="navbar-actions">
-
-                    <!-- BARRA DE PESQUISA-->
+                    <!-- BARRA DE PESQUISA -->
                     <form id="searchForm" class="navbar-form" method="GET">
-                        <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..."
-                            class="navbar-form-search">
+                        <input type="text" id="searchInput" name="search" placeholder="Eu estou procurando por..." class="navbar-form-search">
                         <button type="submit" class="navbar-form-btn">
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
@@ -78,27 +70,52 @@
                         </button>
                     </form>
 
-
-
-
-
-                    <!--botao de pesquisa pra tela menor-->
+                    <!-- Botão de pesquisa para tela menor -->
                     <button class="navbar-search-btn">
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
 
-                    <a href="" class="navbar-sign">
-                        <span>Entrar</span>
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </a>
-
-
-
-
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['usuario'])) {
+                        // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
+                        echo '
+                    <div class="nav-item user-dropdown">
+                        <a href="#" class="user-toggle" id="userDropdown"><ion-icon name="person-outline"></ion-icon> ' . $_SESSION['usuario'] . '</a>
+                        <div class="dropdown-box" id="dropdownMenu">
+                            <a href="logout.php"><ion-icon name="exit-outline"></ion-icon> Sair</a>
+                        </div>
+                    </div>';
+                    } else {
+                        // Se o usuário não estiver logado, exibir o botão de login com o ícone de login
+                        echo '
+                    <li class="nav-item">
+                        <a href="login.php"><ion-icon name="enter-outline"></ion-icon> Entrar</a>
+                    </li>';
+                    }
+                    ?>
                 </div>
-
             </div>
         </HEader>
+
+        <script>
+            // JavaScript para abrir e fechar o dropdown ao clicar
+            const userToggle = document.getElementById('userDropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            userToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Fecha o dropdown se o usuário clicar fora dele
+            window.addEventListener('click', function(e) {
+                if (!userToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        </script>
+
 
 
         <!--
@@ -262,7 +279,7 @@
                         </li>
 
                         <li class="link-item">
-                            <a href="olhos_felinos.html"> Olhos Felinos </a>
+                            <a href="olhos_felinos.php"> Olhos Felinos </a>
                         </li>
 
                         <li class="link-item">
@@ -341,7 +358,7 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o comportamento padrão do formulário
 
         // Obtém o valor pesquisado

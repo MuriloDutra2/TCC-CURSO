@@ -265,7 +265,7 @@
                         </li>
 
                         <li class="link-item">
-                            <a href="olhos_felinos.html"> Olhos Felinos </a>
+                            <a href="olhos_felinos.php"> Olhos Felinos </a>
                         </li>
 
                         <li class="link-item">
