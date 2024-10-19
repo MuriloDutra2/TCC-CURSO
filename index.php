@@ -224,7 +224,7 @@ movies grid
 
                         <div class="card-head">
 
-                            <a href="filho_do_homem.html">
+                            <a href="filho_do_homem.php">
                                 <img src="assets/image_movie/filme1.jpg" alt="O filho do Homem" class="card-img">
 
                                 <div class="card-overlay">
@@ -899,7 +899,7 @@ CATEGORIA SECTION
                         </h4>
 
                         <li class="link-item">
-                            <a href="filho_do_homem.html"> O Filho Do Homem </a>
+                            <a href="filho_do_homem.php"> O Filho Do Homem </a>
                         </li>
                         <li class="link-item">
                             <a href="maldicao_do_parque.html"> Maldição do Parque </a>
