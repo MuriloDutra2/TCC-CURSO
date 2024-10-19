@@ -282,7 +282,7 @@
                         </li>
 
                         <li class="link-item">
-                            <a href="tempo_de_morte.html"> Tempo de Morte</a>
+                            <a href="tempo_de_morte.php"> Tempo de Morte</a>
                         </li>
 
                         <li class="link-item">

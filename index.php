@@ -472,7 +472,7 @@ movies grid
                     <div class="movie-card">
 
                         <div class="card-head">
-                            <a href="tempo_de_morte.html">
+                            <a href="tempo_de_morte.php">
                                 <img src="assets/image_movie/filme7.jpg" alt="" class="card-img">
 
                                 <div class="card-overlay">
@@ -923,7 +923,7 @@ CATEGORIA SECTION
                         </li>
 
                         <li class="link-item">
-                            <a href="tempo_de_morte.html"> Tempo de Morte</a>
+                            <a href="tempo_de_morte.php"> Tempo de Morte</a>
                         </li>
 
                         <li class="link-item">
