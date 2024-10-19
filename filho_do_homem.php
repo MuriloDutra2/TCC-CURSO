@@ -166,7 +166,7 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="ingresso.html" class="buy-ticket">Comprar Ingresso</a>
+                        <a href="ingresso_filme/ingresso_filho.html" class="buy-ticket">Comprar Ingresso</a>
                     </div>
                 </div>
 
