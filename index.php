@@ -267,7 +267,7 @@ movies grid
 
                         <div class="card-head">
 
-                            <a href="maldicao_do_parque.html">
+                            <a href="maldicao_do_parque.php">
                                 <img src="assets/image_movie/filme2.jpg" alt="filme2" class="card-img">
 
                                 <div class="card-overlay">
@@ -902,7 +902,7 @@ CATEGORIA SECTION
                             <a href="filho_do_homem.php"> O Filho Do Homem </a>
                         </li>
                         <li class="link-item">
-                            <a href="maldicao_do_parque.html"> Maldição do Parque </a>
+                            <a href="maldicao_do_parque.php"> Maldição do Parque </a>
                         </li>
                         <li class="link-item">
                             <a href="noite_eterna_azul.html"> Noite Eterna Azul </a>
