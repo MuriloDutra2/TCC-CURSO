@@ -4,25 +4,27 @@ const occupiedSeatsCount = 10;
 // Selecionar a área dos assentos
 let seats = document.querySelector(".all-seats");
 
-// Gerar 59 assentos e distribuir aleatoriamente 10 ocupados
+// Gerar 60 assentos e distribuir aleatoriamente 10 ocupados
 let occupiedSeats = new Set();
 while (occupiedSeats.size < occupiedSeatsCount) {
-  let randomSeat = Math.floor(Math.random() * 59);
+  let randomSeat = Math.floor(Math.random() * 60); // Atualizado para 60 assentos
   occupiedSeats.add(randomSeat);
 }
 
-// Adicionar assentos ao DOM
-for (var i = 0; i < 59; i++) {
+// Adicionar assentos ao DOM com letras e números ao lado
+const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+for (var i = 0; i < 60; i++) {
+  let row = rows[Math.floor(i / 10)]; // Determina a letra da linha
+  let number = (i % 10) + 1; // Determina o número da coluna
   let booked = occupiedSeats.has(i) ? "booked" : "";
+  
   seats.insertAdjacentHTML(
     "beforeend",
-    '<input type="checkbox" name="tickets" id="s' +
-      (i + 1) +
-      '" /><label for="s' +
-      (i + 1) +
-      '" class="seat ' +
-      booked +
-      '"></label>'
+    `<input type="checkbox" name="tickets" id="s${i + 1}" />
+    <label for="s${i + 1}" class="seat ${booked}" data-row="${row}" data-seat="${number}">
+      ${row}${number}
+    </label>`
   );
 }
 
