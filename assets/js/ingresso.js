@@ -1,10 +1,17 @@
 // Definir o número de assentos ocupados como 10
 const occupiedSeatsCount = 10;
 
-// Selecionar a área dos assentos
-let seatsContainer = document.querySelector(".all-seats");
+// Selecionar as fileiras de assentos
+let rows = {
+  A: document.querySelector(".row-A"),
+  B: document.querySelector(".row-B"),
+  C: document.querySelector(".row-C"),
+  D: document.querySelector(".row-D"),
+  E: document.querySelector(".row-E"),
+  F: document.querySelector(".row-F"),
+};
 
-// Gerar 60 assentos e distribuir aleatoriamente 10 ocupados
+// Gerar os números de assentos ocupados aleatoriamente
 let occupiedSeats = new Set();
 while (occupiedSeats.size < occupiedSeatsCount) {
   let randomSeat = Math.floor(Math.random() * 60);
@@ -12,18 +19,21 @@ while (occupiedSeats.size < occupiedSeatsCount) {
 }
 
 // Adicionar assentos ao DOM
-for (let seatIndex = 0; seatIndex < 60; seatIndex++) {
-  let rowLabel = String.fromCharCode(65 + Math.floor(seatIndex / 10)); // Gera 'A', 'B', etc.
-  let seatNumber = (seatIndex % 10) + 1; // Gera números de 1 a 10
-  let booked = occupiedSeats.has(seatIndex) ? "booked" : "";
+let seatIndex = 0;
+Object.keys(rows).forEach((rowLabel, rowIndex) => {
+  for (let i = 0; i < 10; i++) {
+    let booked = occupiedSeats.has(seatIndex) ? "booked" : "";
+    let seatNumber = rowLabel + (i + 1);
 
-  // Inserir o assento na estrutura correta
-  seatsContainer.insertAdjacentHTML(
-    "beforeend",
-    '<div class="seat-container">' +
-      '<div class="seat-number">' + rowLabel + seatNumber + '</div>' +
-      '<input type="checkbox" name="tickets" id="s' + (seatIndex + 1) + '" />' +
-      '<label for="s' + (seatIndex + 1) + '" class="seat ' + booked + '"></label>' +
-    '</div>'
-  );
-}
+    rows[rowLabel].insertAdjacentHTML(
+      "beforeend",
+      `<div class="seat-container">
+         <div class="seat-number">${seatNumber}</div>
+         <input type="checkbox" name="tickets" id="${seatNumber}" />
+         <label for="${seatNumber}" class="seat ${booked}"></label>
+       </div>`
+    );
+
+    seatIndex++;
+  }
+});

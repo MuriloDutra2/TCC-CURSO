@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atirando Alto</title>
+    <title>O Filho do Homem</title>
 
+    <link rel="stylesheet" href="../assets/css/ticket.css">
     <style>
-
-        @import url("../assets/css/variavel.css");
-
         @import url("../assets/css/variavel.css");
 
 body {
@@ -64,6 +62,7 @@ body {
 .title {
     font-size: var(--section-heading);
     font-weight: var(--fw-7);
+    color: var(--branco);
 }
 
 .seats {
@@ -81,19 +80,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-}
-
-.seats::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 220px;
-    height: 7px;
-    background: var(--vinho);
-    border-radius: 0 0 3mm 3mm;
-    border-top: 0.3mm solid var(--cinza);
+    margin-bottom: 10px;
 }
 
 .item {
@@ -116,55 +103,51 @@ body {
 
 .item:nth-child(2)::before {
     background: var(--cinza);
-    outline: none;
 }
 
 .item:nth-child(3)::before {
     background: var(--laranja1);
-    outline: none;
+}
+
+.letters {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.numbers-row {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 .all-seats {
-  display: flex;
-  flex-wrap: wrap; /* Para garantir que os assentos se alinhem em linhas */
-  width: fit-content; /* Define a largura necessária para caber os assentos */
-  margin: 0 auto; /* Centraliza o bloco de assentos */
-}
-
-.seat-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 15px;
+    margin: 60px 0;
+    margin-top: 20px;
+    position: relative;
 }
 
 .seat {
-  width: 30px;
-  height: 30px;
-  background-color: #f0f0f2;
-  border: 1px solid #0d0d0d;
+    width: 20px;
+    height: 20px;
+    background: var(--branco);
+    border-radius: 0.5mm;
+    outline: 0.3mm solid var(--cinza);
+    cursor: pointer;
 }
 
-.booked {
-  background-color: #ababab; /* Cor dos assentos ocupados */
-}
-
-.seat-number {
-  font-size: 12px;
-  color: #0d0d0d;
-  margin-bottom: 5px;
-}
-
-
-
-.all-seats input:checked+label {
+.all-seats input:checked + label {
     background: var(--laranja1);
     outline: none;
 }
 
 .seat.booked {
-    background: var(--preto);
-    /* Assento ocupado */
+    background: var(--preto); /* Assento ocupado */
     outline: none;
 }
 
@@ -225,7 +208,7 @@ input {
     color: var(--branco);
 }
 
-.timings input:checked+label {
+.timings input:checked + label {
     background: var(--laranja1);
     color: var(--branco);
 }
@@ -266,64 +249,83 @@ input {
 }
 
     </style>
-    
 </head>
 
-<div class="center">
-  <div class="tickets">
-      <div class="ticket-selector">
-          <div class="head">
-              <div class="title">O Filho do Homem</div>
-          </div>
-          <div class="seats">
-              <div class="status">
-                  <div class="item">Livre</div>
-                  <div class="item">Ocupado</div>
-                  <div class="item">Selecionado</div>
-              </div>
-              <div class="all-seats">
-                  <!-- Adicionar aqui o layout dos assentos (por exemplo, gerar via JavaScript) -->
-                  <!-- Exemplo de assentos -->
-                  <div class="seat-container">
-                      <div class="seat-number">A1</div>
-                      <div class="seat"></div>
-                  </div>
-                  <!-- Adicione mais assentos conforme necessário -->
-              </div>
-          </div>
-          <div class="timings">
-              <div class="dates">
-                  <div class="dates-item">
-                      <div class="day">Dom</div>
-                      <div class="date">11</div>
-                  </div>
-                  <!-- Adicione outros dias aqui -->
-              </div>
-              <div class="times">
-                  <label class="time">12:00</label>
-                  <label class="time">14:30</label>
-                  <label class="time">18:00</label>
-                  <label class="time">21:30</label>
-              </div>
-          </div>
-          <div class="price">
-              <div class="total">
-                  <span>0 Ingressos</span>
-                  0
-              </div>
-              <button>Compre</button>
-          </div>
-      </div>
-  </div>
-</div>
 
 
-<script src="../assets/js/ingresso.js"></script>
+<body>
+    <div class="center">
+        <div class="tickets">
+            <div class="ticket-selector">
+                <div class="head">
+                    <div class="title">O Filho do Homem</div>
+                </div>
+                <div class="seats">
+                    <div class="status">
+                        <div class="item">Livre</div>
+                        <div class="item">Ocupado</div>
+                        <div class="item">Selecionado</div>
+                    </div>
+                    <div class="letters">
+                        <div>A</div>
+                        <div>B</div>
+                        <div>C</div>
+                        <div>D</div>
+                        <div>E</div>
+                        <div>F</div>
+                    </div>
+                    <div class="numbers-row">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                        <div>8</div>
+                        <div>9</div>
+                        <div>10</div>
+                    </div>
+                    <div class="all-seats">
+                        <div class="row-A"></div>
+                        <div class="row-B"></div>
+                        <div class="row-C"></div>
+                        <div class="row-D"></div>
+                        <div class="row-E"></div>
+                        <div class="row-F"></div>
+                    </div>
+                </div>
+                <div class="timings">
+                    <div class="dates">
+                        <input type="radio" name="date" id="d1" checked />
+                        <label for="d1" class="dates-item">
+                            <div class="day">Dom</div>
+                            <div class="date">11</div>
+                        </label>
+                    </div>
+                    <div class="times">
+                        <input type="radio" name="time" id="t1" checked />
+                        <label for="t1" class="time">12:00</label>
+                        <input type="radio" id="t2" name="time" />
+                        <label for="t2" class="time">14:30</label>
+                        <input type="radio" id="t3" name="time" />
+                        <label for="t3" class="time">18:00</label>
+                        <input type="radio" id="t4" name="time" />
+                        <label for="t4" class="time">21:30</label>
+                    </div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="total">
+                    <span> <span class="count">0</span> Ingressos </span>
+                    <div class="amount">R$0,00</div>
+                </div>
+                <button type="button">Compre</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/ingresso.js"></script>
 </body>
-
-
-</html>
-
-  
 
 </html>
