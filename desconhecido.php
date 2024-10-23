@@ -302,7 +302,6 @@
             </div>
 
 
-
             <div class="footer-copyright">
 
                 <div class="copyright">
@@ -310,8 +309,8 @@
                 </div>
 
                 <div class="wrapper">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de uso</a>
+
+                    <a href="assets/imagem-real/termosdeuso.pdf">Termos de uso</a>
                 </div>
 
             </div>
