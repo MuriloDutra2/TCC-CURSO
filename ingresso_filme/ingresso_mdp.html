@@ -1,341 +1,282 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M.D.P.
-    </title>
-
-
-
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingressos M.D.P. </title>
     <style>
-        @import url("../assets/css/variavel.css");
-
-
         body {
-            width: 100%;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #0D0D0D;
+            color: #F0F0F2;
             margin: 0;
             padding: 0;
         }
 
-        .center {
-            width: 100%;
-            height: 100%;
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #D93223;
+        }
+
+        .screen {
+            background-color: #A62F24;
+            height: 50px;
+            margin: 20px 0;
+            color: white;
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .seat-row {
             display: flex;
-            align-items: center;
             justify-content: center;
-            background-color: var(--preto);
-        }
-
-        .tickets {
-            width: 550px;
-            height: fit-content;
-            border: 0.4mm solid rgba(0, 0, 0, 0.08);
-            border-radius: 3mm;
-            box-sizing: border-box;
-            padding: 10px;
-            font-family: var(--ff-inter);
-            max-height: 96vh;
-            overflow: auto;
-            background: var(--branco);
-            box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .ticket-selector {
-            background: var(--vinho);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-direction: column;
-            box-sizing: border-box;
-            padding: 20px;
-            border-radius: 50px;
-        }
-
-        .head {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .title {
-            font-size: var(--section-heading);
-            font-weight: var(--fw-7);
-        }
-
-        .seats {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            min-height: 150px;
-            position: relative;
-        }
-
-        .status {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-
-        .seats::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-            width: 220px;
-            height: 7px;
-            background: var(--vinho);
-            border-radius: 0 0 3mm 3mm;
-            border-top: 0.3mm solid var(--cinza);
-        }
-
-        .item {
-            font-size: var(--fs-x-sm);
-            position: relative;
-        }
-
-        .item::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -12px;
-            transform: translate(0, -50%);
-            width: 10px;
-            height: 10px;
-            background: var(--branco);
-            outline: 0.2mm solid var(--vinho);
-            border-radius: 0.3mm;
-        }
-
-        .item:nth-child(2)::before {
-            background: var(--cinza);
-            outline: none;
-        }
-
-        .item:nth-child(3)::before {
-            background: var(--laranja1);
-            outline: none;
-        }
-
-        .all-seats {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-gap: 15px;
-            margin: 60px 0;
-            margin-top: 20px;
-            position: relative;
+            margin-bottom: 10px;
         }
 
         .seat {
-            width: 20px;
-            height: 20px;
-            background: var(--branco);
-            border-radius: 0.5mm;
-            outline: 0.3mm solid var(--cinza);
-            cursor: pointer;
-        }
-
-        .all-seats input:checked+label {
-            background: var(--laranja1);
-            outline: none;
-        }
-
-        .seat.booked {
-            background: var(--preto);
-            /* Assento ocupado */
-            outline: none;
-        }
-
-
-        input {
-            display: none;
-        }
-
-        .timings {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .dates {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .dates-item {
-            width: 50px;
+            width: 40px;
             height: 40px;
-            background: var(--preto);
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 10px 0;
-            border-radius: 2mm;
+            margin: 3px;
+            background-color: #F0F0F2;
+            border: 2px solid #ababab;
+            border-radius: 5px;
             cursor: pointer;
+        }
+
+        .seat.occupied {
+            background-color: #73242A;
+            cursor: not-allowed;
+        }
+
+        .seat.selected {
+            background-color: #D93223;
+        }
+
+        .row-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 20px;
+            margin-right: 5px;
+            font-weight: bold;
+            font-size: 18px;
             color: white;
         }
 
-        .day {
-            font-size: var(--fs-x-sm);
-        }
-
-        .times {
-            width: 100%;
+        .row-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
+            justify-content: center;
         }
 
-        .time {
-            font-size: var(--fs-md);
-            width: fit-content;
-            padding: 7px 14px;
-            background: var(--preto);
-            border-radius: 2mm;
-            cursor: pointer;
-            color: var(--branco);
+        .legend {
+            margin: 20px;
+            text-align: center;
         }
 
-        .timings input:checked+label {
-            background: var(--laranja1);
-            color: var(--branco);
+        .legend div {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+            border-radius: 5px;
         }
 
-        .price {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .legend .selected {
+            background-color: #D93223;
+        }
+
+        .legend .occupied {
+            background-color: #73242A;
+        }
+
+        .legend .available {
+            background-color: #F0F0F2;
+            border: 2px solid #ababab;
         }
 
         .total {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Alinhamento das letras A B C */
+        .row-labels {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
             justify-content: center;
-            font-size: var(--fs-md);
-            font-weight: var(--fw-5);
+            margin-bottom: 10px;
         }
 
-        .total span {
-            font-size: var(--fs-x-sm);
-            font-weight: var(--fw-4);
+        .row-labels .label {
+            width: 45px; /* Espaço entre as letras alinhado com os assentos */
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #F0F0F2;
         }
 
-        .price button {
-            background: var(--preto);
-            color: var(--branco);
-            font-family: var(--ff-inter);
-            font-size: var(--fs-md);
-            padding: 7px 14px;
-            border-radius: 2mm;
-            outline: none;
-            border: none;
+        .linha-vermelha {
+            width: 500px;
+            height: 3px;
+            background-color: red;
+            margin: 30px auto; /* Aumenta o espaçamento acima da linha */
+        }
+
+        /* Estilo do botão "Finalizar Compra" */
+        .finalizar-compra {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #D93223;
+            color: #F0F0F2;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
             cursor: pointer;
+        }
+
+        .finalizar-compra:hover {
+            background-color: #A62F24;
         }
     </style>
 </head>
-
 <body>
-    <div class="center">
-        <div class="tickets">
-            <div class="ticket-selector">
-                <div class="head">
-                    <div class="title">M.D.P.
-                    </div>
-                </div>
-                <div class="seats">
-                    <div class="status">
-                        <div class="item">Livre</div>
-                        <div class="item">Ocupado</div>
-                        <div class="item">Selecionado</div>
-                    </div>
-                    <div class="all-seats">
-                        <input type="checkbox" name="tickets" id="s1" />
-                        <label for="s1" class="seat booked"></label>
-                    </div>
-                </div>
-                <div class="timings">
-                    <div class="dates">
-                        <input type="radio" name="date" id="d1" checked />
-                        <label for="d1" class="dates-item">
-                            <div class="day">Dom</div>
-                            <div class="date">11</div>
-                        </label>
-                        <input type="radio" id="d2" name="date" />
-                        <label class="dates-item" for="d2">
-                            <div class="day">Seg</div>
-                            <div class="date">12</div>
-                        </label>
-                        <input type="radio" id="d3" name="date" />
-                        <label class="dates-item" for="d3">
-                            <div class="day">Ter</div>
-                            <div class="date">13</div>
-                        </label>
-                        <input type="radio" id="d4" name="date" />
-                        <label class="dates-item" for="d4">
-                            <div class="day">Qua</div>
-                            <div class="date">15</div>
-                        </label>
-                        <input type="radio" id="d5" name="date" />
-                        <label class="dates-item" for="d5">
-                            <div class="day">Qui</div>
-                            <div class="date">16</div>
-                        </label>
-                        <input type="radio" id="d6" name="date" />
-                        <label class="dates-item" for="d6">
-                            <div class="day">Sex</div>
-                            <div class="date">17</div>
-                        </label>
-                        <input type="radio" id="d7" name="date" />
-                        <label class="dates-item" for="d7">
-                            <div class="day">Sab</div>
-                            <div class="date">18</div>
-                        </label>
-                    </div>
-                    <div class="times">
-                        <input type="radio" name="time" id="t1" checked />
-                        <label for="t1" class="time">12:00</label>
-                        <input type="radio" id="t2" name="time" />
-                        <label for="t2" class="time"> 14:30 </label>
-                        <input type="radio" id="t3" name="time" />
-                        <label for="t3" class="time"> 18:00 </label>
-                        <input type="radio" id="t4" name="time" />
-                        <label for="t4" class="time"> 21:30 </label>
-                    </div>
-                </div>
-            </div>
-            <div class="price">
-                <div class="total">
-                    <span> <span class="count">0</span> Ingressos </span>
-                    <div class="amount">0</div>
-                </div>
-                <button type="button">Compre</button>
+    <div class="container">
+        <h1>Escolha seus assentos</h1>
+
+        <!-- Colocando a linha da tela no lugar correto -->
+        <div class="screen">M.D.P.</div>
+
+        <!-- Adiciona a linha vermelha para referência -->
+        <div class="linha-vermelha"></div>
+
+        <!-- Exibição dos assentos -->
+        <div class="row-container">
+            <div class="row-label">A</div>
+            <div class="seat-row" id="rowA">
+                <!-- Assentos da linha A -->
             </div>
         </div>
+        <div class="row-container">
+            <div class="row-label">B</div>
+            <div class="seat-row" id="rowB">
+                <!-- Assentos da linha B -->
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="row-label">C</div>
+            <div class="seat-row" id="rowC">
+                <!-- Assentos da linha C -->
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="row-label">D</div>
+            <div class="seat-row" id="rowD">
+                <!-- Assentos da linha D -->
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="row-label">E</div>
+            <div class="seat-row" id="rowE">
+                <!-- Assentos da linha E -->
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="row-label">F</div>
+            <div class="seat-row" id="rowF">
+                <!-- Assentos da linha F -->
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="selected"></div> Selecionado
+            <div class="occupied"></div> Ocupado
+            <div class="available"></div> Disponível
+        </div>
+
+        <div class="total">Total: R$ <span id="totalPrice">0,00</span></div>
+
+        <!-- Botão para finalizar compra -->
+        <a href="#" class="finalizar-compra">Finalizar Compra</a>
     </div>
 
-    <script src="../assets/js/ingresso.js"></script>
-</body>
+    <script>
+        const seatPrice = 2.00;
+        let selectedSeats = [];
+        const totalPriceElement = document.getElementById('totalPrice');
 
+        // Função para gerar assentos em uma linha
+        function generateSeats(rowId, seatCount) {
+            const seatRow = document.getElementById(rowId);
+            for (let i = 1; i <= seatCount; i++) {
+                const seat = document.createElement('div');
+                seat.classList.add('seat');
+                seat.innerText = `${rowId[3]}${i}`; // Formato "A1", "B1", "C1"
+                
+                // Alternar seleção de assento
+                seat.addEventListener('click', () => toggleSeat(seat));
+                
+                seatRow.appendChild(seat);
+            }
+        }
+
+        // Função para alternar a seleção de assentos
+        function toggleSeat(seat) {
+            if (!seat.classList.contains('occupied')) {
+                seat.classList.toggle('selected');
+                const seatId = seat.innerText;
+
+                if (seat.classList.contains('selected')) {
+                    selectedSeats.push(seatId);
+                } else {
+                    selectedSeats = selectedSeats.filter(id => id !== seatId);
+                }
+
+                updateTotalPrice();
+            }
+        }
+
+        // Atualiza o preço total
+        function updateTotalPrice() {
+            const totalPrice = selectedSeats.length * seatPrice;
+            totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
+        }
+
+        // Função para gerar 10 assentos ocupados aleatoriamente
+        function generateOccupiedSeats() {
+            const allSeats = document.querySelectorAll('.seat');
+            const occupiedSeats = new Set();
+            while (occupiedSeats.size < 10) {
+                const randomIndex = Math.floor(Math.random() * allSeats.length);
+                const randomSeat = allSeats[randomIndex];
+                if (!randomSeat.classList.contains('occupied')) {
+                    randomSeat.classList.add('occupied');
+                    occupiedSeats.add(randomSeat.innerText);
+                }
+            }
+        }
+
+        // Gerar assentos para todas as linhas
+        generateSeats('rowA', 10);
+        generateSeats('rowB', 10);
+        generateSeats('rowC', 10);
+        generateSeats('rowD', 10);
+        generateSeats('rowE', 10);
+        generateSeats('rowF', 10);
+
+        // Gerar assentos ocupados
+        generateOccupiedSeats();
+    </script>
+</body>
 </html>
+
+        

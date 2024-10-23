@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra de Ingressos - C-Street</title>
+    <title>Ingressos Atirando Alto </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -153,6 +153,7 @@
     <div class="container">
         <h1>Escolha seus assentos</h1>
 
+        <!-- Colocando a linha da tela no lugar correto -->
         <div class="screen">Atirando Alto</div>
 
         <!-- Adiciona a linha vermelha para referência -->
@@ -250,13 +251,32 @@
             totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
         }
 
-        // Gerar assentos nas linhas A, B, C, D, E e F
+        // Função para gerar 10 assentos ocupados aleatoriamente
+        function generateOccupiedSeats() {
+            const allSeats = document.querySelectorAll('.seat');
+            const occupiedSeats = new Set();
+            while (occupiedSeats.size < 10) {
+                const randomIndex = Math.floor(Math.random() * allSeats.length);
+                const randomSeat = allSeats[randomIndex];
+                if (!randomSeat.classList.contains('occupied')) {
+                    randomSeat.classList.add('occupied');
+                    occupiedSeats.add(randomSeat.innerText);
+                }
+            }
+        }
+
+        // Gerar assentos para todas as linhas
         generateSeats('rowA', 10);
         generateSeats('rowB', 10);
         generateSeats('rowC', 10);
         generateSeats('rowD', 10);
         generateSeats('rowE', 10);
         generateSeats('rowF', 10);
+
+        // Gerar assentos ocupados
+        generateOccupiedSeats();
     </script>
 </body>
 </html>
+
+        
