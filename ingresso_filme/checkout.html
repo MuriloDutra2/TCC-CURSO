@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - C-Street</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F2;
+            color: #0D0D0D;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #D93223;
+            margin-bottom: 30px;
+        }
+
+        .checkout {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .checkout .details,
+        .checkout .summary {
+            width: 48%;
+        }
+
+        .details h2,
+        .summary h2 {
+            border-bottom: 2px solid #D93223;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #A62F24;
+        }
+
+        .details .info {
+            margin-bottom: 20px;
+        }
+
+        .details label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0D0D0D;
+            font-weight: bold;
+        }
+
+        .details input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ababab;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .summary ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .summary ul li span {
+            float: right;
+        }
+
+        .summary .total {
+            font-size: 22px;
+            font-weight: bold;
+            border-top: 2px solid #D93223;
+            padding-top: 10px;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .payment-options button {
+            background-color: #A62F24;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 22%;
+        }
+
+        .payment-options button:hover {
+            background-color: #D93223;
+        }
+
+        /* Seção do usuário logado */
+        .user-info {
+            background-color: #F0F0F2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .user-info label {
+            font-weight: bold;
+            color: #A62F24;
+        }
+
+        .user-info span {
+            display: block;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmação de Pagamento</h1>
+
+        <!-- Seção de informações do usuário logado -->
+        <div class="user-info">
+            <label>Nome:</label>
+            <span id="user-name">Carregando...</span>
+
+            <label>Email:</label>
+            <span id="user-email">Carregando...</span>
+        </div>
+
+        <div class="checkout">
+            <!-- Formulário com CPF e Email -->
+            <div class="details">
+                <h2>Detalhes do Pagamento</h2>
+                <div class="info">
+                    <label>Email:</label>
+                    <input type="email" id="user-payment-email" placeholder="Insira seu email" required>
+                </div>
+                <div class="info">
+                    <label>CPF:</label>
+                    <input type="text" id="cpf" placeholder="Insira seu CPF" required>
+                </div>
+            </div>
+
+            <!-- Resumo -->
+            <div class="summary">
+                <h2>Resumo da Compra</h2>
+                <ul>
+                    <li>Filme: <span id="summary-movie"></span></li>
+                    <li>Assentos: <span id="summary-seats"></span></li>
+                    <li class="total">Total: R$ <span id="summary-price"></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Opções de Pagamento -->
+        <div class="payment-options">
+            <button id="debit-button">Débito</button>
+            <button id="credit-button">Crédito</button>
+            <button id="pix-button">Pix</button>
+            <button id="boleto-button">Boleto</button>
+        </div>
+    </div>
+
+    <script>
+        // Essas variáveis devem ser carregadas dinamicamente da página anterior
+        const movieName = "Atirando Alto"; // Exemplo
+        const selectedSeats = ["A1", "A2", "B3"]; // Exemplo
+        const totalPrice = 6.00; // Exemplo
+
+        // Popula os campos com as informações
+        document.getElementById('summary-movie').innerText = movieName;
+        document.getElementById('summary-seats').innerText = selectedSeats.join(', ');
+        document.getElementById('summary-price').innerText = totalPrice.toFixed(2).replace('.', ',');
+
+        // Informações do usuário logado (simulação de carregamento via session ou banco de dados)
+        const userName = "João da Silva";  // Exemplo
+        const userEmail = "joao.silva@email.com";  // Exemplo
+
+        // Populando as informações do usuário logado
+        document.getElementById('user-name').innerText = userName;
+        document.getElementById('user-email').innerText = userEmail;
+
+    </script>
+</body>
+</html>
