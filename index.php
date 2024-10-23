@@ -865,7 +865,7 @@ CATEGORIA SECTION
 
                         <a href="https://x.com/CineS89864?t=SbVD0FmupffLmxZsqTFF3A&s=09"> <ion-icon name="logo-twitter"></ion-icon> </a>
                         <a href="https://www.instagram.com/cines_treet?igsh=MzNnNjB2aDZ2bDRo"> <ion-icon name="logo-instagram"></ion-icon> </a>
-                        <a href=""> <ion-icon name="logo-tiktok"></ion-icon> </a>
+                        <a href="https://www.tiktok.com/@cine.street0?_t=8qmY370IA6Q&_r=1"> <ion-icon name="logo-tiktok"></ion-icon> </a>
                         <a href="https://www.youtube.com/@C-Street-u5b/featured"> <ion-icon name="logo-youtube"></ion-icon></a>
 
                     </div>
@@ -960,7 +960,7 @@ CATEGORIA SECTION
             <div class="footer-copyright">
 
                 <div class="copyright">
-                    <p>&copy; copyright 2024 C-Street</p>
+                    <p>&copy; Copyright 2024 C-Street</p>
                 </div>
 
                 <div class="wrapper">

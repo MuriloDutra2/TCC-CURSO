@@ -208,7 +208,7 @@
         <footer>
             <div class="footer-content">
 
-                <div class="footer-band">
+              <div class="footer-band">
                     <img src="assets/imagem-real/TCC2.png" alt="" class="footer-logo">
                     <p class="slogan">Filmes e Cinema, C-street o cinema do seu jeito</p>
 
@@ -216,7 +216,7 @@
 
                         <a href="https://x.com/CineS89864?t=SbVD0FmupffLmxZsqTFF3A&s=09"> <ion-icon name="logo-twitter"></ion-icon> </a>
                         <a href="https://www.instagram.com/cines_treet?igsh=MzNnNjB2aDZ2bDRo"> <ion-icon name="logo-instagram"></ion-icon> </a>
-                        <a href=""> <ion-icon name="logo-tiktok"></ion-icon> </a>
+                        <a href="https://www.tiktok.com/@cine.street0?_t=8qmY370IA6Q&_r=1"> <ion-icon name="logo-tiktok"></ion-icon> </a>
                         <a href="https://www.youtube.com/@C-Street-u5b/featured"> <ion-icon name="logo-youtube"></ion-icon></a>
 
                     </div>
