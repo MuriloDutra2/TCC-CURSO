@@ -251,10 +251,10 @@
 
                     <div class="social-link">
 
-                        <a href=""> <ion-icon name="logo-twitter"></ion-icon> </a>
-                        <a href=""> <ion-icon name="logo-instagram"></ion-icon> </a>
+                        <a href="https://x.com/CineS89864?t=SbVD0FmupffLmxZsqTFF3A&s=09"> <ion-icon name="logo-twitter"></ion-icon> </a>
+                        <a href="https://www.instagram.com/cines_treet?igsh=MzNnNjB2aDZ2bDRo"> <ion-icon name="logo-instagram"></ion-icon> </a>
                         <a href=""> <ion-icon name="logo-tiktok"></ion-icon> </a>
-                        <a href=""> <ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.youtube.com/@C-Street-u5b/featured"> <ion-icon name="logo-youtube"></ion-icon></a>
 
                     </div>
                 </div>
@@ -344,7 +344,6 @@
             </div>
 
 
-
             <div class="footer-copyright">
 
                 <div class="copyright">
@@ -352,8 +351,8 @@
                 </div>
 
                 <div class="wrapper">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de uso</a>
+
+                    <a href="assets/imagem-real/termosdeuso.pdf">Termos de uso</a>
                 </div>
 
             </div>
