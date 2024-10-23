@@ -169,7 +169,11 @@
                         </p>
 
                         <!-- Botão de Compra de Ingresso -->
-                        <a href="ingresso_filme/ingresso_mdp.html" class="buy-ticket">Comprar Ingresso</a>
+                        <?php if (isset($_SESSION['usuario'])): ?>
+    <a href="ingresso_filme/ingresso_mdp.html" class="buy-ticket">Comprar Ingresso</a>
+<?php else: ?>
+    <a href="#" class="buy-ticket" onclick="alert('Por favor, faça login para comprar ingressos.');">Comprar Ingresso</a>
+<?php endif; ?>
                     </div>
                 </div>
 
