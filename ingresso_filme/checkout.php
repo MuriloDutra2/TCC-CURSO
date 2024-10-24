@@ -1,3 +1,46 @@
+<?php
+session_start(); // Iniciar a sessão
+
+// Verificar se o usuário está logado
+if (!isset($_SESSION['usuario_id'])) {
+    // Se o usuário não estiver logado, redireciona para a página de login
+    header('Location: ../login.php');
+    exit();
+}
+
+// Conectar ao banco de dados
+$conn = new mysqli('localhost', 'root', '', 'c-street'); // Ajuste o nome do banco de dados
+
+// Verificar a conexão
+if ($conn->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+}
+
+// Consulta para buscar informações do usuário logado
+$usuario_id = $_SESSION['usuario_id'];
+$sql = "SELECT Nome, Email FROM tabela_usuario WHERE id_usuario = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $usuario_id);  // Usar o ID do usuário da sessão
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // Se o usuário for encontrado, recuperar as informações
+    $user = $result->fetch_assoc();
+    $userName = $user['Nome'];
+    $userEmail = $user['Email'];
+} else {
+    // Caso o usuário não seja encontrado
+    $userName = 'Desconhecido';
+    $userEmail = 'Email não encontrado';
+}
+
+// Fechar a conexão
+$stmt->close();
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -132,16 +175,16 @@
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <h1>Confirmação de Pagamento</h1>
 
         <!-- Seção de informações do usuário logado -->
         <div class="user-info">
             <label>Nome:</label>
-            <span id="user-name">Carregando...</span>
+            <span id="user-name"><?php echo htmlspecialchars($userName); ?></span>
 
             <label>Email:</label>
-            <span id="user-email">Carregando...</span>
+            <span id="user-email"><?php echo htmlspecialchars($userEmail); ?></span>
         </div>
 
         <div class="checkout">
@@ -150,7 +193,7 @@
                 <h2>Detalhes do Pagamento</h2>
                 <div class="info">
                     <label>Email:</label>
-                    <input type="email" id="user-payment-email" placeholder="Insira seu email" required>
+                    <input type="email" id="user-payment-email" value="<?php echo htmlspecialchars($userEmail); ?>" required>
                 </div>
                 <div class="info">
                     <label>CPF:</label>

@@ -206,7 +206,7 @@
         <div class="total">Total: R$ <span id="totalPrice">0,00</span></div>
 
         <!-- Botão para finalizar compra -->
-        <a href="checkout.html" class="finalizar-compra">Finalizar Compra</a>
+        <a href="checkout.php" class="finalizar-compra">Finalizar Compra</a>
     </div>
 
     <script>
@@ -276,7 +276,7 @@ function redirectToCheckout() {
     localStorage.setItem('totalPrice', totalPrice.toFixed(2));
 
     // Redireciona para a página de checkout
-    window.location.href = 'checkout.html';
+    window.location.href = 'checkout.php';
 }
 
 // Gerar assentos para todas as linhas
