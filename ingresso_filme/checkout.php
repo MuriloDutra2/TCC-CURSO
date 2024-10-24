@@ -1,44 +1,3 @@
-<?php
-session_start(); // Iniciar a sessão
-
-// Verificar se o usuário está logado
-if (!isset($_SESSION['usuario_id'])) {
-    // Se o usuário não estiver logado, redireciona para a página de login
-    header('Location: ../login.php');
-    exit();
-}
-
-// Conectar ao banco de dados
-$conn = new mysqli('localhost', 'root', '', 'c-street'); // Ajuste o nome do banco de dados
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-}
-
-// Consulta para buscar informações do usuário logado
-$usuario_id = $_SESSION['usuario_id'];
-$sql = "SELECT Nome, Email FROM tabela_usuario WHERE id_usuario = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $usuario_id);  // Usar o ID do usuário da sessão
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    // Se o usuário for encontrado, recuperar as informações
-    $user = $result->fetch_assoc();
-    $userName = $user['Nome'];
-    $userEmail = $user['Email'];
-} else {
-    // Caso o usuário não seja encontrado
-    $userName = 'Desconhecido';
-    $userEmail = 'Email não encontrado';
-}
-
-// Fechar a conexão
-$stmt->close();
-$conn->close();
-?>
 
 
 <!DOCTYPE html>
@@ -77,13 +36,11 @@ $conn->close();
             margin-bottom: 30px;
         }
 
-        .checkout .details,
-        .checkout .summary {
+        .details {
             width: 48%;
         }
 
-        .details h2,
-        .summary h2 {
+        .details h2 {
             border-bottom: 2px solid #D93223;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -109,6 +66,18 @@ $conn->close();
             border: 2px solid #ababab;
             border-radius: 5px;
             font-size: 16px;
+        }
+
+        .summary {
+            width: 48%;
+        }
+
+        .summary h2 {
+            border-bottom: 2px solid #D93223;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #A62F24;
         }
 
         .summary ul {
@@ -153,55 +122,35 @@ $conn->close();
             background-color: #D93223;
         }
 
-        /* Seção do usuário logado */
-        .user-info {
-            background-color: #F0F0F2;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .success-message {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            color: green;
             font-size: 18px;
-        }
-
-        .user-info label {
-            font-weight: bold;
-            color: #A62F24;
-        }
-
-        .user-info span {
-            display: block;
-            margin-top: 5px;
         }
 
     </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
         <h1>Confirmação de Pagamento</h1>
 
-        <!-- Seção de informações do usuário logado -->
-        <div class="user-info">
-            <label>Nome:</label>
-            <span id="user-name"><?php echo htmlspecialchars($userName); ?></span>
-
-            <label>Email:</label>
-            <span id="user-email"><?php echo htmlspecialchars($userEmail); ?></span>
-        </div>
-
+        <!-- Formulário com Nome e Email -->
         <div class="checkout">
-            <!-- Formulário com CPF e Email -->
             <div class="details">
                 <h2>Detalhes do Pagamento</h2>
                 <div class="info">
                     <label>Email:</label>
-                    <input type="email" id="user-payment-email" value="<?php echo htmlspecialchars($userEmail); ?>" required>
+                    <input type="email" id="user-payment-email" placeholder="Insira seu email" required>
                 </div>
                 <div class="info">
-                    <label>CPF:</label>
-                    <input type="text" id="cpf" placeholder="Insira seu CPF" required>
+                    <label>Nome:</label>
+                    <input type="text" id="user-name" placeholder="Insira seu nome" required>
                 </div>
             </div>
 
-            <!-- Resumo -->
+            <!-- Resumo da Compra -->
             <div class="summary">
                 <h2>Resumo da Compra</h2>
                 <ul>
@@ -210,36 +159,62 @@ $conn->close();
                     <li class="total">Total: R$ <span id="summary-price"></span></li>
                 </ul>
             </div>
-            
         </div>
 
+        <!-- Opções de Pagamento -->
         <div class="payment-options">
-            <button>Débito</button>
-            <button>Crédito</button>
-            <button>Pix</button>
-            <button>Boleto</button>
+            <button onclick="finalizarCompra('Débito')">Débito</button>
+            <button onclick="finalizarCompra('Crédito')">Crédito</button>
+            <button onclick="finalizarCompra('Pix')">Pix</button>
+            <button onclick="finalizarCompra('Boleto')">Boleto</button>
         </div>
+
+        <!-- Mensagem de sucesso -->
+        <div class="success-message" id="successMessage">Compra efetuada com sucesso!</div>
     </div>
 
-   
-<script>
+    <script>
+        // Função para obter dados do LocalStorage
+        function loadCheckoutData() {
+            const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+            const movieTitle = localStorage.getItem('selectedFilm') || 'Filme não selecionado';
+            const totalPrice = localStorage.getItem('totalPrice') || '0,00';
 
-    // Função para obter dados do LocalStorage
-    function loadCheckoutData() {
-        const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
-        const movieTitle = localStorage.getItem('selectedFilm') || 'Filme não selecionado';
-        const totalPrice = localStorage.getItem('totalPrice') || '0,00';
+            // Atualiza os elementos HTML com os dados do LocalStorage
+            document.getElementById('summary-seats').textContent = selectedSeats.join(', ');
+            document.getElementById('summary-movie').textContent = movieTitle;
+            document.getElementById('summary-price').textContent = totalPrice.replace('.', ',');
+        }
 
-        // Atualiza os elementos HTML com os dados do LocalStorage
-        document.getElementById('summary-seats').textContent = selectedSeats.join(', ');
-        document.getElementById('summary-movie').textContent = movieTitle;
-        document.getElementById('summary-price').textContent = totalPrice.replace('.', ',');
-    }
+        // Função para finalizar a compra e enviar a solicitação de email
+        function finalizarCompra(metodoPagamento) {
+            const email = document.getElementById('user-payment-email').value;
+            const nome = document.getElementById('user-name').value;
 
-    // Chama a função ao carregar a página de checkout
-    window.onload = loadCheckoutData;
+            if (email && nome) {
+                // Envia uma requisição para o servidor PHP enviar o email
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "processa_pagamento.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // Exibe a mensagem de sucesso
+                        document.getElementById('successMessage').style.display = "block";
+                        
+                        // Redireciona para index.php após 3 segundos
+                        setTimeout(() => {
+                            window.location.href = "../index.php";
+                        }, 3000);
+                    }
+                };
+                xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}`);
+            } else {
+                alert("Por favor, insira seu nome e email.");
+            }
+        }
 
-
+        // Carregar dados no carregamento da página
+        window.onload = loadCheckoutData;
     </script>
 </body>
 </html>
