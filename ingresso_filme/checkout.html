@@ -167,35 +167,35 @@
                     <li class="total">Total: R$ <span id="summary-price"></span></li>
                 </ul>
             </div>
+            
         </div>
 
-        <!-- Opções de Pagamento -->
         <div class="payment-options">
-            <button id="debit-button">Débito</button>
-            <button id="credit-button">Crédito</button>
-            <button id="pix-button">Pix</button>
-            <button id="boleto-button">Boleto</button>
+            <button>Débito</button>
+            <button>Crédito</button>
+            <button>Pix</button>
+            <button>Boleto</button>
         </div>
     </div>
 
-    <script>
-        // Essas variáveis devem ser carregadas dinamicamente da página anterior
-        const movieName = "Atirando Alto"; // Exemplo
-        const selectedSeats = ["A1", "A2", "B3"]; // Exemplo
-        const totalPrice = 6.00; // Exemplo
+   
+<script>
 
-        // Popula os campos com as informações
-        document.getElementById('summary-movie').innerText = movieName;
-        document.getElementById('summary-seats').innerText = selectedSeats.join(', ');
-        document.getElementById('summary-price').innerText = totalPrice.toFixed(2).replace('.', ',');
+    // Função para obter dados do LocalStorage
+    function loadCheckoutData() {
+        const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+        const movieTitle = localStorage.getItem('selectedFilm') || 'Filme não selecionado';
+        const totalPrice = localStorage.getItem('totalPrice') || '0,00';
 
-        // Informações do usuário logado (simulação de carregamento via session ou banco de dados)
-        const userName = "João da Silva";  // Exemplo
-        const userEmail = "joao.silva@email.com";  // Exemplo
+        // Atualiza os elementos HTML com os dados do LocalStorage
+        document.getElementById('summary-seats').textContent = selectedSeats.join(', ');
+        document.getElementById('summary-movie').textContent = movieTitle;
+        document.getElementById('summary-price').textContent = totalPrice.replace('.', ',');
+    }
 
-        // Populando as informações do usuário logado
-        document.getElementById('user-name').innerText = userName;
-        document.getElementById('user-email').innerText = userEmail;
+    // Chama a função ao carregar a página de checkout
+    window.onload = loadCheckoutData;
+
 
     </script>
 </body>
