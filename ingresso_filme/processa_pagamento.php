@@ -2,19 +2,21 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; // Carregar o autoloader do Composer para o PHPMailer
+require 'vendor/autoload.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 // Função para enviar email de confirmação
 function enviarEmail($emailDestinatario, $nomeDestinatario, $metodoPagamento, $filme, $assentos, $total) {
     $mail = new PHPMailer(true);
 
     try {
-        // Configurações do servidor
+        // Configurações do servidor SMTP
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; // Exemplo usando o Gmail
+        $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'seu-email@gmail.com'; // Seu email
-        $mail->Password   = 'sua-senha-ou-senha-de-aplicativo'; // Senha ou senha de app
+        $mail->Username   = 'seu-email@gmail.com';
+        $mail->Password   = 'sua-senha-ou-senha-de-aplicativo';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
@@ -51,19 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Coletar e validar os dados do formulário
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $nome = htmlspecialchars($_POST['nome'], ENT_QUOTES, 'UTF-8');
-    $cpf = htmlspecialchars($_POST['cpf'], ENT_QUOTES, 'UTF-8');
-    $metodo = htmlspecialchars($_POST['metodo'], ENT_QUOTES, 'UTF-8'); // Método de pagamento
-    $filme = htmlspecialchars($_POST['filme'], ENT_QUOTES, 'UTF-8'); // Nome do filme
-    $assentos = htmlspecialchars($_POST['assentos'], ENT_QUOTES, 'UTF-8'); // Assentos
-    $total = htmlspecialchars($_POST['total'], ENT_QUOTES, 'UTF-8'); // Total a pagar
+    $metodo = htmlspecialchars($_POST['metodo'], ENT_QUOTES, 'UTF-8');
+    $filme = htmlspecialchars($_POST['filme'], ENT_QUOTES, 'UTF-8');
+    $assentos = htmlspecialchars($_POST['assentos'], ENT_QUOTES, 'UTF-8');
+    $total = htmlspecialchars($_POST['total'], ENT_QUOTES, 'UTF-8');
 
     // Verificar se o email é válido e se os outros campos não estão vazios
-    if ($email && !empty($nome) && !empty($cpf) && !empty($metodo) && !empty($filme) && !empty($assentos) && !empty($total)) {
+    if ($email && !empty($nome) && !empty($metodo) && !empty($filme) && !empty($assentos) && !empty($total)) {
         // Enviar o email de confirmação
         enviarEmail($email, $nome, $metodo, $filme, $assentos, $total);
 
-        // Exibir mensagem de sucesso e redirecionar para a página inicial
-        echo '<script>alert("Compra efetuada com sucesso! Confira seu email."); window.location.href = "index.php";</script>';
+        // Exibir mensagem de sucesso (removido o redirecionamento)
+        echo '<script>alert("Compra efetuada com sucesso! Confira seu email.");</script>';
     } else {
         // Exibir mensagem de erro caso faltem dados
         echo '<script>alert("Erro: Por favor, preencha todos os campos corretamente."); window.history.back();</script>';

@@ -202,9 +202,9 @@
                         document.getElementById('successMessage').style.display = "block";
                         
                         // Redireciona para index.php após 3 segundos
-                        setTimeout(() => {
-                            window.location.href = "../index.php";
-                        }, 3000);
+                       // setTimeout(() => {
+                       //     window.location.href = "../index.php";
+                       // }, 3000);
                     }
                 };
                 xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}`);
