@@ -186,32 +186,29 @@
             document.getElementById('summary-price').textContent = totalPrice.replace('.', ',');
         }
 
-        // Função para finalizar a compra e enviar a solicitação de email
         function finalizarCompra(metodoPagamento) {
-            const email = document.getElementById('user-payment-email').value;
-            const nome = document.getElementById('user-name').value;
+    const email = document.getElementById('user-payment-email').value;
+    const nome = document.getElementById('user-name').value;
+    const filme = document.getElementById('summary-movie').textContent;
+    const assentos = document.getElementById('summary-seats').textContent;
+    const total = document.getElementById('summary-price').textContent;
 
-            if (email && nome) {
-                // Envia uma requisição para o servidor PHP enviar o email
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", "processa_pagamento.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        // Exibe a mensagem de sucesso
-                        document.getElementById('successMessage').style.display = "block";
-                        
-                        // Redireciona para index.php após 3 segundos
-                       // setTimeout(() => {
-                       //     window.location.href = "../index.php";
-                       // }, 3000);
-                    }
-                };
-                xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}`);
-            } else {
-                alert("Por favor, insira seu nome e email.");
+    if (email && nome) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "processa_pagamento.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                document.getElementById('successMessage').style.display = "block";
             }
-        }
+        };
+        
+        xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}&filme=${encodeURIComponent(filme)}&assentos=${encodeURIComponent(assentos)}&total=${encodeURIComponent(total)}`);
+    } else {
+        alert("Por favor, insira seu nome e email.");
+    }
+}
+
 
         // Carregar dados no carregamento da página
         window.onload = loadCheckoutData;
