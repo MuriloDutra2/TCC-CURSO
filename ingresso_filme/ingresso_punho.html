@@ -211,71 +211,90 @@
 
     <script>
         const seatPrice = 2.00;
-        let selectedSeats = [];
-        const totalPriceElement = document.getElementById('totalPrice');
-
-        // Função para gerar assentos em uma linha
-        function generateSeats(rowId, seatCount) {
-            const seatRow = document.getElementById(rowId);
-            for (let i = 1; i <= seatCount; i++) {
-                const seat = document.createElement('div');
-                seat.classList.add('seat');
-                seat.innerText = `${rowId[3]}${i}`; // Formato "A1", "B1", "C1"
-                
-                // Alternar seleção de assento
-                seat.addEventListener('click', () => toggleSeat(seat));
-                
-                seatRow.appendChild(seat);
-            }
-        }
-
-        // Função para alternar a seleção de assentos
-        function toggleSeat(seat) {
-            if (!seat.classList.contains('occupied')) {
-                seat.classList.toggle('selected');
-                const seatId = seat.innerText;
-
-                if (seat.classList.contains('selected')) {
-                    selectedSeats.push(seatId);
-                } else {
-                    selectedSeats = selectedSeats.filter(id => id !== seatId);
-                }
-
-                updateTotalPrice();
-            }
-        }
-
-        // Atualiza o preço total
-        function updateTotalPrice() {
-            const totalPrice = selectedSeats.length * seatPrice;
-            totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
-        }
-
-        // Função para gerar 10 assentos ocupados aleatoriamente
-        function generateOccupiedSeats() {
-            const allSeats = document.querySelectorAll('.seat');
-            const occupiedSeats = new Set();
-            while (occupiedSeats.size < 10) {
-                const randomIndex = Math.floor(Math.random() * allSeats.length);
-                const randomSeat = allSeats[randomIndex];
-                if (!randomSeat.classList.contains('occupied')) {
-                    randomSeat.classList.add('occupied');
-                    occupiedSeats.add(randomSeat.innerText);
-                }
-            }
-        }
-
-        // Gerar assentos para todas as linhas
-        generateSeats('rowA', 10);
-        generateSeats('rowB', 10);
-        generateSeats('rowC', 10);
-        generateSeats('rowD', 10);
-        generateSeats('rowE', 10);
-        generateSeats('rowF', 10);
-
-        // Gerar assentos ocupados
-        generateOccupiedSeats();
-    </script>
+ let selectedSeats = [];
+ const totalPriceElement = document.getElementById('totalPrice');
+ 
+ // Função para gerar assentos em uma linha
+ function generateSeats(rowId, seatCount) {
+     const seatRow = document.getElementById(rowId);
+     for (let i = 1; i <= seatCount; i++) {
+         const seat = document.createElement('div');
+         seat.classList.add('seat');
+         seat.innerText = `${rowId[3]}${i}`; // Formato "A1", "B1", "C1"
+         
+         // Alternar seleção de assento
+         seat.addEventListener('click', () => toggleSeat(seat));
+         
+         seatRow.appendChild(seat);
+     }
+ }
+ 
+ // Função para alternar a seleção de assentos
+ function toggleSeat(seat) {
+     if (!seat.classList.contains('occupied')) {
+         seat.classList.toggle('selected');
+         const seatId = seat.innerText;
+ 
+         if (seat.classList.contains('selected')) {
+             selectedSeats.push(seatId);
+         } else {
+             selectedSeats = selectedSeats.filter(id => id !== seatId);
+         }
+ 
+         updateTotalPrice();
+     }
+ }
+ 
+ // Atualiza o preço total
+ function updateTotalPrice() {
+     const totalPrice = selectedSeats.length * seatPrice;
+     totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
+ }
+ 
+ // Função para gerar 10 assentos ocupados aleatoriamente
+ function generateOccupiedSeats() {
+     const allSeats = document.querySelectorAll('.seat');
+     const occupiedSeats = new Set();
+     while (occupiedSeats.size < 10) {
+         const randomIndex = Math.floor(Math.random() * allSeats.length);
+         const randomSeat = allSeats[randomIndex];
+         if (!randomSeat.classList.contains('occupied')) {
+             randomSeat.classList.add('occupied');
+             occupiedSeats.add(randomSeat.innerText);
+         }
+     }
+ }
+ 
+ // Função para redirecionar ao checkout
+ function redirectToCheckout() {
+     const filme = "Punhos de Aço"; // Definir o nome do filme
+     const totalPrice = selectedSeats.length * seatPrice;
+ 
+     // Salvar informações no LocalStorage
+     localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+     localStorage.setItem('selectedFilm', filme);
+     localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+ 
+     // Redireciona para a página de checkout
+     window.location.href = 'checkout.php';
+ }
+ 
+ // Gerar assentos para todas as linhas
+ generateSeats('rowA', 10);
+ generateSeats('rowB', 10);
+ generateSeats('rowC', 10);
+ generateSeats('rowD', 10);
+ generateSeats('rowE', 10);
+ generateSeats('rowF', 10);
+ 
+ // Gerar assentos ocupados
+ generateOccupiedSeats();
+ 
+ // Adicionar evento de clique para finalizar a compra
+ document.querySelector('.finalizar-compra').addEventListener('click', redirectToCheckout);
+ 
+         
+     </script>
 </body>
 </html>
 

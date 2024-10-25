@@ -787,7 +787,7 @@ movies grid
 
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    A Historia De Mung
+                                    A História De Mung
                                 </h3>
 
                                 <div class="card-info">
