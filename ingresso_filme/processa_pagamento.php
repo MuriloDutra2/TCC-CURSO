@@ -1,43 +1,32 @@
+
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require 'vendor/autoload.php';
-require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../lib/vendor/autoload.php';
 
-// Função para enviar email de confirmação
-function enviarEmail($emailDestinatario, $nomeDestinatario, $metodoPagamento, $filme, $assentos, $total) {
-    $mail = new PHPMailer(true);
-
+$mail = new PHPMailer(true);
     try {
-        // Configurações do servidor SMTP
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'seu-email@gmail.com';
-        $mail->Password   = 'sua-senha-ou-senha-de-aplicativo';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                // Ativar saída de depuração
+        $mail->isSMTP();                                      // Usar SMTP
+        $mail->Host       = 'sandbox.smtp.mailtrap.io';       // Servidor SMTP
+        $mail->SMTPAuth   = true;                             // Autenticação SMTP
+        $mail->Username   = '095e9be687dbef';                 // Usuário SMTP
+        $mail->Password   = 'd47d2a91afc6af';                   // Senha SMTP
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   // Habilitar criptografia TLS
+        $mail->Port       = 587;                             // Porta TCP do Mailtrap
 
-        // Remetente e destinatário
-        $mail->setFrom('seu-email@gmail.com', 'C-Street Cinema');
-        $mail->addAddress($emailDestinatario, $nomeDestinatario);
+       
+        $mail->setFrom('murilo@teste.com.br', 'Murilo');
+        $mail->addAddress('dutra@teste.com.br', 'Dutra');     // Destinatário
+
 
         // Conteúdo do email
         $mail->isHTML(true);
         $mail->Subject = 'Confirmação de Compra - C-Street';
         $mail->Body    = "
-            <p>Olá <strong>$nomeDestinatario</strong>,</p>
-            <p>Obrigado por sua compra no C-Street!</p>
-            <p><strong>Filme:</strong> $filme</p>
-            <p><strong>Assentos:</strong> $assentos</p>
-            <p><strong>Total a Pagar:</strong> R$ $total</p>
-            <p><strong>Método de pagamento escolhido:</strong> $metodoPagamento</p>
-            <br>
-            <p>Sua compra foi efetuada com sucesso. Aproveite o filme!</p>
-            <br>
-            <p>C-Street Cinema</p>
+            <b>teste<b>
         ";
 
         // Enviar o email
@@ -46,10 +35,10 @@ function enviarEmail($emailDestinatario, $nomeDestinatario, $metodoPagamento, $f
     } catch (Exception $e) {
         echo "Erro ao enviar o email: {$mail->ErrorInfo}";
     }
-}
+
 
 // Verificar se o formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+/*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Coletar e validar os dados do formulário
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $nome = htmlspecialchars($_POST['nome'], ENT_QUOTES, 'UTF-8');
@@ -69,5 +58,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Exibir mensagem de erro caso faltem dados
         echo '<script>alert("Erro: Por favor, preencha todos os campos corretamente."); window.history.back();</script>';
     }
-}
+//}*/
 ?>
