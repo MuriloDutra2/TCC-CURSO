@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento - C-Street</title>
+    <link rel="shortcut icon" sizes="32x32" href="../assets/imagem-real/logo-favicon.png" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
