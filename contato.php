@@ -130,21 +130,22 @@
                 <div class="contact-form">
                     <h2>Fale Conosco</h2>
                     <p>Sua opinião é importante para nossa melhora!</p>
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" placeholder="Seu nome">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Seu Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" placeholder="Sua Mensagem"></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Envie</button>
-                    </form>
+                    <form action="processa_contato.php" method="POST">
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="nome" placeholder="Seu nome" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Seu Email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="mensagem" placeholder="Sua Mensagem" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Envie</button>
+</form>
+
                 </div>
                 <div class="contact-info">
                     <h3>Infomações</h3>
