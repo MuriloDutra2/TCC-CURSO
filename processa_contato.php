@@ -7,9 +7,9 @@ include 'conexao.php';  // Certifique-se de que este arquivo conecta ao banco e 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obter e sanitizar os dados do formulário
-    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $mensagem = filter_input(INPUT_POST, 'mensagem', FILTER_SANITIZE_STRING);
+    $mensagem = htmlspecialchars($_POST['mensagem'], ENT_QUOTES, 'UTF-8');
 
     // Inserir a mensagem no banco de dados
     $sql = "INSERT INTO contato_mensagens (nome, email, mensagem) VALUES (?, ?, ?)";
