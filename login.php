@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login C-Street</title>
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="shortcut icon" sizes="32x32" href="assets/imagem-real/logo-favicon.png" type="image/x-icon">
 </head>
 <body>
 
