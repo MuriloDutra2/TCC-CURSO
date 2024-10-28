@@ -50,6 +50,28 @@
                     <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
+                <div class="navbar-actions">
+    <!-- Botão de alternância de tema -->
+    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
+</div>
+
+<script>
+    // Função para alternar o tema
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    // Carrega o tema do localStorage ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+</script>
+
                 <!-- navbar navigation -->
                 <nav class="">
                     <ul class="navbar-nav">
@@ -57,6 +79,9 @@
                         <li><a href="#category" class="navbar-link">Alimentos</a></li>
                         <li><a href="contato.php" class="navbar-link">Contato</a></li>
                     </ul>
+
+           
+
                 </nav>
 
                 <div class="navbar-actions">
@@ -100,27 +125,7 @@
                 </div>
             </div>
 
-<div class="navbar-actions">
-    <!-- Botão de alternância de tema -->
-    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
-</div>
 
-<script>
-    // Função para alternar o tema
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    }
-
-    // Carrega o tema do localStorage ao carregar a página
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    });
-</script>
         </HEader>
 
         <script>

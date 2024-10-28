@@ -23,7 +23,7 @@ media query
 /* 
     resued style
 */
-header, nav {
+header{
     background: var(--rich-black-fogra-29);
 }
 
@@ -312,7 +312,7 @@ transform: scale(1.1);
 
 .filter-radios {
     position: relative;
-    background: var(--preto);
+    background: var(--preto1);
     padding: 10px;
     border-radius: 20px; /* Arredondar mais o fundo dos radios */
 }
