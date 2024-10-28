@@ -809,3 +809,36 @@ ul .link-item:not(:last-child) {margin-bottom: 10px;}
     margin-right: 10px;
     color: var(--laranja1); /* cor laranja para ícones */
 }
+
+/* ULTIMAS ATUALIZAÇÕES PARA APLICAR OS CODIGO DE TROCA DE COR*/
+
+/* Banner e fundo geral */
+body, .navbar, .ad-section {
+    background-color: var(--preto); /* Escurece o fundo em dark mode */
+}
+
+/* Textos principais e detalhes */
+h1, h2, h3, .navbar-link, .contact-form h2, .contact-form label, .footer-logo {
+    color: var(--branco); /* Mantém o texto claro em dark mode */
+}
+
+/* Botões e destaques */
+.load-more, .submit-btn, .payment-options button, .filter-radios input:checked + label {
+    background-color: var(--laranja1);
+    color: var(--branco);
+}
+
+.payment-options button:hover, .submit-btn:hover, .load-more:hover {
+    background-color: var(--laranja2);
+}
+
+.contact-info, .footer-copyright, .dropdown-box, .footer-band {
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+.contact-form .form-group input, .contact-form .form-group textarea {
+    background-color: var(--preto);
+    color: var(--branco);
+    border: 1px solid var(--cinza);
+}

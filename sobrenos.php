@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
 
-        <link rel="shortcut icon" sizes="32x32" href="assets/imagem-real/logo-favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" sizes="32x32" href="assets/imagem-real/logo-favicon.png" type="image/x-icon">
 
 </head>
 
@@ -48,7 +48,7 @@
                 </button>
 
                 <a href="index.php" class="navbar-brand">
-                    <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
+                    <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
                 <!-- navbar navigation -->
@@ -162,7 +162,7 @@
         <footer>
             <div class="footer-content">
 
-              <div class="footer-band">
+                <div class="footer-band">
                     <img src="assets/imagem-real/TCC2.png" alt="" class="footer-logo">
                     <p class="slogan">Filmes e Cinema, C-street o cinema do seu jeito</p>
 

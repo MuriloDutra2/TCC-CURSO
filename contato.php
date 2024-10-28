@@ -47,7 +47,7 @@
                 </button>
 
                 <a href="index.php" class="navbar-brand">
-                    <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
+                    <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
                 <!-- navbar navigation -->
@@ -133,20 +133,20 @@
                     <h2>Fale Conosco</h2>
                     <p>Sua opinião é importante para nossa melhora!</p>
                     <form action="processa_contato.php" method="POST">
-    <div class="form-group">
-        <label for="name">Nome</label>
-        <input type="text" id="name" name="nome" placeholder="Seu nome" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Seu Email" required>
-    </div>
-    <div class="form-group">
-        <label for="message">Mensagem</label>
-        <textarea id="message" name="mensagem" placeholder="Sua Mensagem" required></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Envie</button>
-</form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="mensagem" placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envie</button>
+                    </form>
 
                 </div>
                 <div class="contact-info">
@@ -173,7 +173,7 @@
         <footer>
             <div class="footer-content">
 
-              <div class="footer-band">
+                <div class="footer-band">
                     <img src="assets/imagem-real/TCC2.png" alt="" class="footer-logo">
                     <p class="slogan">Filmes e Cinema, C-street o cinema do seu jeito</p>
 

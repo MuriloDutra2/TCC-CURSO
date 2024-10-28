@@ -32,6 +32,8 @@ VARIAVEIS GLOBAIS
         --vinho: #73242A;
         --cinza: #ababab; 
 
+     
+
 
         /* tipografia */
 
@@ -55,3 +57,12 @@ VARIAVEIS GLOBAIS
 
       }
       
+      [data-theme="light"] {
+        --preto: #FFFFFF; /* Fundo principal para tema claro */
+        --laranja1: #FF9A76;
+        --laranja2: #FF6A4D;
+        --vermelho: #FF4D4D;
+        --branco: #1A1A1A;
+        --vinho: #B56576;
+        --cinza: #E5E5E5;
+    }

@@ -47,7 +47,7 @@
                 </button>
 
                 <a href="index.php" class="navbar-brand">
-                    <img src="assets/imagem-real/TCC2.png" class="logo-img" alt="">
+                    <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
                 <!-- navbar navigation -->
@@ -99,6 +99,28 @@
                     ?>
                 </div>
             </div>
+
+<div class="navbar-actions">
+    <!-- Botão de alternância de tema -->
+    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
+</div>
+
+<script>
+    // Função para alternar o tema
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    // Carrega o tema do localStorage ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+</script>
         </HEader>
 
         <script>
