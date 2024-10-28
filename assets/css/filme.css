@@ -11,6 +11,10 @@ main {
     margin-top: 50px; /* Aumenta o espaçamento entre o main e o header */
 }
 
+.sinopse {
+    color: var(--branco);
+}
+
 /* Estilos para o layout dos detalhes do filme */
 .movie-details {
     display: flex;
