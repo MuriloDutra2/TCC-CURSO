@@ -863,3 +863,11 @@ a, .submit-btn, .payment-options button {
 #titulo_contato {
     color: var(--vermelho);
 }
+
+#sub_titulo_sobrenos {
+    color: var(--vermelho);
+}
+
+.link-heading {
+    color: var(--vermelho);
+}

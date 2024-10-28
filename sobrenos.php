@@ -51,6 +51,28 @@
                     <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
+                <div class="navbar-actions">
+                    <!-- Botão de alternância de tema -->
+                    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
+                </div>
+
+                <script>
+                    // Função para alternar o tema
+                    function toggleTheme() {
+                        const currentTheme = document.documentElement.getAttribute('data-theme');
+                        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+                        document.documentElement.setAttribute('data-theme', newTheme);
+                        localStorage.setItem('theme', newTheme);
+                    }
+
+                    // Carrega o tema do localStorage ao carregar a página
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const savedTheme = localStorage.getItem('theme') || 'dark';
+                        document.documentElement.setAttribute('data-theme', savedTheme);
+                    });
+                </script>
+
                 <!-- navbar navigation -->
                 <nav class="">
                     <ul class="navbar-nav">
@@ -136,7 +158,7 @@
                             pode encontrar uma vasta seleção de filmes, documentários e muito mais. Estamos sempre de
                             olho nas tendências do cinema e buscando maneiras inovadoras de melhorar o serviço que
                             oferecemos.</p>
-                        <h3>Nossas Metas</h3>
+                        <h3 id="sub_titulo_sobrenos">Nossas Metas</h3>
                         <ul>
                             <li>Ampliar o catálogo de filmes internacionais</li>
                             <li>Implementar novas funcionalidades interativas para nossos usuários</li>
