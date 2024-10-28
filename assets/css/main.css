@@ -114,9 +114,9 @@ forma da navbar e estilo do botao
 
 .navbar-actions {
     display: flex;
-    align-items: center;
+    align-items: center; /* Alinha verticalmente */
+    gap: 10px; /* Espaçamento entre elementos */
 }
-
 .navbar-form {
     position: relative;
     margin-right: 50px;
@@ -851,4 +851,8 @@ h1, h2, h3, .navbar-link, .contact-form h2, .contact-form label {
 /* Exemplo para links e textos em botões */
 a, .submit-btn, .payment-options button {
     color: var(--branco);
+}
+
+.navbar {
+    background-color: var(--preto); /* Troque qualquer fundo fixo pela variável */
 }
