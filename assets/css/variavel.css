@@ -58,11 +58,11 @@ VARIAVEIS GLOBAIS
       }
       
       [data-theme="light"] {
-        --preto: #FFFFFF; /* Fundo principal para tema claro */
-        --laranja1: #FF9A76;
-        --laranja2: #FF6A4D;
-        --vermelho: #FF4D4D;
-        --branco: #1A1A1A;
-        --vinho: #B56576;
-        --cinza: #E5E5E5;
+        --preto: #f0f0f0; /* Fundo claro */
+        --laranja1: #f48c06;
+        --laranja2: #e85d04;
+        --vermelho: #d00000;
+        --branco: #121212; /* Texto escuro */
+        --vinho: #6a040f;
+        --cinza: #333333;
     }

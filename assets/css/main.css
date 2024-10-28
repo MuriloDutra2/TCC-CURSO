@@ -842,3 +842,13 @@ h1, h2, h3, .navbar-link, .contact-form h2, .contact-form label, .footer-logo {
     color: var(--branco);
     border: 1px solid var(--cinza);
 }
+
+/* Exemplo para cabeçalhos e textos principais */
+h1, h2, h3, .navbar-link, .contact-form h2, .contact-form label {
+    color: var(--branco); /* Ajusta automaticamente para a cor escura no modo claro */
+}
+
+/* Exemplo para links e textos em botões */
+a, .submit-btn, .payment-options button {
+    color: var(--branco);
+}

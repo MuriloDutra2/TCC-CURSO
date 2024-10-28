@@ -884,7 +884,7 @@ CATEGORIA SECTION
             <div class="footer-content">
 
                 <div class="footer-band">
-                    <img src="assets/imagem-real/TCC2.png" alt="" class="footer-logo">
+                    <img src="assets/imagem-real/logo-favicon.png" alt="" class="footer-logo">
                     <p class="slogan">Filmes e Cinema, C-street o cinema do seu jeito</p>
 
                     <div class="social-link">
