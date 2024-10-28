@@ -153,7 +153,7 @@
 
             <section class="contact-container">
                 <div class="contact-form">
-                    <h2>Fale Conosco</h2>
+                    <h2 id="titulo_contato">Fale Conosco</h2>
                     <p>Sua opinião é importante para nossa melhora!</p>
                     <form action="processa_contato.php" method="POST">
                         <div class="form-group">

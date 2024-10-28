@@ -11,9 +11,11 @@ main {
     margin-top: 50px; /* Aumenta o espaçamento entre o main e o header */
 }
 
-.sinopse {
+.sinopse
+{
     color: var(--branco);
 }
+
 
 /* Estilos para o layout dos detalhes do filme */
 .movie-details {
@@ -116,6 +118,6 @@ main {
 .cast-item .actor-name {
     font-size: 1em;
     font-weight: bold;
-    color: white;
+    color: var(--branco);
 }
 

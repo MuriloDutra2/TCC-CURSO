@@ -810,6 +810,9 @@ ul .link-item:not(:last-child) {margin-bottom: 10px;}
     color: var(--laranja1); /* cor laranja para ícones */
 }
 
+
+
+
 /* ULTIMAS ATUALIZAÇÕES PARA APLICAR OS CODIGO DE TROCA DE COR*/
 
 /* Banner e fundo geral */
@@ -855,4 +858,8 @@ a, .submit-btn, .payment-options button {
 
 .navbar {
     background-color: var(--preto); /* Troque qualquer fundo fixo pela variável */
+}
+
+#titulo_contato {
+    color: var(--vermelho);
 }
