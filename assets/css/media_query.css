@@ -47,7 +47,7 @@ MEDIA QUERY.CSS
 
     .navbar-menu-btn span {
         display: block;
-        background-color: var(--off-white);
+        background-color: var(--vermelho);
         width: 25px;
         height: 2px;
         margin: 8px;
@@ -86,6 +86,7 @@ MEDIA QUERY.CSS
         align-items: flex-start;
         padding-left: var(--px);
         border-bottom:  1px solid var(--oxford-blue);
+        background-color: var(--preto); /* Cor sólida para visibilidade */
     }
 
     .navbar-nav li:not(:last-child) {

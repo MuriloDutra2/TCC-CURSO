@@ -62,7 +62,8 @@ header{
 
 /* small creen menu button style */
 
-.navbar-menu-btn { display: none;}
+.navbar-menu-btn { display: none;
+color: var(--branco);}
 
 .logo-img {
     height: 100px;
@@ -133,10 +134,11 @@ forma da navbar e estilo do botao
 }
 
 .navbar-form-btn {
-    background: var();
+    background: var(--branco);
     position: absolute;
     top: calc(50% - 10px);
     right: 10px;
+    color: var(--vermelho);
 }
 
 .navbar-form-btn ico-icon,
