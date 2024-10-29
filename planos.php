@@ -2,46 +2,40 @@
 session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Maldição do Parque</title>
-    <!--
-    CSS link    
--->
+    <title>C-Street - Planos</title>
 
-    <link rel="stylesheet" href="assets/css/filme.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/media_query.css">
-    <!--
-    Link font
--->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
     <link rel="shortcut icon" sizes="32x32" href="assets/imagem-real/logo-favicon.png" type="image/x-icon">
 
+    <style>
+        main {
+  margin: 40px auto; /* Ajuste a margem conforme a necessidade */
+  padding: 20px;
+  background-color: var(--cinza); /* Cor de fundo similar ao 'Sobre Nós' */
+  border-radius: 10px;
+  max-width: 80%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
 </head>
 
 <body>
-
-
-
-    <!--
-    main container    
--->
-
     <div class="container">
-        <!--
-    HEADER SECTION
-    -->
 
-        <HEader>
+    <HEader>
             <div class="navbar">
                 <!-- meny button small screen -->
                 <button class="navbar-menu-btn">
@@ -84,13 +78,12 @@ session_start();
                     });
                 </script>
 
-
                 <!-- navbar navigation -->
                 <nav class="">
                     <ul class="navbar-nav">
                         <li><a href="index.php#movies" class="navbar-link">Nossos filmes</a></li>
                         <li><a href="index.php#category" class="navbar-link">Alimentos</a></li>
-                        <li><a href="contato.php" class="navbar-link">Contato</a></li>
+                        <li><a href="contato.html" class="navbar-link">Contato</a></li>
                     </ul>
                 </nav>
 
@@ -117,138 +110,33 @@ session_start();
                     if (isset($_SESSION['usuario'])) {
                         // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
                         echo '
-                    <div class="nav-item user-dropdown">
-                        <a href="#" class="user-toggle" id="userDropdown"><ion-icon name="person-outline"></ion-icon> ' . $_SESSION['usuario'] . '</a>
-                        <div class="dropdown-box" id="dropdownMenu">
-                            <a href="logout.php"><ion-icon name="exit-outline"></ion-icon> Sair</a>
-                        </div>
-                    </div>';
+                <div class="nav-item user-dropdown">
+                    <a href="#" class="user-toggle" id="userDropdown"><ion-icon name="person-outline"></ion-icon> ' . $_SESSION['usuario'] . '</a>
+                    <div class="dropdown-box" id="dropdownMenu">
+                        <a href="logout.php"><ion-icon name="exit-outline"></ion-icon> Sair</a>
+                    </div>
+                </div>';
                     } else {
                         // Se o usuário não estiver logado, exibir o botão de login com o ícone de login
                         echo '
-                    <li class="nav-item">
-                        <a href="login.php"><ion-icon name="enter-outline"></ion-icon> Entrar</a>
-                    </li>';
+                <li class="nav-item">
+                    <a href="login.php"><ion-icon name="enter-outline"></ion-icon> Entrar</a>
+                </li>';
                     }
                     ?>
                 </div>
             </div>
         </HEader>
 
-        <script>
-            // JavaScript para abrir e fechar o dropdown ao clicar
-            const userToggle = document.getElementById('userDropdown');
-            const dropdownMenu = document.getElementById('dropdownMenu');
-
-            userToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                dropdownMenu.classList.toggle('show');
-            });
-
-            // Fecha o dropdown se o usuário clicar fora dele
-            window.addEventListener('click', function(e) {
-                if (!userToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('show');
-                }
-            });
-        </script>
-
-
-
-        <!--
-#MAIN SECTION    
--->
-
         <main>
-
-            <header>
-                <!-- Conteúdo do header aqui -->
-            </header>
-
-            <main>
-                <div class="movie-details">
-                    <!-- Imagem do Filme -->
-                    <div class="movie-image">
-                        <img src="assets/image_movie/filme2.jpg" alt="A maldicaodoparque">
-                    </div>
-
-                    <!-- Informações do Filme -->
-                    <div class="movie-info">
-                        <h2>A Maldição do Parque</h2>
-
-                        <!-- Sinopse -->
-                        <p class="sinopse">
-                            A Maldicao Do Parque conta a história de dois jovens chamados Danilo e Vitória, onde conta
-                            sua jornada de busca pelo amuleto perdido do seu pai. Em busca pela verdade de como o pai
-                            deles desapareceu releva verdades e descobertas de cada personagem da trama.
-
-
-                        </p>
-
-                        <!-- Duração -->
-                        <p class="duration">
-                            <strong>Duração:</strong> 105 minutos
-                        </p>
-
-                        <!-- Data de Lançamento -->
-                        <p class="release-date">
-                            <strong>Lançamento:</strong> 04 de Outubro de 2022
-                        </p>
-
-                        <!-- Gênero -->
-                        <p class="genre">
-                            <strong>Gênero:</strong> Suspense
-                        </p>
-
-                        <p class="rating">
-                            <Strong>Nota:</Strong> 9.5
-                        </p>
-
-                        <!-- Botão de Compra de Ingresso -->
-                        <?php if (isset($_SESSION['usuario'])): ?>
-                            <a href="ingresso_filme/ingresso_maldicao.html" class="buy-ticket">Comprar Ingresso</a>
-                        <?php else: ?>
-                            <a href="#" class="buy-ticket" onclick="alert('Por favor, faça login para comprar ingressos.');">Comprar Ingresso</a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-
-                <!--Elenco Filme-->
-
-                <div class="movie-cast">
-                    <h3>Elenco</h3>
-                    <div class="cast-container">
-                        <div class="cast-item">
-                            <img src="assets/atores/thai" alt="Ator 1">
-                            <p class="actor-name">Thainara Vitoria</p>
-                        </div>
-                        <!-- Ator 2-->
-                        <div class="cast-item">
-                            <img src="assets/atores/danilo.jfif" alt="Ator 2">
-                            <p class="actor-name">Danilo Ruan</p>
-                        </div>
-                        <!-- Ator 3 -->
-                        <div class="cast-item">
-                            <img src="assets/atores/jorge.jfif" alt="Ator 3">
-                            <p class="actor-name">Pedro Henrique</p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </main>
-
-            <footer>
-                <!-- Conteúdo do footer aqui -->
-            </footer>
+        <section class="future-plans">
+    <h2>Planos para o futuro:</h2>
+    <p>
+        No futuro, a nossa empresa de cinema de rua será um espaço acessível e acolhedor para a comunidade, com uma programação diversificada e sustentável. Organizaremos sessões em diferentes pontos da cidade, valorizando a cultura local e promovendo parcerias com pequenos negócios, como cafés e restaurantes próximos. Vamos priorizar o uso de equipamentos energeticamente eficientes e criar eventos regulares que se tornem uma tradição para as famílias e os amigos. Ao longo do ano, teremos eventos especiais temáticos e exibições que trazem valor cultural e lazer para todos.
+    </p>
+</section>
 
         </main>
-
-
-        <!--
-    SECTION FOOTER
--->
-
         <footer>
             <div class="footer-content">
 
@@ -265,6 +153,7 @@ session_start();
 
                     </div>
                 </div>
+
 
                 <div class="footer-links">
                     <ul>
@@ -350,10 +239,11 @@ session_start();
             </div>
 
 
+
             <div class="footer-copyright">
 
                 <div class="copyright">
-                    <p>&copy; copyright 2024 C-Street</p>
+                    <p>&copy; Copyright 2024 C-Street</p>
                 </div>
 
                 <div class="wrapper">
@@ -364,43 +254,9 @@ session_start();
             </div>
         </footer>
 
-
-
-
     </div>
-
-
-
-
-    <!--
-    custom js link
--->
-
-
-
-    <!--
-    -ionicon link
--->
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-
 </body>
-
-<script src="assets/js/main.js"></script>
-<script>
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o comportamento padrão do formulário
-
-        // Obtém o valor pesquisado
-        const query = document.getElementById('searchInput').value.trim();
-
-        // Redireciona para a página principal com a pesquisa na URL
-        if (query) {
-            window.location.href = `index.php?search=${encodeURIComponent(query)}`;
-        }
-    });
-</script>
-
 </html>

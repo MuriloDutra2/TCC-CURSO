@@ -925,3 +925,22 @@ a, .submit-btn, .payment-options button {
     transform: translateX(30px);
     background-color: #ababab; /* Cor do modo escuro */
 }
+
+
+.future-plans {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: var(--ff-inter);
+    font-size: var(--fs-md);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .future-plans p {
+    margin: 0;
+  }
+  

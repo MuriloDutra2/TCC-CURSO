@@ -280,7 +280,7 @@ session_start();
                             <a href="sobrenos.php"> Nossa missão</a>
                         </li>
                         <li class="link-item">
-                            <a href="sobrenos.php"> Planos</a>
+                            <a href="planos.php"> Planos</a>
                         </li>
                         <li class="link-item">
                             <a href="contato.php"> Contato</a>
