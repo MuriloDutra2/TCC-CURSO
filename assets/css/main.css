@@ -875,3 +875,53 @@ a, .submit-btn, .payment-options button {
 }
 
 
+/* Estilo do container */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60px;
+    height: 30px;
+    background-color: var(--preto);
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+}
+
+/* Oculta o input de checkbox */
+.toggle-input {
+    display: none;
+}
+
+/* Estilo do círculo que se move */
+.toggle-label {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--vermelho); /* Azul para o modo claro */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Ícones de Sol e Lua */
+.icon {
+    font-size: 18px;
+    color: #b0b0b0; /* Cor neutra */
+}
+
+.sun-icon {
+    color: var(--vermelho); /* Azul para o sol */
+}
+
+.moon-icon {
+    color: #b0b0b0;
+}
+
+/* Movimenta o círculo para o outro lado quando o modo escuro está ativo */
+.toggle-input:checked + .toggle-label {
+    transform: translateX(30px);
+    background-color: #ababab; /* Cor do modo escuro */
+}
