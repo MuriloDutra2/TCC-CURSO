@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -108,7 +112,7 @@
                     </button>
 
                     <?php
-                    session_start();
+                    
                     if (isset($_SESSION['usuario'])) {
                         // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
                         echo '

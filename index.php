@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -51,35 +56,34 @@
                 </a>
 
                 <div class="toggle-container">
-    <ion-icon name="sunny-outline" class="icon sun-icon"></ion-icon>
-    <input type="checkbox" id="theme-toggle" class="toggle-input" onclick="toggleTheme()">
-    <label for="theme-toggle" class="toggle-label"></label>
-    <ion-icon name="moon-outline" class="icon moon-icon"></ion-icon>
-</div>
+                    <ion-icon name="sunny-outline" class="icon sun-icon"></ion-icon>
+                    <input type="checkbox" id="theme-toggle" class="toggle-input" onclick="toggleTheme()">
+                    <label for="theme-toggle" class="toggle-label"></label>
+                    <ion-icon name="moon-outline" class="icon moon-icon"></ion-icon>
+                </div>
 
 
 
-<script>
-// Função para alternar o tema
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-}
+                <script>
+                    // Função para alternar o tema
+                    function toggleTheme() {
+                        const currentTheme = document.documentElement.getAttribute('data-theme');
+                        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-// Carrega o tema do localStorage ao carregar a página
-window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+                        document.documentElement.setAttribute('data-theme', newTheme);
+                        localStorage.setItem('theme', newTheme);
+                    }
 
-    // Atualiza o estado do checkbox com base no tema salvo
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.checked = savedTheme === 'light';
-});
+                    // Carrega o tema do localStorage ao carregar a página
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const savedTheme = localStorage.getItem('theme') || 'dark';
+                        document.documentElement.setAttribute('data-theme', savedTheme);
 
-</script>
+                        // Atualiza o estado do checkbox com base no tema salvo
+                        const themeToggle = document.getElementById('theme-toggle');
+                        themeToggle.checked = savedTheme === 'light';
+                    });
+                </script>
 
                 <!-- navbar navigation -->
                 <nav class="">
@@ -89,7 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         <li><a href="contato.php" class="navbar-link">Contato</a></li>
                     </ul>
 
-           
+
 
                 </nav>
 
@@ -113,7 +117,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     </button>
 
                     <?php
-                    session_start();
+
                     if (isset($_SESSION['usuario'])) {
                         // Se o usuário estiver logado, exibir o nome e o ícone de perfil com a caixa de logout
                         echo '
@@ -1004,7 +1008,7 @@ CATEGORIA SECTION
                 </div>
 
                 <div class="wrapper">
-                    
+
                     <a href="assets/imagem-real/termosdeuso.pdf">Termos de uso</a>
                 </div>
 
