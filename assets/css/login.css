@@ -117,3 +117,28 @@ p {
 .signup-section a:hover {
     color: var(--input-text-color); /* Muda gradualmente para a cor dos inputs */
 }
+
+/* Adicionar estilos personalizados para a checkbox de termos */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 15px 0 30px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.checkbox-group label a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.checkbox-group label a:hover {
+    color: var(--button-color);
+    text-decoration: underline;
+}

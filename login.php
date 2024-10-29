@@ -20,7 +20,6 @@
             </div>
             <h2>Entrar</h2>
             <p>Faça login para continuar</p>
-            <!-- Alterado para usar POST -->
             <form action="processa_login.php" method="POST">
                 <div class="input-group">
                     <label for="login">Login</label>
@@ -30,9 +29,16 @@
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" required>
                 </div>
+                
+                <!-- Checkbox de aceitação dos Termos de Uso -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree-terms" name="agree_terms" required>
+                    <label for="agree-terms">Concorda com nossos <a href="assets/imagem-real/termosdeuso.pdf" target="_blank">termos de uso</a>?</label>
+                </div>
+                
                 <button class="login-button" type="submit">Entrar</button>
             </form>
-            <!-- Nova seção de cadastro -->
+            
             <div class="signup-section">
                 <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
             </div>
