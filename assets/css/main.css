@@ -134,7 +134,7 @@ forma da navbar e estilo do botao
 }
 
 .navbar-form-btn {
-    background: var(--branco);
+    background: var(--preto);
     position: absolute;
     top: calc(50% - 10px);
     right: 10px;
@@ -873,3 +873,5 @@ a, .submit-btn, .payment-options button {
 .link-heading {
     color: var(--vermelho);
 }
+
+

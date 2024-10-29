@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Ingressos A Maldição do Parque </title>
     <link rel="shortcut icon" sizes="32x32" href="../assets/imagem-real/logo-favicon.png" type="image/x-icon">
     <style>
+        /* Estilos principais */
         body {
             font-family: Arial, sans-serif;
             background-color: #0D0D0D;
@@ -118,7 +120,7 @@
         }
 
         .row-labels .label {
-            width: 45px; /* Espaço entre as letras alinhado com os assentos */
+            width: 45px;
             text-align: center;
             font-weight: bold;
             font-size: 20px;
@@ -129,10 +131,9 @@
             width: 500px;
             height: 3px;
             background-color: red;
-            margin: 30px auto; /* Aumenta o espaçamento acima da linha */
+            margin: 30px auto;
         }
 
-        /* Estilo do botão "Finalizar Compra" */
         .finalizar-compra {
             display: inline-block;
             margin-top: 30px;
@@ -148,8 +149,76 @@
         .finalizar-compra:hover {
             background-color: #A62F24;
         }
+
+        /* Media Queries */
+        /* Tablets e telas menores */
+        @media (max-width: 1024px) {
+            .container {
+                width: 70%;
+            }
+
+            .seat {
+                width: 30px;
+                height: 30px;
+            }
+
+            .total {
+                font-size: 18px;
+            }
+
+            .linha-vermelha {
+                width: 80%;
+            }
+        }
+
+        /* Smartphones */
+        @media (max-width: 575px) {
+            .container {
+                width: 90%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .screen {
+                height: 40px;
+                font-size: 16px;
+                line-height: 40px;
+            }
+
+            .seat {
+                width: 25px;
+                height: 25px;
+                margin: 2px;
+            }
+
+            .row-label {
+                font-size: 14px;
+            }
+
+            .linha-vermelha {
+                width: 90%;
+            }
+
+            .legend div {
+                width: 25px;
+                height: 25px;
+            }
+
+            .finalizar-compra {
+                padding: 8px 16px;
+                font-size: 16px;
+            }
+
+            .total {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Escolha seus assentos</h1>
@@ -212,91 +281,90 @@
 
     <script>
         const seatPrice = 2.00;
- let selectedSeats = [];
- const totalPriceElement = document.getElementById('totalPrice');
- 
- // Função para gerar assentos em uma linha
- function generateSeats(rowId, seatCount) {
-     const seatRow = document.getElementById(rowId);
-     for (let i = 1; i <= seatCount; i++) {
-         const seat = document.createElement('div');
-         seat.classList.add('seat');
-         seat.innerText = `${rowId[3]}${i}`; // Formato "A1", "B1", "C1"
-         
-         // Alternar seleção de assento
-         seat.addEventListener('click', () => toggleSeat(seat));
-         
-         seatRow.appendChild(seat);
-     }
- }
- 
- // Função para alternar a seleção de assentos
- function toggleSeat(seat) {
-     if (!seat.classList.contains('occupied')) {
-         seat.classList.toggle('selected');
-         const seatId = seat.innerText;
- 
-         if (seat.classList.contains('selected')) {
-             selectedSeats.push(seatId);
-         } else {
-             selectedSeats = selectedSeats.filter(id => id !== seatId);
-         }
- 
-         updateTotalPrice();
-     }
- }
- 
- // Atualiza o preço total
- function updateTotalPrice() {
-     const totalPrice = selectedSeats.length * seatPrice;
-     totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
- }
- 
- // Função para gerar 10 assentos ocupados aleatoriamente
- function generateOccupiedSeats() {
-     const allSeats = document.querySelectorAll('.seat');
-     const occupiedSeats = new Set();
-     while (occupiedSeats.size < 10) {
-         const randomIndex = Math.floor(Math.random() * allSeats.length);
-         const randomSeat = allSeats[randomIndex];
-         if (!randomSeat.classList.contains('occupied')) {
-             randomSeat.classList.add('occupied');
-             occupiedSeats.add(randomSeat.innerText);
-         }
-     }
- }
- 
- // Função para redirecionar ao checkout
- function redirectToCheckout() {
-     const filme = "A Maldição do Parque"; // Definir o nome do filme
-     const totalPrice = selectedSeats.length * seatPrice;
- 
-     // Salvar informações no LocalStorage
-     localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
-     localStorage.setItem('selectedFilm', filme);
-     localStorage.setItem('totalPrice', totalPrice.toFixed(2));
- 
-     // Redireciona para a página de checkout
-     window.location.href = 'checkout.php';
- }
- 
- // Gerar assentos para todas as linhas
- generateSeats('rowA', 10);
- generateSeats('rowB', 10);
- generateSeats('rowC', 10);
- generateSeats('rowD', 10);
- generateSeats('rowE', 10);
- generateSeats('rowF', 10);
- 
- // Gerar assentos ocupados
- generateOccupiedSeats();
- 
- // Adicionar evento de clique para finalizar a compra
- document.querySelector('.finalizar-compra').addEventListener('click', redirectToCheckout);
- 
-         
-     </script>
-</body>
-</html>
+        let selectedSeats = [];
+        const totalPriceElement = document.getElementById('totalPrice');
 
-        
+        // Função para gerar assentos em uma linha
+        function generateSeats(rowId, seatCount) {
+            const seatRow = document.getElementById(rowId);
+            for (let i = 1; i <= seatCount; i++) {
+                const seat = document.createElement('div');
+                seat.classList.add('seat');
+                seat.innerText = `${rowId[3]}${i}`; // Formato "A1", "B1", "C1"
+
+                // Alternar seleção de assento
+                seat.addEventListener('click', () => toggleSeat(seat));
+
+                seatRow.appendChild(seat);
+            }
+        }
+
+        // Função para alternar a seleção de assentos
+        function toggleSeat(seat) {
+            if (!seat.classList.contains('occupied')) {
+                seat.classList.toggle('selected');
+                const seatId = seat.innerText;
+
+                if (seat.classList.contains('selected')) {
+                    selectedSeats.push(seatId);
+                } else {
+                    selectedSeats = selectedSeats.filter(id => id !== seatId);
+                }
+
+                updateTotalPrice();
+            }
+        }
+
+        // Atualiza o preço total
+        function updateTotalPrice() {
+            const totalPrice = selectedSeats.length * seatPrice;
+            totalPriceElement.innerText = totalPrice.toFixed(2).replace('.', ',');
+        }
+
+        // Função para gerar 10 assentos ocupados aleatoriamente
+        function generateOccupiedSeats() {
+            const allSeats = document.querySelectorAll('.seat');
+            const occupiedSeats = new Set();
+            while (occupiedSeats.size < 10) {
+                const randomIndex = Math.floor(Math.random() * allSeats.length);
+                const randomSeat = allSeats[randomIndex];
+                if (!randomSeat.classList.contains('occupied')) {
+                    randomSeat.classList.add('occupied');
+                    occupiedSeats.add(randomSeat.innerText);
+                }
+            }
+        }
+
+        // Função para redirecionar ao checkout
+        function redirectToCheckout() {
+            const filme = "A Maldição do Parque"; // Definir o nome do filme
+            const totalPrice = selectedSeats.length * seatPrice;
+
+            // Salvar informações no LocalStorage
+            localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+            localStorage.setItem('selectedFilm', filme);
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+
+            // Redireciona para a página de checkout
+            window.location.href = 'checkout.php';
+        }
+
+        // Gerar assentos para todas as linhas
+        generateSeats('rowA', 10);
+        generateSeats('rowB', 10);
+        generateSeats('rowC', 10);
+        generateSeats('rowD', 10);
+        generateSeats('rowE', 10);
+        generateSeats('rowF', 10);
+
+        // Gerar assentos ocupados
+        generateOccupiedSeats();
+
+        // Adicionar evento de clique para finalizar a compra
+        document.querySelector('.finalizar-compra').addEventListener('click', redirectToCheckout);
+
+
+    </script>
+</body>
+
+</html>

@@ -262,4 +262,154 @@ RESPONSIVE PARA 575px
 
 } 
 
+/* MEDIA QUERY PARA PÁGINA DE CONTATO */
 
+/* Responsivo para telas menores que 1024px */
+@media screen and (max-width: 1024px) {
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form, .contact-info {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .contact-form h2 {
+        font-size: 1.8em;
+    }
+
+    .contact-form input, .contact-form textarea {
+        font-size: 1em;
+    }
+
+    .contact-info h3 {
+        font-size: 1.5em;
+    }
+}
+
+/* Responsivo para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        padding: 20px;
+    }
+
+    .contact-form, .contact-info {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .contact-form h2 {
+        font-size: 1.5em;
+    }
+
+    .contact-form label {
+        font-size: 1em;
+    }
+
+    .contact-info h3 {
+        font-size: 1.3em;
+    }
+}
+
+/* Responsivo para telas menores que 575px */
+@media screen and (max-width: 575px) {
+    .contact-form h2 {
+        font-size: 1.3em;
+    }
+
+    .contact-form label, .contact-info p {
+        font-size: 0.9em;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .submit-btn {
+        width: 100%;
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+
+/* MEDIA QUERY PARA TELAS MENORES */
+
+/* Responsivo para telas menores que 1024px */
+@media screen and (max-width: 1024px) {
+    .sobre-nos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .sobre-nos-texto {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sobre-nos h2, .sobre-nos h3 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .sobre-nos p, .sobre-nos ul {
+        font-size: 1em;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* Ocultar imagem em telas menores */
+    .sobre-nos-imagem {
+        display: none;
+    }
+
+    /* Espaço extra entre nav e main container */
+    main {
+        margin-top: 70px;
+    }
+}
+
+/* Responsivo para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    .sobre-nos h2 {
+        font-size: 1.8em;
+    }
+
+    .sobre-nos p {
+        font-size: 1em;
+    }
+
+    .sobre-nos ul {
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    .sobre-nos ul li {
+        margin-bottom: 10px;
+    }
+
+    /* Aumentar espaço entre nav e main container */
+    main {
+        margin-top: 70px;
+    }
+}
+
+/* Responsivo para telas menores que 575px */
+@media screen and (max-width: 575px) {
+    .sobre-nos h2 {
+        font-size: 1.6em;
+    }
+
+    .sobre-nos p, .sobre-nos ul {
+        font-size: 0.9em;
+    }
+
+    /* Espaço maior entre nav e main container */
+    main {
+        margin-top: 70px;
+    }
+}
