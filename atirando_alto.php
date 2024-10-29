@@ -50,27 +50,35 @@
                     <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
-                <div class="navbar-actions">
-    <!-- Botão de alternância de tema -->
-    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
-</div>
+                <div class="toggle-container">
+                    <ion-icon name="sunny-outline" class="icon sun-icon"></ion-icon>
+                    <input type="checkbox" id="theme-toggle" class="toggle-input" onclick="toggleTheme()">
+                    <label for="theme-toggle" class="toggle-label"></label>
+                    <ion-icon name="moon-outline" class="icon moon-icon"></ion-icon>
+                </div>
 
-<script>
-    // Função para alternar o tema
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    }
 
-    // Carrega o tema do localStorage ao carregar a página
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    });
-</script>
+
+                <script>
+                    // Função para alternar o tema
+                    function toggleTheme() {
+                        const currentTheme = document.documentElement.getAttribute('data-theme');
+                        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+                        document.documentElement.setAttribute('data-theme', newTheme);
+                        localStorage.setItem('theme', newTheme);
+                    }
+
+                    // Carrega o tema do localStorage ao carregar a página
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const savedTheme = localStorage.getItem('theme') || 'dark';
+                        document.documentElement.setAttribute('data-theme', savedTheme);
+
+                        // Atualiza o estado do checkbox com base no tema salvo
+                        const themeToggle = document.getElementById('theme-toggle');
+                        themeToggle.checked = savedTheme === 'light';
+                    });
+                </script>
 
                 <!-- navbar navigation -->
                 <nav class="">

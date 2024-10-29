@@ -49,10 +49,14 @@
                     <img src="assets/imagem-real/logo-favicon.png" class="logo-img" alt="">
                 </a>
 
-                <div class="navbar-actions">
-                    <!-- Botão de alternância de tema -->
-                    <button onclick="toggleTheme()" class="theme-toggle">🌞/🌙</button>
+                <div class="toggle-container">
+                    <ion-icon name="sunny-outline" class="icon sun-icon"></ion-icon>
+                    <input type="checkbox" id="theme-toggle" class="toggle-input" onclick="toggleTheme()">
+                    <label for="theme-toggle" class="toggle-label"></label>
+                    <ion-icon name="moon-outline" class="icon moon-icon"></ion-icon>
                 </div>
+
+
 
                 <script>
                     // Função para alternar o tema
@@ -68,6 +72,10 @@
                     window.addEventListener('DOMContentLoaded', () => {
                         const savedTheme = localStorage.getItem('theme') || 'dark';
                         document.documentElement.setAttribute('data-theme', savedTheme);
+
+                        // Atualiza o estado do checkbox com base no tema salvo
+                        const themeToggle = document.getElementById('theme-toggle');
+                        themeToggle.checked = savedTheme === 'light';
                     });
                 </script>
 
