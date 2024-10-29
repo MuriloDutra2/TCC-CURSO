@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +6,7 @@
     <title>Pagamento - C-Street</title>
     <link rel="shortcut icon" sizes="32x32" href="../assets/imagem-real/logo-favicon.png" type="image/x-icon">
     <style>
+        /* Estilos principais */
         body {
             font-family: Arial, sans-serif;
             background-color: #F0F0F2;
@@ -37,11 +36,13 @@
             margin-bottom: 30px;
         }
 
-        .details {
+        .details,
+        .summary {
             width: 48%;
         }
 
-        .details h2 {
+        .details h2,
+        .summary h2 {
             border-bottom: 2px solid #D93223;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -49,8 +50,10 @@
             color: #A62F24;
         }
 
-        .details .info {
+        .details .info,
+        .summary ul li {
             margin-bottom: 20px;
+            font-size: 18px;
         }
 
         .details label {
@@ -69,30 +72,9 @@
             font-size: 16px;
         }
 
-        .summary {
-            width: 48%;
-        }
-
-        .summary h2 {
-            border-bottom: 2px solid #D93223;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #A62F24;
-        }
-
         .summary ul {
             list-style-type: none;
             padding: 0;
-        }
-
-        .summary ul li {
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .summary ul li span {
-            float: right;
         }
 
         .summary .total {
@@ -131,13 +113,93 @@
             font-size: 18px;
         }
 
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .container {
+                width: 90%;
+            }
+
+            .details,
+            .summary {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .checkout {
+                flex-direction: column;
+            }
+
+            .payment-options button {
+                width: 40%;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .details h2,
+            .summary h2 {
+                font-size: 20px;
+            }
+
+            .details input,
+            .payment-options button {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .summary ul li {
+                font-size: 16px;
+            }
+
+            .summary .total {
+                font-size: 20px;
+            }
+
+            .payment-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .payment-options button {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .details h2,
+            .summary h2 {
+                font-size: 18px;
+            }
+
+            .details input,
+            .payment-options button {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .summary ul li {
+                font-size: 14px;
+            }
+
+            .payment-options button {
+                width: 80%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Confirmação de Pagamento</h1>
 
-        <!-- Formulário com Nome e Email -->
         <div class="checkout">
             <div class="details">
                 <h2>Detalhes do Pagamento</h2>
@@ -151,7 +213,6 @@
                 </div>
             </div>
 
-            <!-- Resumo da Compra -->
             <div class="summary">
                 <h2>Resumo da Compra</h2>
                 <ul>
@@ -162,7 +223,6 @@
             </div>
         </div>
 
-        <!-- Opções de Pagamento -->
         <div class="payment-options">
             <button onclick="finalizarCompra('Débito')">Débito</button>
             <button onclick="finalizarCompra('Crédito')">Crédito</button>
@@ -170,18 +230,15 @@
             <button onclick="finalizarCompra('Boleto')">Boleto</button>
         </div>
 
-        <!-- Mensagem de sucesso -->
         <div class="success-message" id="successMessage">Compra efetuada com sucesso!</div>
     </div>
 
     <script>
-    // Função para obter dados do LocalStorage
     function loadCheckoutData() {
         const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
         const movieTitle = localStorage.getItem('selectedFilm') || 'Filme não selecionado';
         const totalPrice = localStorage.getItem('totalPrice') || '0,00';
 
-        // Atualiza os elementos HTML com os dados do LocalStorage
         document.getElementById('summary-seats').textContent = selectedSeats.join(', ');
         document.getElementById('summary-movie').textContent = movieTitle;
         document.getElementById('summary-price').textContent = totalPrice.replace('.', ',');
@@ -202,22 +259,18 @@
                 if (xhr.status === 200) {
                     document.getElementById('successMessage').style.display = "block";
 
-                    // Redireciona para a página inicial após 3 segundos
                     setTimeout(() => {
                         window.location.href = "../index.php";
                     }, 3000);
                 }
             };
-            
             xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}&filme=${encodeURIComponent(filme)}&assentos=${encodeURIComponent(assentos)}&total=${encodeURIComponent(total)}`);
         } else {
             alert("Por favor, insira seu nome e email.");
         }
     }
 
-    // Carregar dados no carregamento da página
     window.onload = loadCheckoutData;
-</script>
-
+    </script>
 </body>
 </html>
