@@ -221,14 +221,14 @@ session_start();
                     <div class="filter-dropdowns">
                         <select name="genre" id="genre" class="genre">
                             <option value="all genres">Todos os Gêneros</option>
-                            <option value="acao">Ação</option>
-                            <option value="aventura">Aventura</option>
-                            <option value="terror">Terror</option>
-                            <option value="suspense">Suspense</option>
-                            <option value="comedia">Comédia</option>
-                            <option value="drama">Drama</option>
-                            <option value="misterio">Mistério</option>
-                            <option value="documentario">Documentário</option>
+                            <option value="Ação">Ação</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Comédia">Comédia</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Mistério">Mistério</option>
+                            <option value="Documentário">Documentário</option>
                         </select>
 
                         <select name="year" id="year" class="year">
