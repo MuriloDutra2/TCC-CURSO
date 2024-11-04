@@ -245,44 +245,30 @@
     }
 
     function finalizarCompra(metodoPagamento) {
-    console.log("Início da função finalizarCompra"); // Log inicial
-    
-    const email = document.getElementById('user-payment-email').value;
-    const nome = document.getElementById('user-name').value;
-    const filme = document.getElementById('summary-movie').textContent;
-    const assentos = document.getElementById('summary-seats').textContent;
-    const total = document.getElementById('summary-price').textContent;
+        const email = document.getElementById('user-payment-email').value;
+        const nome = document.getElementById('user-name').value;
+        const filme = document.getElementById('summary-movie').textContent;
+        const assentos = document.getElementById('summary-seats').textContent;
+        const total = document.getElementById('summary-price').textContent;
 
-    if (email && nome) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "../processa_pagamento.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        if (email && nome) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "processa_pagamento.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('successMessage').style.display = "block";
 
-        // Log dos dados enviados
-        console.log(`Dados enviados: email=${email}, nome=${nome}, metodo=${metodoPagamento}, filme=${filme}, assentos=${assentos}, total=${total}`);
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log("Requisição enviada com sucesso:", xhr.responseText); // Verifique a resposta
-                document.getElementById('successMessage').style.display = "block";
-                setTimeout(() => {
-                    window.location.href = "../index.php";
-                }, 3000);
-            } else {
-                console.error("Erro na requisição:", xhr.status, xhr.statusText);
-            }
-        };
-        
-        xhr.onerror = function() {
-            console.error("Erro de rede ou URL incorreta.");
-        };
-
-        xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}&filme=${encodeURIComponent(filme)}&assentos=${encodeURIComponent(assentos)}&total=${encodeURIComponent(total)}`);
-    } else {
-        alert("Por favor, insira seu nome e email.");
-        console.warn("Campos de email e nome não preenchidos.");
+                    setTimeout(() => {
+                        window.location.href = "../index.php";
+                    }, 3000);
+                }
+            };
+            xhr.send(`email=${encodeURIComponent(email)}&nome=${encodeURIComponent(nome)}&metodo=${encodeURIComponent(metodoPagamento)}&filme=${encodeURIComponent(filme)}&assentos=${encodeURIComponent(assentos)}&total=${encodeURIComponent(total)}`);
+        } else {
+            alert("Por favor, insira seu nome e email.");
+        }
     }
-}
 
     
 
