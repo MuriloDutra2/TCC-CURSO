@@ -8,9 +8,5 @@ $dbname = "if0_37636597_cstreet";
 // Criar a conexão
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Verificar se a conexão deu certo
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
-echo "Conexão bem-sucedida!";
+
 ?>
