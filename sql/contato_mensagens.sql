@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `contato_mensagens`
 --
 
-DROP TABLE IF EXISTS `contato_mensagens`;
 CREATE TABLE IF NOT EXISTS `contato_mensagens` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
@@ -35,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `contato_mensagens` (
   `mensagem` text NOT NULL,
   `data_envio` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Despejando dados para a tabela `contato_mensagens`

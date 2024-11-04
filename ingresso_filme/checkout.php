@@ -270,7 +270,12 @@
         }
     }
 
-    window.onload = loadCheckoutData;
+    
+
+    window.onload = loadCheckoutData
+
+
+    
     </script>
 </body>
 </html>

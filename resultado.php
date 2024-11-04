@@ -1,9 +1,4 @@
 <?php
-// Exibir erros para depuração
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // Incluir o arquivo de conexão
 include 'conexao.php';
 
@@ -54,7 +49,3 @@ try {
 } catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
-
-
-/*SISTEMA PARA A FILTER BAR */
-
